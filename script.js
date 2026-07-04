@@ -1,0 +1,1 @@
+const nav=document.querySelector('.nav');window.addEventListener('scroll',()=>{if(window.scrollY>20){nav.style.background='rgba(0,0,0,.78)';nav.style.borderBottom='1px solid rgba(255,255,255,.08)'}else{nav.style.background='linear-gradient(to bottom, rgba(0,0,0,.82), rgba(0,0,0,.22), transparent)';nav.style.borderBottom='none'}});
