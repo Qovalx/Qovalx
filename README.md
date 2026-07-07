@@ -1,24 +1,38 @@
-[qovalx_v7_README.md](https://github.com/user-attachments/files/29746196/qovalx_v7_README.md)
-# QOVALX V7 Private Access Portal
+[README.md](https://github.com/user-attachments/files/29748812/README.md)
+# QOVALX Version 8
 
-This version adds:
+This version upgrades the QOVALX website with a more premium global look and fixes the main issues from the previous version.
 
-- App-style private preview
-- Login / Create Account coming soon behavior
-- Early access modal
-- Broker / Developer / Investor access buttons
-- English and Arabic language toggle
-- No real password collection
-- No external images needed
-- Black and gold luxury QOVALX style
+## Included files
 
-## Upload to GitHub
+Upload these 4 files to the root of your GitHub repository and replace the old ones:
 
-Upload these files to the root of the Qovalx repository:
+- `index.html`
+- `style.css`
+- `script.js`
+- `README.md`
 
-- index.html
-- style.css
-- script.js
-- README.md
+## What is improved in V8
 
-Commit directly to the main branch. Cloudflare Pages will update automatically.
+- Fully working **Private Access** modal
+- **Request Early Access** now opens a proper access flow and the form works
+- **Language toggle** fixed for English and Arabic
+- **Brokers / Developers / Investors** tabs all work correctly
+- Improved mobile responsiveness
+- Better button shapes and cleaner spacing
+- Premium black-and-gold visual system
+- Abu Dhabi-inspired skyline and landmark identity added back in a more polished way
+- No external image assets required
+
+## Important
+
+Replace the old root files with these new files.
+Do not keep older conflicting code inside `index.html` or `script.js`.
+
+## Contact flow
+
+The access form uses a `mailto:` action to send requests to:
+
+`founder@qovalx.com`
+
+If you later want a real backend, you can connect the form to Formspree, Netlify Forms, Supabase, Firebase, or a custom API.
