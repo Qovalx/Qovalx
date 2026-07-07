@@ -1,457 +1,332 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QOVALX | AI-Powered Real Estate Network</title>
-  <meta name="description" content="QOVALX is an AI-powered professional real estate network connecting brokers, developers and investors through one verified private ecosystem." />
+  <title>QOVALX | Private Access Ecosystem</title>
+  <meta name="description" content="QOVALX is an AI-powered real estate ecosystem connecting brokers, developers, and investors through a premium Abu Dhabi-built platform." />
   <meta name="theme-color" content="#050505" />
-  <meta property="og:title" content="QOVALX | AI-Powered Real Estate Network" />
-  <meta property="og:description" content="Private access for brokers, developers and investors. Built in Abu Dhabi. Designed for the world." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://qovalx.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cairo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=8" />
 </head>
-<body>
+<body data-lang="en">
   <div class="site-shell">
-    <header class="nav" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="QOVALX home">
-        <span class="brand-mark">Q</span>
-        <span class="brand-text">QOVALX</span>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="QOVALX home">
+        <div class="brand-mark">Q</div>
+        <div class="brand-name">QOVALX</div>
       </a>
 
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="nav desktop-nav">
+        <a href="#about" data-i18n="navAbout">About</a>
         <a href="#platform" data-i18n="navPlatform">Platform</a>
-        <a href="#access" data-i18n="navAccess">Access</a>
-        <a href="#ai" data-i18n="navAI">AI</a>
-        <a href="#vision" data-i18n="navVision">Vision</a>
+        <a href="#abudhabi" data-i18n="navAbuDhabi">Abu Dhabi</a>
+        <a href="#investors" data-i18n="navInvestors">Investors</a>
+        <a href="#contact" data-i18n="navContact">Access</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language">AR</button>
-        <button class="btn btn-outline nav-login" type="button" data-modal="login" data-i18n="login">Login</button>
-        <button class="btn btn-gold" type="button" data-modal="early-access" data-i18n="privateAccess">Private Access</button>
+      <div class="topbar-actions">
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">AR</button>
+        <button class="btn btn-gold open-access" type="button" data-i18n="privateAccessBtn">Private Access</button>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero section" aria-labelledby="heroTitle">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
-            <p class="eyebrow" data-i18n="eyebrow">Built in Abu Dhabi • AI-Powered • PropTech</p>
-            <h1 id="heroTitle" data-i18n="heroTitle">The private professional network for real estate.</h1>
-            <p class="hero-subtitle" data-i18n="heroSubtitle">QOVALX connects verified brokers, developers and investors through one intelligent ecosystem built for private access, trusted collaboration and smarter opportunities.</p>
+    <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#platform" data-i18n="navPlatform">Platform</a>
+      <a href="#abudhabi" data-i18n="navAbuDhabi">Abu Dhabi</a>
+      <a href="#investors" data-i18n="navInvestors">Investors</a>
+      <a href="#contact" data-i18n="navContact">Access</a>
+      <button class="btn btn-gold open-access" type="button" data-i18n="privateAccessBtn">Private Access</button>
+    </nav>
 
-            <div class="hero-actions">
-              <button class="btn btn-gold btn-large" type="button" data-modal="early-access" data-i18n="requestAccess">Request Early Access</button>
-              <button class="btn btn-ghost btn-large" type="button" data-modal="login" data-i18n="previewLogin">Preview Login</button>
-            </div>
-
-            <div class="trust-row" aria-label="QOVALX highlights">
-              <span data-i18n="trust1">Verified network</span>
-              <span data-i18n="trust2">AI-supported matching</span>
-              <span data-i18n="trust3">Subscription-first model</span>
-            </div>
-          </div>
-
-          <div class="app-frame reveal" id="platform" aria-label="QOVALX private access app preview">
-            <div class="app-window">
-              <div class="app-topbar">
-                <div>
-                  <span class="status-dot"></span>
-                  <span data-i18n="appStatus">Private Preview</span>
-                </div>
-                <button class="mini-btn" type="button" data-modal="login" data-i18n="login">Login</button>
-              </div>
-
-              <div class="dashboard-grid">
-                <div class="metric-card large">
-                  <span data-i18n="dashboardTitle">QOVALX OS</span>
-                  <strong data-i18n="dashboardMetric">AI real estate intelligence</strong>
-                  <p data-i18n="dashboardText">A future operating layer for brokers, developers and investors.</p>
-                </div>
-                <div class="metric-card">
-                  <span data-i18n="metric1">Verified profiles</span>
-                  <strong>1,250+</strong>
-                </div>
-                <div class="metric-card">
-                  <span data-i18n="metric2">Developer launches</span>
-                  <strong>320</strong>
-                </div>
-                <div class="metric-card">
-                  <span data-i18n="metric3">Investor signals</span>
-                  <strong>75</strong>
-                </div>
-                <div class="map-card">
-                  <div class="city-map">
-                    <span class="pin pin-1"></span>
-                    <span class="pin pin-2"></span>
-                    <span class="pin pin-3"></span>
-                    <span class="pin pin-4"></span>
-                  </div>
-                  <p data-i18n="mapText">Opportunity heatmap preview</p>
-                </div>
-              </div>
-
-              <div class="app-actions-row">
-                <button type="button" data-modal="early-access" data-role="Broker" data-i18n="joinBroker">Join as Broker</button>
-                <button type="button" data-modal="early-access" data-role="Developer" data-i18n="joinDeveloper">Join as Developer</button>
-                <button type="button" data-modal="early-access" data-role="Investor" data-i18n="joinInvestor">Investor Access</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section access-section" id="access">
-        <div class="section-heading reveal">
-          <p class="eyebrow" data-i18n="accessEyebrow">Private access layer</p>
-          <h2 data-i18n="accessTitle">The app is preparing for a private launch.</h2>
-          <p data-i18n="accessText">Instead of opening a normal login today, QOVALX will collect selected early access requests and prepare a verified launch for the right real estate professionals.</p>
-        </div>
-
-        <div class="cards-3 reveal">
-          <article class="access-card">
-            <div class="icon-ring">01</div>
-            <h3 data-i18n="accessCard1Title">Request access</h3>
-            <p data-i18n="accessCard1Text">Interested brokers, developers and investors submit their role and contact details.</p>
-          </article>
-          <article class="access-card">
-            <div class="icon-ring">02</div>
-            <h3 data-i18n="accessCard2Title">Review and verify</h3>
-            <p data-i18n="accessCard2Text">QOVALX will review quality, relevance and potential fit before opening access.</p>
-          </article>
-          <article class="access-card">
-            <div class="icon-ring">03</div>
-            <h3 data-i18n="accessCard3Title">Private launch</h3>
-            <p data-i18n="accessCard3Text">Selected users receive private access when the first production version is ready.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section roles-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow" data-i18n="rolesEyebrow">Built for the market</p>
-          <h2 data-i18n="rolesTitle">One ecosystem. Three professional sides.</h2>
-        </div>
-
-        <div class="role-tabs reveal" role="tablist" aria-label="QOVALX user roles">
-          <button class="role-tab active" type="button" data-role-tab="brokers" data-i18n="brokers">Brokers</button>
-          <button class="role-tab" type="button" data-role-tab="developers" data-i18n="developers">Developers</button>
-          <button class="role-tab" type="button" data-role-tab="investors" data-i18n="investors">Investors</button>
-        </div>
-
-        <div class="role-panel reveal active" id="brokers">
-          <div>
-            <h3 data-i18n="brokersTitle">Verified brokers get stronger visibility.</h3>
-            <p data-i18n="brokersText">Brokers can build a professional identity, access better opportunities, reduce random outreach and connect with the right people faster.</p>
-          </div>
-          <ul>
-            <li data-i18n="brokersLi1">Verified professional profile</li>
-            <li data-i18n="brokersLi2">Quality lead discovery</li>
-            <li data-i18n="brokersLi3">Direct communication and smarter follow-up</li>
-          </ul>
-        </div>
-
-        <div class="role-panel reveal" id="developers">
-          <div>
-            <h3 data-i18n="developersTitle">Developers showcase projects to a qualified network.</h3>
-            <p data-i18n="developersText">Developers can present launches, manage inquiries, reach verified brokers and build private demand before wider market exposure.</p>
-          </div>
-          <ul>
-            <li data-i18n="developersLi1">Premium project showcase</li>
-            <li data-i18n="developersLi2">Private launch access</li>
-            <li data-i18n="developersLi3">Performance and demand insights</li>
-          </ul>
-        </div>
-
-        <div class="role-panel reveal" id="investors">
-          <div>
-            <h3 data-i18n="investorsTitle">Investors see clearer opportunity signals.</h3>
-            <p data-i18n="investorsText">Investors can discover curated opportunities, review market relevance and connect with trusted developers and professionals.</p>
-          </div>
-          <ul>
-            <li data-i18n="investorsLi1">Curated opportunity view</li>
-            <li data-i18n="investorsLi2">Market intelligence layer</li>
-            <li data-i18n="investorsLi3">Trusted professional network</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section ai-section" id="ai">
-        <div class="ai-panel reveal">
-          <div>
-            <p class="eyebrow" data-i18n="aiEyebrow">AI-powered direction</p>
-            <h2 data-i18n="aiTitle">Designed to become the intelligence layer for real estate professionals.</h2>
-            <p data-i18n="aiText">The future QOVALX AI layer is planned to support matching, demand signals, market insights, workflow automation and smarter decision-making across the real estate ecosystem.</p>
-          </div>
-          <div class="ai-list">
-            <span data-i18n="ai1">Smart matching</span>
-            <span data-i18n="ai2">Lead support</span>
-            <span data-i18n="ai3">Market insights</span>
-            <span data-i18n="ai4">Workflow intelligence</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section vision-section" id="vision">
-        <div class="vision-card reveal">
-          <p class="eyebrow" data-i18n="visionEyebrow">Built in Abu Dhabi</p>
-          <h2 data-i18n="visionTitle">Starting in the UAE. Designed for the GCC. Built for global scale.</h2>
-          <p data-i18n="visionText">QOVALX is preparing a professional real estate network with a subscription-first model and a long-term vision to reduce fragmentation, improve trust and create a smarter private marketplace for real estate professionals.</p>
+    <main id="home">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">Built in Abu Dhabi • AI-powered • Premium real estate network</p>
+          <h1 data-i18n="heroTitle">One ecosystem. Three professional sides.</h1>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">QOVALX gives brokers, developers, and investors one premium ecosystem to connect, discover serious opportunities, and move faster with AI-supported intelligence.</p>
           <div class="hero-actions">
-            <button class="btn btn-gold btn-large" type="button" data-modal="early-access" data-i18n="requestAccess">Request Early Access</button>
-            <a class="btn btn-ghost btn-large" href="mailto:founder@qovalx.com?subject=QOVALX%20Private%20Access" data-i18n="contactFounder">Contact Founder</a>
+            <button class="btn btn-gold open-access" type="button" data-i18n="heroPrimaryBtn">Request Early Access</button>
+            <a class="btn btn-dark" href="#platform" data-i18n="heroSecondaryBtn">Explore Platform</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-value">3</div>
+              <div class="stat-label" data-i18n="statOne">Core audiences</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">AI</div>
+              <div class="stat-label" data-i18n="statTwo">Matching & insight layer</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">AD</div>
+              <div class="stat-label" data-i18n="statThree">Abu Dhabi launch base</div>
+            </div>
           </div>
         </div>
+
+        <div class="hero-visual">
+          <div class="visual-card hero-orbit">
+            <div class="visual-badge" data-i18n="visualBadge">Abu Dhabi Edition</div>
+            <div class="skyline-wrap">
+              <svg viewBox="0 0 820 520" class="skyline-svg" role="img" aria-label="Stylized Abu Dhabi skyline">
+                <defs>
+                  <linearGradient id="goldStroke" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#f7e5a5"/>
+                    <stop offset="55%" stop-color="#d7a13b"/>
+                    <stop offset="100%" stop-color="#8f5d15"/>
+                  </linearGradient>
+                  <linearGradient id="goldFill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#f2cf74" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#070707" stop-opacity="0.02"/>
+                  </linearGradient>
+                  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="7" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <rect x="0" y="0" width="820" height="520" fill="transparent"/>
+                <circle cx="630" cy="160" r="150" fill="url(#goldFill)" opacity="0.55"/>
+                <circle cx="150" cy="390" r="130" fill="url(#goldFill)" opacity="0.25"/>
+                <g stroke="url(#goldStroke)" fill="none" stroke-width="4" filter="url(#glow)">
+                  <path d="M60 450 H760" opacity="0.65"/>
+                  <path d="M100 450 V310 H155 V450"/>
+                  <path d="M120 310 V258 H135 V310"/>
+                  <path d="M190 450 V255 H240 V450"/>
+                  <path d="M210 255 V185 H220 V255"/>
+                  <path d="M280 450 V210 H335 V450"/>
+                  <path d="M308 210 V165 H322 V210"/>
+                  <path d="M390 450 V150 H470 V450"/>
+                  <path d="M430 150 V80 H440 V150"/>
+                  <path d="M420 115 L435 82 L450 115"/>
+                  <path d="M520 450 V285 H570 V450"/>
+                  <path d="M610 450 V265 H700 V450"/>
+                  <path d="M625 265 C625 165 685 165 685 265"/>
+                  <path d="M610 320 H700" opacity="0.65"/>
+                  <path d="M70 450 C115 380 155 380 205 450"/>
+                  <path d="M115 380 C135 340 165 340 180 380"/>
+                  <path d="M150 377 V450"/>
+                  <path d="M520 370 C555 325 610 325 645 370" opacity="0.55"/>
+                  <path d="M565 370 V450" opacity="0.55"/>
+                  <path d="M735 450 V330 H755 V450" opacity="0.8"/>
+                </g>
+                <g fill="#f2c862" opacity="0.95">
+                  <circle cx="435" cy="78" r="4"/>
+                  <circle cx="210" cy="184" r="3.5"/>
+                  <circle cx="320" cy="164" r="3.5"/>
+                  <circle cx="746" cy="330" r="3"/>
+                </g>
+              </svg>
+            </div>
+            <div class="landmark-pills">
+              <span data-i18n="landmarkOne">Etihad Towers</span>
+              <span data-i18n="landmarkTwo">Aldar HQ</span>
+              <span data-i18n="landmarkThree">Grand Mosque</span>
+              <span data-i18n="landmarkFour">Qasr Al Watan</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="platform" class="section audience-section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="sectionPlatformEyebrow">Platform access</p>
+          <h2 data-i18n="sectionPlatformTitle">Three sides. One intelligent system.</h2>
+          <p data-i18n="sectionPlatformText">Each side of QOVALX is designed with a clear purpose, while AI connects the ecosystem and improves the quality of communication, visibility, and decisions.</p>
+        </div>
+
+        <div class="tab-row" role="tablist" aria-label="Audience tabs">
+          <button class="tab-btn active" type="button" data-role="brokers" role="tab" aria-selected="true" data-i18n="tabBrokers">Brokers</button>
+          <button class="tab-btn" type="button" data-role="developers" role="tab" aria-selected="false" data-i18n="tabDevelopers">Developers</button>
+          <button class="tab-btn" type="button" data-role="investors" role="tab" aria-selected="false" data-i18n="tabInvestors">Investors</button>
+        </div>
+
+        <div class="audience-panels">
+          <article class="audience-panel active" data-panel="brokers">
+            <div class="panel-copy">
+              <h3 data-i18n="brokerTitle">Verified brokers get stronger visibility.</h3>
+              <p data-i18n="brokerText">Brokers can build a professional identity, access better opportunities, reduce random outreach, and connect with the right people faster.</p>
+              <div class="feature-list">
+                <div class="feature-item" data-i18n="brokerFeatureOne">Verified professional profile</div>
+                <div class="feature-item" data-i18n="brokerFeatureTwo">Quality lead discovery</div>
+                <div class="feature-item" data-i18n="brokerFeatureThree">Direct communication and smarter follow-up</div>
+              </div>
+            </div>
+            <div class="panel-visual metric-stack">
+              <div class="mini-card"><span class="mini-kicker" data-i18n="miniBrokerOneLabel">Profile strength</span><strong>92%</strong></div>
+              <div class="mini-card"><span class="mini-kicker" data-i18n="miniBrokerTwoLabel">Active matches</span><strong>+18</strong></div>
+              <div class="mini-card"><span class="mini-kicker" data-i18n="miniBrokerThreeLabel">Response quality</span><strong>High</strong></div>
+            </div>
+          </article>
+
+          <article class="audience-panel" data-panel="developers">
+            <div class="panel-copy">
+              <h3 data-i18n="developerTitle">Developers present projects with premium clarity.</h3>
+              <p data-i18n="developerText">Developers can showcase inventory, highlight launches, reach the right broker and investor segments, and receive stronger market visibility from day one.</p>
+              <div class="feature-list">
+                <div class="feature-item" data-i18n="developerFeatureOne">Premium project showcases</div>
+                <div class="feature-item" data-i18n="developerFeatureTwo">Targeted visibility for launches</div>
+                <div class="feature-item" data-i18n="developerFeatureThree">Private collaboration with the right market participants</div>
+              </div>
+            </div>
+            <div class="panel-visual building-card">
+              <div class="building-grid"></div>
+            </div>
+          </article>
+
+          <article class="audience-panel" data-panel="investors">
+            <div class="panel-copy">
+              <h3 data-i18n="investorTitle">Investors see sharper opportunities, faster.</h3>
+              <p data-i18n="investorText">Investors can explore verified opportunities, receive AI-supported insights, connect with serious developers and brokers, and move with stronger confidence.</p>
+              <div class="feature-list">
+                <div class="feature-item" data-i18n="investorFeatureOne">Verified deal flow</div>
+                <div class="feature-item" data-i18n="investorFeatureTwo">AI-supported market signals</div>
+                <div class="feature-item" data-i18n="investorFeatureThree">Higher quality strategic connections</div>
+              </div>
+            </div>
+            <div class="panel-visual opportunity-card">
+              <div class="ring-metric"></div>
+              <div class="opportunity-text">
+                <span data-i18n="opportunityLabel">Opportunity confidence</span>
+                <strong>88%</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="section platform-grid-section">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow" data-i18n="sectionWhyEyebrow">Why QOVALX</p>
+          <h2 data-i18n="sectionWhyTitle">Designed to remove friction from real estate collaboration.</h2>
+        </div>
+
+        <div class="platform-grid">
+          <article class="info-card">
+            <div class="icon-circle">✓</div>
+            <h3 data-i18n="cardOneTitle">Verified identities</h3>
+            <p data-i18n="cardOneText">A more trusted network for brokers, developers, and investors who want stronger professional quality.</p>
+          </article>
+          <article class="info-card">
+            <div class="icon-circle">AI</div>
+            <h3 data-i18n="cardTwoTitle">AI-supported intelligence</h3>
+            <p data-i18n="cardTwoText">Smarter recommendations, better opportunity visibility, and clearer follow-up across the ecosystem.</p>
+          </article>
+          <article class="info-card">
+            <div class="icon-circle">↗</div>
+            <h3 data-i18n="cardThreeTitle">Premium visibility</h3>
+            <p data-i18n="cardThreeText">Showcase serious people, serious projects, and serious opportunities in one premium environment.</p>
+          </article>
+          <article class="info-card">
+            <div class="icon-circle">◎</div>
+            <h3 data-i18n="cardFourTitle">Abu Dhabi launch energy</h3>
+            <p data-i18n="cardFourText">A regional launch base with global potential, combining PropTech demand with AI momentum.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="abudhabi" class="section abudhabi-section">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow" data-i18n="sectionAbuEyebrow">Abu Dhabi</p>
+          <h2 data-i18n="sectionAbuTitle">A premium launch base with real identity.</h2>
+          <p data-i18n="sectionAbuText">QOVALX is positioned as an Abu Dhabi-born platform with a global outlook, combining premium real estate positioning with technology, trust, and intelligent growth.</p>
+        </div>
+
+        <div class="landmarks-grid">
+          <article class="landmark-card"><h3 data-i18n="lmCardOneTitle">Trusted prestige</h3><p data-i18n="lmCardOneText">Inspired by the elegance, discipline, and confidence associated with Abu Dhabi’s leading landmarks.</p></article>
+          <article class="landmark-card"><h3 data-i18n="lmCardTwoTitle">Global business signal</h3><p data-i18n="lmCardTwoText">The platform speaks to local, regional, and global market participants through a refined premium identity.</p></article>
+          <article class="landmark-card"><h3 data-i18n="lmCardThreeTitle">Luxury visual language</h3><p data-i18n="lmCardThreeText">Black, gold, precision lines, and structured UX create a polished experience built to impress investors.</p></article>
+        </div>
+      </section>
+
+      <section id="investors" class="section cta-section">
+        <div class="cta-card">
+          <div>
+            <p class="eyebrow" data-i18n="ctaEyebrow">Private rollout</p>
+            <h2 data-i18n="ctaTitle">Join the early QOVALX circle.</h2>
+            <p data-i18n="ctaText">Request access as a broker, developer, investor, or strategic partner. QOVALX is opening privately to selected participants first.</p>
+          </div>
+          <div class="cta-actions">
+            <button class="btn btn-gold open-access" type="button" data-i18n="ctaPrimary">Request Early Access</button>
+            <a href="#contact" class="btn btn-dark" data-i18n="ctaSecondary">Go to access form</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section form-section">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow" data-i18n="formEyebrow">Access form</p>
+          <h2 data-i18n="formTitle">Request private access</h2>
+          <p data-i18n="formText">Complete the form below. When you submit, your email app will open with a ready message to the QOVALX team.</p>
+        </div>
+
+        <form id="accessForm" class="access-form">
+          <div class="form-grid">
+            <label>
+              <span data-i18n="fieldName">Full name</span>
+              <input type="text" name="name" data-i18n-placeholder="phName" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span data-i18n="fieldEmail">Email</span>
+              <input type="email" name="email" data-i18n-placeholder="phEmail" placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span data-i18n="fieldRole">I am a</span>
+              <select name="role" required>
+                <option value="Broker" data-i18n="roleBroker">Broker</option>
+                <option value="Developer" data-i18n="roleDeveloper">Developer</option>
+                <option value="Investor" data-i18n="roleInvestor">Investor</option>
+                <option value="Strategic Partner" data-i18n="rolePartner">Strategic Partner</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="fieldCountry">Location</span>
+              <input type="text" name="location" data-i18n-placeholder="phLocation" placeholder="Abu Dhabi, UAE" />
+            </label>
+          </div>
+          <label class="full-width">
+            <span data-i18n="fieldMessage">Message</span>
+            <textarea name="message" rows="5" data-i18n-placeholder="phMessage" placeholder="Tell us why you want early access."></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-gold" type="submit" data-i18n="sendRequestBtn">Send request</button>
+            <button class="btn btn-dark" id="copyEmailBtn" type="button" data-i18n="copyEmailBtn">Copy founder email</button>
+          </div>
+          <p id="formNote" class="form-note" data-i18n="formNote">If your email app does not open, copy the founder email and contact us directly at founder@qovalx.com.</p>
+          <p id="formFeedback" class="form-feedback" aria-live="polite"></p>
+        </form>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="brand footer-brand">
-        <span class="brand-mark">Q</span>
-        <span class="brand-text">QOVALX</span>
-      </div>
-      <p data-i18n="footerText">Private access is coming soon.</p>
-      <a href="mailto:founder@qovalx.com">founder@qovalx.com</a>
+    <footer class="site-footer">
+      <div class="footer-brand">QOVALX</div>
+      <p data-i18n="footerText">AI-powered real estate ecosystem built with premium Abu Dhabi energy.</p>
     </footer>
   </div>
 
-  <div class="modal-backdrop" id="modalBackdrop" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" type="button" id="modalClose" aria-label="Close modal">×</button>
-      <div id="loginModal" class="modal-view">
-        <p class="eyebrow" data-i18n="modalLoginEyebrow">Private login</p>
-        <h2 id="modalTitle" data-i18n="modalLoginTitle">QOVALX login is coming soon.</h2>
-        <p data-i18n="modalLoginText">The app is not open to the public yet. Private access will be available for selected brokers, developers and investors after review.</p>
-        <button class="btn btn-gold btn-full" type="button" data-switch-modal="early-access" data-i18n="requestAccess">Request Early Access</button>
+  <div id="accessModal" class="modal" aria-hidden="true">
+    <div class="modal-overlay" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <p class="eyebrow" data-i18n="modalEyebrow">Private Access</p>
+      <h2 id="modalTitle" data-i18n="modalTitle">Request access to QOVALX</h2>
+      <p class="modal-text" data-i18n="modalText">Select your role and send a request. The system will open your email app with a pre-filled message to the QOVALX team.</p>
+      <div class="modal-actions">
+        <button class="btn btn-gold modal-role" data-role-mail="Broker" type="button" data-i18n="modalBroker">I am a Broker</button>
+        <button class="btn btn-dark modal-role" data-role-mail="Developer" type="button" data-i18n="modalDeveloper">I am a Developer</button>
+        <button class="btn btn-dark modal-role" data-role-mail="Investor" type="button" data-i18n="modalInvestor">I am an Investor</button>
+        <button class="btn btn-dark modal-role" data-role-mail="Strategic Partner" type="button" data-i18n="modalPartner">I am a Strategic Partner</button>
       </div>
-
-      <div id="earlyAccessModal" class="modal-view" hidden>
-        <p class="eyebrow" data-i18n="modalAccessEyebrow">Early access</p>
-        <h2 data-i18n="modalAccessTitle">Request private access to QOVALX.</h2>
-        <p data-i18n="modalAccessText">Submit your details and QOVALX will review early interest before the private launch.</p>
-
-        <form id="earlyAccessForm" class="access-form">
-          <label>
-            <span data-i18n="formName">Full name</span>
-            <input type="text" name="name" placeholder="Your name" required />
-          </label>
-          <label>
-            <span data-i18n="formEmail">Email</span>
-            <input type="email" name="email" placeholder="you@example.com" required />
-          </label>
-          <label>
-            <span data-i18n="formRole">I am a</span>
-            <select name="role" required>
-              <option value="Broker">Broker</option>
-              <option value="Developer">Developer</option>
-              <option value="Investor">Investor</option>
-              <option value="Partner">Strategic Partner</option>
-            </select>
-          </label>
-          <label>
-            <span data-i18n="formMessage">Message</span>
-            <textarea name="message" rows="4" placeholder="Tell us why you are interested in QOVALX"></textarea>
-          </label>
-          <button class="btn btn-gold btn-full" type="submit" data-i18n="sendRequest">Send request</button>
-          <p class="form-note" data-i18n="formNote">This will open your email app with a ready message to founder@qovalx.com.</p>
-        </form>
-      </div>
+      <button class="btn btn-outline modal-form-btn" id="openFullForm" type="button" data-i18n="modalOpenForm">Open full access form</button>
     </div>
   </div>
-  <script>
-(function () {
- function cleanText(value) {
-   return String(value || "").toLowerCase().trim();
- }
- function hideAllModals() {
-   document.body.style.overflow = "";
-   const possibleModals = document.querySelectorAll(
-     '[id*="modal"], [class*="modal"], [class*="popup"], [class*="overlay"], [class*="login"], [class*="coming"]'
-   );
-   possibleModals.forEach(function (el) {
-     const text = cleanText(el.innerText);
-     const name = cleanText(el.id + " " + el.className);
-     if (
-       text.includes("qovalx login is coming soon") ||
-       text.includes("private login") ||
-       text.includes("coming soon") ||
-       name.includes("modal") ||
-       name.includes("popup") ||
-       name.includes("overlay") ||
-       name.includes("login")
-     ) {
-       el.classList.remove("active", "open", "show", "visible", "is-active");
-       el.style.display = "none";
-       el.style.pointerEvents = "none";
-     }
-   });
- }
- function scrollToAccessForm() {
-   hideAllModals();
-   const form = document.querySelector("form");
-   if (form) {
-     const section = form.closest("section, div") || form;
-     section.style.display = "";
-     section.style.pointerEvents = "auto";
-     form.scrollIntoView({
-       behavior: "smooth",
-       block: "center"
-     });
-     setTimeout(function () {
-       const firstInput = form.querySelector("input, select, textarea");
-       if (firstInput) firstInput.focus();
-     }, 500);
-   }
- }
- function createLoginModal() {
-   let modal = document.getElementById("qovalx-login-fix");
-   if (modal) return modal;
-   modal = document.createElement("div");
-modal.id = "qovalx-login-fix";
-   modal.style.position = "fixed";
-   modal.style.inset = "0";
-   modal.style.zIndex = "999999";
-   modal.style.display = "none";
-   modal.style.alignItems = "center";
-   modal.style.justifyContent = "center";
-   modal.style.background = "rgba(0,0,0,0.78)";
-   modal.style.backdropFilter = "blur(10px)";
-   modal.style.padding = "24px";
-   modal.innerHTML = `
-<div style="
-       width: min(92vw, 560px);
-       background: #080808;
-       border: 1px solid rgba(214,166,72,0.55);
-       border-radius: 28px;
-       padding: 34px;
-       color: #fff;
-       font-family: Arial, sans-serif;
-       box-shadow: 0 30px 90px rgba(0,0,0,0.65);
-     ">
-<div style="display:flex; justify-content:space-between; align-items:center; gap:16px;">
-<div style="letter-spacing:4px; color:#c9bfae; font-weight:800; font-size:14px;">
-           PRIVATE LOGIN
-</div>
-<button id="qovalx-close-fix" style="
-           width:46px;
-           height:46px;
-           border-radius:50%;
-           border:1px solid rgba(255,255,255,0.18);
-           background:rgba(255,255,255,0.08);
-           color:#fff;
-           font-size:30px;
-           line-height:1;
-           cursor:pointer;
-         ">×</button>
-</div>
-<h2 style="font-size:34px; line-height:1.08; margin:28px 0 18px;">
-         QOVALX login is coming soon.
-</h2>
-<p style="font-size:18px; line-height:1.65; color:#cfc7bb; margin:0 0 26px;">
-         The app is not open to the public yet. Private access will be available for selected brokers, developers and investors after review.
-</p>
-<button id="qovalx-access-fix" style="
-         width:100%;
-         border:none;
-         border-radius:999px;
-         padding:18px 22px;
-         background:linear-gradient(90deg,#fff0a8,#c08a27);
-         color:#080808;
-         font-weight:900;
-         font-size:17px;
-         cursor:pointer;
-       ">
-         Request Early Access
-</button>
-</div>
-   `;
-   document.body.appendChild(modal);
-   document.getElementById("qovalx-close-fix").addEventListener("click", function () {
-     modal.style.display = "none";
-     document.body.style.overflow = "";
-   });
-   document.getElementById("qovalx-access-fix").addEventListener("click", function () {
-     modal.style.display = "none";
-     scrollToAccessForm();
-   });
-   modal.addEventListener("click", function (e) {
-     if (e.target === modal) {
-       modal.style.display = "none";
-       document.body.style.overflow = "";
-     }
-   });
-   return modal;
- }
- function openLoginModal() {
-   hideAllModals();
-   const modal = createLoginModal();
-   modal.style.display = "flex";
-   modal.style.pointerEvents = "auto";
-   document.body.style.overflow = "hidden";
- }
- document.addEventListener("DOMContentLoaded", function () {
-   hideAllModals();
-   createLoginModal();
- });
- document.addEventListener("click", function (e) {
-   const clickable = e.target.closest("button, a");
-   if (!clickable) return;
-   const text = cleanText(clickable.innerText || clickable.textContent || clickable.getAttribute("aria-label"));
-   const name = cleanText(clickable.id + " " + clickable.className);
-   if (
-     text === "×" ||
-     text.includes("close") ||
-     name.includes("close")
-   ) {
-     e.preventDefault();
-     hideAllModals();
-     const fixedModal = document.getElementById("qovalx-login-fix");
-     if (fixedModal) fixedModal.style.display = "none";
-     return;
-   }
-   if (
-     text.includes("request early access") ||
-     text.includes("early access")
-   ) {
-     e.preventDefault();
-     scrollToAccessForm();
-     return;
-   }
-   if (
-     text.includes("login") ||
-     text.includes("create account") ||
-     text.includes("private access")
-   ) {
-     e.preventDefault();
-     openLoginModal();
-     return;
-   }
- });
- document.addEventListener("submit", function (e) {
-   const form = e.target.closest("form");
-   if (!form) return;
-   e.preventDefault();
-   const email = form.querySelector('input[type="email"]')?.value || "";
-   const role = form.querySelector("select")?.value || "";
-   const message = form.querySelector("textarea")?.value || "";
-   const subject = encodeURIComponent("QOVALX Early Access Request");
-   const body = encodeURIComponent(
-     "Hello QOVALX,\n\nI would like to request early access.\n\nEmail: " +
-     email +
-     "\nRole: " +
-     role +
-     "\nMessage: " +
-     message
-   );
-   window.location.href = "mailto:founder@qovalx.com?subject=" + subject + "&body=" + body;
- });
-})();
-</script>
+
+  <script src="script.js?v=8"></script>
 </body>
 </html>
