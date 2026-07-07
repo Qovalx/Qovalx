@@ -1,332 +1,633 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QOVALX | Private Access Ecosystem</title>
-  <meta name="description" content="QOVALX is an AI-powered real estate ecosystem connecting brokers, developers, and investors through a premium Abu Dhabi-built platform." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>QOVALX | Premium AI Real Estate Network</title>
+  <meta name="description" content="QOVALX is an Abu Dhabi built AI-powered real estate network connecting brokers, developers, and investors." />
   <meta name="theme-color" content="#050505" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cairo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8" />
+  <style>
+    :root{
+      --bg:#050505;
+      --bg2:#0b0a08;
+      --panel:#0f0f10;
+      --card:#141416;
+      --line:rgba(226,183,84,.22);
+      --line2:rgba(226,183,84,.36);
+      --gold1:#fff0b3;
+      --gold2:#d7a340;
+      --gold3:#8b5a15;
+      --text:#f5f1e8;
+      --muted:#beb6aa;
+      --muted2:#968d7f;
+      --radius:28px;
+      --shadow:0 24px 70px rgba(0,0,0,.42);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      background:
+        radial-gradient(circle at 20% 8%, rgba(215,163,64,.15), transparent 22%),
+        radial-gradient(circle at 85% 12%, rgba(255,240,179,.09), transparent 18%),
+        linear-gradient(rgba(255,255,255,.042) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.042) 1px, transparent 1px),
+        linear-gradient(180deg, #050505, #080808 48%, #050505);
+      background-size:auto,auto,52px 52px,52px 52px,auto;
+      overflow-x:hidden;
+    }
+    body.ar{direction:rtl;font-family:Arial,"Tahoma",sans-serif}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .wrap{width:min(1180px, calc(100% - 28px));margin:0 auto}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(5,5,5,.88);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand-mark{
+      width:56px;height:56px;flex:0 0 56px;border-radius:18px;
+      display:grid;place-items:center;font-weight:950;font-size:30px;color:var(--gold1);
+      border:1px solid var(--line2);
+      background:linear-gradient(135deg, rgba(255,240,179,.12), rgba(215,163,64,.05));
+      box-shadow:inset 0 0 18px rgba(255,240,179,.06), 0 0 30px rgba(215,163,64,.08);
+    }
+    .brand-word{font-size:28px;font-weight:950;letter-spacing:.18em;white-space:nowrap}
+    .nav{display:flex;align-items:center;gap:24px;color:var(--muted);font-weight:760;flex-wrap:wrap}
+    .nav a:hover{color:var(--text)}
+    .actions{display:flex;align-items:center;gap:10px}
+    .lang{
+      width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);color:var(--text);font-weight:900;
+    }
+    .btn{
+      min-height:52px;padding:0 22px;border:none;border-radius:999px;font-weight:900;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.18s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-gold{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#0a0a0a;box-shadow:0 14px 36px rgba(215,163,64,.22)}
+    .btn-dark{background:rgba(255,255,255,.045);color:var(--text);border:1px solid rgba(255,255,255,.12)}
+    .btn-ghost{background:transparent;color:var(--gold1);border:1px solid var(--line2)}
+    .section{padding:64px 0}
+    .hero{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:28px;min-height:calc(100vh - 84px);padding:48px 0 36px}
+    .eyebrow{margin:0 0 16px;color:var(--gold1);font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:950}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(50px, 6.7vw, 92px);line-height:.92;letter-spacing:-.065em;margin:0 0 22px}
+    .lead{font-size:20px;line-height:1.82;color:var(--muted);max-width:720px;margin:0 0 28px}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:28px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .stat{padding:18px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.035);min-height:110px}
+    .stat strong{display:block;color:var(--gold1);font-size:34px;line-height:1;margin-bottom:10px}
+    .stat span{color:var(--muted);font-weight:700;line-height:1.5}
+    .visual{
+      position:relative;min-height:620px;border-radius:34px;overflow:hidden;padding:22px;
+      background:radial-gradient(circle at 80% 18%, rgba(255,240,179,.16), transparent 20%), linear-gradient(180deg, rgba(17,17,17,.96), rgba(7,7,7,.98));
+      border:1px solid var(--line2);box-shadow:var(--shadow);
+    }
+    .visual::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.05);border-radius:28px;pointer-events:none}
+    .badge{display:inline-flex;position:relative;z-index:3;padding:10px 16px;border-radius:999px;background:rgba(255,240,179,.08);border:1px solid var(--line);color:var(--gold1);font-weight:900}
+    .hero-stage{position:absolute;inset:0;overflow:hidden}
+    .hero-map{position:absolute;inset:0;opacity:.28}
+    .hero-base{position:absolute;left:8%;right:8%;bottom:54px;height:170px;border-radius:40px;background:linear-gradient(180deg,rgba(40,40,42,.9),rgba(11,11,12,.98));border:1px solid rgba(255,255,255,.08);box-shadow:0 35px 70px rgba(0,0,0,.55)}
+    .mini-city{position:absolute;left:13%;right:13%;bottom:94px;height:210px;display:flex;align-items:flex-end;justify-content:center;gap:10px;z-index:2}
+    .mini-city i{display:block;width:38px;border-radius:10px 10px 0 0;background:linear-gradient(180deg,#3b3b3d,#151517);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 -30px 60px rgba(215,163,64,.12), 0 0 18px rgba(215,163,64,.08);position:relative}
+    .mini-city i::after{content:"";position:absolute;left:8px;right:8px;top:10px;bottom:10px;background:repeating-linear-gradient(180deg, rgba(255,240,179,.8) 0 2px, transparent 2px 12px);opacity:.38}
+    .mini-city i:nth-child(1){height:86px}.mini-city i:nth-child(2){height:125px}.mini-city i:nth-child(3){height:164px}.mini-city i:nth-child(4){height:118px}.mini-city i:nth-child(5){height:210px}.mini-city i:nth-child(6){height:150px}.mini-city i:nth-child(7){height:98px}.mini-city i:nth-child(8){height:180px}.mini-city i:nth-child(9){height:132px}
+    .dash-card{
+      position:absolute;z-index:4;background:rgba(10,10,10,.84);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.11);
+      border-radius:22px;box-shadow:0 20px 55px rgba(0,0,0,.45);
+    }
+    .dash-main{top:92px;left:42px;right:42px;padding:18px}
+    .dash-row{display:grid;grid-template-columns:1.12fr .88fr;gap:14px;margin-top:14px}
+    .dash-box{padding:14px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);min-height:108px}
+    .dash-box small{display:block;color:var(--muted2);font-weight:800;margin-bottom:10px}
+    .dash-box strong{display:block;font-size:34px;color:var(--text)}
+    .graph{margin-top:12px;height:40px;border-radius:12px;background:
+      linear-gradient(135deg, transparent 25%, rgba(215,163,64,.28) 26%, transparent 27%),
+      linear-gradient(155deg, transparent 45%, rgba(255,240,179,.34) 46%, transparent 47%),
+      rgba(255,255,255,.03)}
+    .score-card{left:42px;bottom:220px;width:220px;padding:16px;z-index:5}
+    .score-ring{width:88px;height:88px;border-radius:50%;margin:10px auto;border:10px solid rgba(255,255,255,.08);border-top-color:var(--gold1);border-right-color:var(--gold2);display:grid;place-items:center;font-size:26px;font-weight:900;color:var(--gold1)}
+    .brain-card{right:42px;bottom:220px;width:230px;padding:16px;z-index:5}
+    .brain{height:84px;border-radius:16px;background:radial-gradient(circle at center, rgba(255,240,179,.15), transparent 55%), repeating-radial-gradient(circle at center, rgba(215,163,64,.12) 0 2px, transparent 2px 14px)}
+    .hero-caption{position:absolute;left:42px;right:42px;bottom:26px;z-index:5;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted2);font-weight:800}
+    .heading{max-width:860px;margin-bottom:26px}
+    .heading h2{font-size:clamp(38px,5vw,62px);line-height:.98;letter-spacing:-.06em;margin:0 0 16px}
+    .heading p{color:var(--muted);font-size:18px;line-height:1.8;margin:0}
+    .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+    .tab{min-height:60px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);font-size:18px;font-weight:950}
+    .tab.active{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#090909;border-color:transparent}
+    .panel{display:none;grid-template-columns:1.08fr .92fr;gap:20px;padding:28px;border-radius:34px;border:1px solid var(--line2);background:linear-gradient(180deg,rgba(18,18,18,.95),rgba(8,8,8,.99));box-shadow:var(--shadow)}
+    .panel.active{display:grid}
+    .panel h3{font-size:clamp(32px,4vw,50px);line-height:1.02;letter-spacing:-.055em;margin:0 0 16px}
+    .panel p{color:var(--muted);font-size:18px;line-height:1.8;margin:0 0 22px}
+    .features{display:grid;gap:14px}
+    .feature{position:relative;min-height:70px;display:flex;align-items:center;padding:16px 18px 16px 54px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);font-weight:850;line-height:1.35}
+    .feature::before{content:"✓";position:absolute;left:20px;color:var(--gold1);font-size:22px;font-weight:950}
+    .ar .feature{padding:16px 54px 16px 18px}.ar .feature::before{left:auto;right:20px}
+    .panel-card{position:relative;min-height:420px;padding:22px;border-radius:28px;overflow:hidden;background:radial-gradient(circle at top right, rgba(255,240,179,.16), transparent 28%), rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09)}
+    .panel-image{position:absolute;inset:0;opacity:.45}
+    .panel-overlay{position:relative;z-index:2;display:grid;gap:12px}
+    .metric{padding:18px;border-radius:20px;background:rgba(0,0,0,.36);border:1px solid rgba(255,255,255,.10)}
+    .metric span{display:block;color:var(--muted);font-weight:800;margin-bottom:8px}
+    .metric strong{font-size:34px;color:var(--gold1)}
+    .bar{height:9px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;width:78%;background:linear-gradient(90deg,var(--gold1),var(--gold2))}
+    .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .info{padding:24px;border-radius:28px;background:linear-gradient(180deg,rgba(18,18,18,.94),rgba(9,9,9,.98));border:1px solid var(--line);min-height:220px}
+    .icon{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);color:var(--gold1);font-weight:950;margin-bottom:16px}
+    .info h3{font-size:22px;margin:0 0 12px}.info p{color:var(--muted);line-height:1.75;margin:0}
+    .landmarks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .landmark-card{border-radius:28px;padding:18px;background:linear-gradient(180deg,rgba(18,18,18,.95),rgba(8,8,8,.99));border:1px solid var(--line2);box-shadow:var(--shadow);overflow:hidden}
+    .landmark-visual{height:220px;border-radius:20px;display:grid;place-items:center;background:radial-gradient(circle at 50% 25%, rgba(255,240,179,.14), transparent 26%), rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .landmark-name{margin:14px 0 0;color:var(--text);font-size:18px;font-weight:900}
+    .landmark-note{margin:6px 0 0;color:var(--muted);line-height:1.7}
+    .access{display:grid;grid-template-columns:.88fr 1.12fr;gap:22px;align-items:start}
+    .access-card,.form{border-radius:34px;padding:30px;background:linear-gradient(180deg,rgba(18,18,18,.95),rgba(9,9,9,.99));border:1px solid var(--line2);box-shadow:var(--shadow)}
+    .access-card h2{font-size:clamp(36px,5vw,58px);line-height:.98;letter-spacing:-.06em;margin:0 0 18px}
+    .access-card p{color:var(--muted);line-height:1.8;font-size:18px;margin:0 0 18px}
+    .access-list{display:grid;gap:12px;margin:18px 0 22px}
+    .access-list div{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-weight:760}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    label{display:grid;gap:9px;color:var(--text);font-weight:850}
+    .full{margin-top:14px}
+    input,select,textarea{width:100%;border-radius:18px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.04);color:var(--text);padding:16px;outline:none}
+    select option{background:#111;color:#fff}
+    input:focus,select:focus,textarea:focus{border-color:rgba(255,240,179,.48);box-shadow:0 0 0 4px rgba(215,163,64,.12)}
+    .form-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .note,.feedback{color:var(--muted);line-height:1.65;margin:14px 0 0;font-size:14px}.feedback{color:var(--gold1);font-weight:800}
+    footer{padding:42px 0 80px;color:var(--muted2);border-top:1px solid rgba(255,255,255,.06)}
+    footer strong{display:block;color:var(--text);letter-spacing:.16em;font-size:22px;margin-bottom:8px}
+    .mobile-nav{display:none}
+    @media (max-width:980px){
+      .nav{display:none}
+      .mobile-nav{display:flex;gap:10px;overflow:auto;white-space:nowrap;padding:0 0 12px}
+      .mobile-nav a{padding:12px 16px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-weight:800}
+      .hero,.panel,.access{grid-template-columns:1fr}
+      .cards-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:720px){
+      .wrap{width:min(100% - 20px, 560px)}
+      .topbar-inner{min-height:76px;gap:10px}
+      .brand-mark{width:48px;height:48px;flex-basis:48px;border-radius:16px;font-size:24px}
+      .brand-word{font-size:20px;letter-spacing:.16em}
+      .lang{width:46px;height:46px}
+      .btn{min-height:46px;padding:0 16px}
+      .section{padding:44px 0}
+      .hero{min-height:auto;padding:38px 0 22px;gap:24px}
+      h1{font-size:clamp(44px,14vw,68px)}
+      .lead{font-size:17px;line-height:1.74}
+      .hero-buttons .btn{width:100%}
+      .stats,.cards-grid,.landmarks,.form-grid{grid-template-columns:1fr}
+      .visual{min-height:560px;border-radius:28px;padding:16px}
+      .dash-main{left:18px;right:18px;top:74px;padding:14px}
+      .dash-row{grid-template-columns:1fr}
+      .score-card{left:18px;width:180px;bottom:192px}.brain-card{right:18px;width:180px;bottom:192px}
+      .hero-caption{left:18px;right:18px;bottom:18px;font-size:13px}
+      .tabs{grid-template-columns:1fr}
+      .panel,.access-card,.form,.landmark-card{border-radius:28px;padding:20px}
+      .panel-card{min-height:340px}
+      .landmark-visual{height:200px}
+      .access-card h2{font-size:42px}
+    }
+  </style>
 </head>
-<body data-lang="en">
-  <div class="site-shell">
-    <header class="topbar">
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
       <a class="brand" href="#home" aria-label="QOVALX home">
         <div class="brand-mark">Q</div>
-        <div class="brand-name">QOVALX</div>
+        <div class="brand-word">QOVALX</div>
       </a>
-
-      <nav class="nav desktop-nav">
-        <a href="#about" data-i18n="navAbout">About</a>
-        <a href="#platform" data-i18n="navPlatform">Platform</a>
-        <a href="#abudhabi" data-i18n="navAbuDhabi">Abu Dhabi</a>
-        <a href="#investors" data-i18n="navInvestors">Investors</a>
-        <a href="#contact" data-i18n="navContact">Access</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about" data-key="navAbout">About</a>
+        <a href="#platform" data-key="navPlatform">Platform</a>
+        <a href="#abudhabi" data-key="navAD">Abu Dhabi</a>
+        <a href="#investors" data-key="navInvestors">Investors</a>
+        <a href="#access" data-key="navAccess">Access</a>
       </nav>
-
-      <div class="topbar-actions">
-        <button id="langToggle" class="lang-toggle" type="button" aria-label="Toggle language">AR</button>
-        <button class="btn btn-gold open-access" type="button" data-i18n="privateAccessBtn">Private Access</button>
-        <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
+      <div class="actions">
+        <button class="lang" id="langBtn" type="button">AR</button>
+        <button class="btn btn-gold scroll-access" type="button" data-key="privateAccess">Private Access</button>
       </div>
-    </header>
+    </div>
+    <div class="wrap mobile-nav">
+      <a href="#about" data-key="navAbout">About</a>
+      <a href="#platform" data-key="navPlatform">Platform</a>
+      <a href="#abudhabi" data-key="navAD">Abu Dhabi</a>
+      <a href="#investors" data-key="navInvestors">Investors</a>
+      <a href="#access" data-key="navAccess">Access</a>
+    </div>
+  </header>
 
-    <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
-      <a href="#about" data-i18n="navAbout">About</a>
-      <a href="#platform" data-i18n="navPlatform">Platform</a>
-      <a href="#abudhabi" data-i18n="navAbuDhabi">Abu Dhabi</a>
-      <a href="#investors" data-i18n="navInvestors">Investors</a>
-      <a href="#contact" data-i18n="navContact">Access</a>
-      <button class="btn btn-gold open-access" type="button" data-i18n="privateAccessBtn">Private Access</button>
-    </nav>
-
-    <main id="home">
-      <section class="hero section">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="eyebrow">Built in Abu Dhabi • AI-powered • Premium real estate network</p>
-          <h1 data-i18n="heroTitle">One ecosystem. Three professional sides.</h1>
-          <p class="hero-subtitle" data-i18n="heroSubtitle">QOVALX gives brokers, developers, and investors one premium ecosystem to connect, discover serious opportunities, and move faster with AI-supported intelligence.</p>
-          <div class="hero-actions">
-            <button class="btn btn-gold open-access" type="button" data-i18n="heroPrimaryBtn">Request Early Access</button>
-            <a class="btn btn-dark" href="#platform" data-i18n="heroSecondaryBtn">Explore Platform</a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <div class="stat-value">3</div>
-              <div class="stat-label" data-i18n="statOne">Core audiences</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">AI</div>
-              <div class="stat-label" data-i18n="statTwo">Matching & insight layer</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">AD</div>
-              <div class="stat-label" data-i18n="statThree">Abu Dhabi launch base</div>
-            </div>
-          </div>
+  <main id="home">
+    <section class="wrap hero">
+      <div>
+        <p class="eyebrow" data-key="heroEyebrow">Built in Abu Dhabi • AI-powered • Premium real estate network</p>
+        <h1 data-key="heroTitle">One ecosystem. Three professional sides.</h1>
+        <p class="lead" data-key="heroText">QOVALX gives brokers, developers, and investors one premium ecosystem to connect, discover serious opportunities, and move faster with AI-supported intelligence.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-gold scroll-access" type="button" data-key="requestBtn">Request Early Access</button>
+          <a class="btn btn-dark" href="#platform" data-key="exploreBtn">Explore Platform</a>
         </div>
+        <div class="stats">
+          <div class="stat"><strong>AI</strong><span data-key="stat1">Matching and intelligence layer</span></div>
+          <div class="stat"><strong>3</strong><span data-key="stat2">Brokers, developers, investors</span></div>
+          <div class="stat"><strong>AD</strong><span data-key="stat3">Abu Dhabi launch identity</span></div>
+        </div>
+      </div>
 
-        <div class="hero-visual">
-          <div class="visual-card hero-orbit">
-            <div class="visual-badge" data-i18n="visualBadge">Abu Dhabi Edition</div>
-            <div class="skyline-wrap">
-              <svg viewBox="0 0 820 520" class="skyline-svg" role="img" aria-label="Stylized Abu Dhabi skyline">
-                <defs>
-                  <linearGradient id="goldStroke" x1="0" x2="1">
-                    <stop offset="0%" stop-color="#f7e5a5"/>
-                    <stop offset="55%" stop-color="#d7a13b"/>
-                    <stop offset="100%" stop-color="#8f5d15"/>
-                  </linearGradient>
-                  <linearGradient id="goldFill" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stop-color="#f2cf74" stop-opacity="0.35"/>
-                    <stop offset="100%" stop-color="#070707" stop-opacity="0.02"/>
-                  </linearGradient>
-                  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="7" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                </defs>
-                <rect x="0" y="0" width="820" height="520" fill="transparent"/>
-                <circle cx="630" cy="160" r="150" fill="url(#goldFill)" opacity="0.55"/>
-                <circle cx="150" cy="390" r="130" fill="url(#goldFill)" opacity="0.25"/>
-                <g stroke="url(#goldStroke)" fill="none" stroke-width="4" filter="url(#glow)">
-                  <path d="M60 450 H760" opacity="0.65"/>
-                  <path d="M100 450 V310 H155 V450"/>
-                  <path d="M120 310 V258 H135 V310"/>
-                  <path d="M190 450 V255 H240 V450"/>
-                  <path d="M210 255 V185 H220 V255"/>
-                  <path d="M280 450 V210 H335 V450"/>
-                  <path d="M308 210 V165 H322 V210"/>
-                  <path d="M390 450 V150 H470 V450"/>
-                  <path d="M430 150 V80 H440 V150"/>
-                  <path d="M420 115 L435 82 L450 115"/>
-                  <path d="M520 450 V285 H570 V450"/>
-                  <path d="M610 450 V265 H700 V450"/>
-                  <path d="M625 265 C625 165 685 165 685 265"/>
-                  <path d="M610 320 H700" opacity="0.65"/>
-                  <path d="M70 450 C115 380 155 380 205 450"/>
-                  <path d="M115 380 C135 340 165 340 180 380"/>
-                  <path d="M150 377 V450"/>
-                  <path d="M520 370 C555 325 610 325 645 370" opacity="0.55"/>
-                  <path d="M565 370 V450" opacity="0.55"/>
-                  <path d="M735 450 V330 H755 V450" opacity="0.8"/>
-                </g>
-                <g fill="#f2c862" opacity="0.95">
-                  <circle cx="435" cy="78" r="4"/>
-                  <circle cx="210" cy="184" r="3.5"/>
-                  <circle cx="320" cy="164" r="3.5"/>
-                  <circle cx="746" cy="330" r="3"/>
-                </g>
-              </svg>
+      <div class="visual" aria-label="QOVALX platform preview">
+        <span class="badge" data-key="badge">Abu Dhabi Edition</span>
+        <div class="hero-stage">
+          <svg class="hero-map" viewBox="0 0 900 700" aria-hidden="true">
+            <defs>
+              <linearGradient id="lineGlow" x1="0" x2="1"><stop offset="0" stop-color="#fff0b3"/><stop offset="1" stop-color="#d7a340"/></linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#lineGlow)" stroke-opacity=".7" stroke-width="2">
+              <path d="M70 560 C180 420 260 420 365 500 S575 620 820 510"/>
+              <path d="M120 180 C280 90 540 120 760 250"/>
+              <path d="M150 320 C280 230 440 210 620 280 S760 360 840 340"/>
+              <path d="M90 640 C150 580 240 570 330 600 S520 670 720 600"/>
+            </g>
+            <g fill="#fff0b3" fill-opacity=".85">
+              <circle cx="140" cy="190" r="4"/><circle cx="270" cy="250" r="5"/><circle cx="375" cy="220" r="4"/>
+              <circle cx="530" cy="270" r="5"/><circle cx="710" cy="245" r="4"/><circle cx="788" cy="330" r="5"/>
+              <circle cx="215" cy="560" r="5"/><circle cx="430" cy="610" r="4"/><circle cx="690" cy="590" r="5"/>
+            </g>
+          </svg>
+          <div class="dash-card dash-main">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <strong style="letter-spacing:.14em;color:var(--gold1)">QOVALX OS</strong>
+              <div style="display:flex;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--gold2)"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)"></span></div>
             </div>
-            <div class="landmark-pills">
-              <span data-i18n="landmarkOne">Etihad Towers</span>
-              <span data-i18n="landmarkTwo">Aldar HQ</span>
-              <span data-i18n="landmarkThree">Grand Mosque</span>
-              <span data-i18n="landmarkFour">Qasr Al Watan</span>
+            <div class="dash-row">
+              <div class="dash-box"><small data-key="dash1">Opportunity signals</small><strong>$2.84B</strong><div class="graph"></div></div>
+              <div class="dash-box"><small data-key="dash2">Network quality</small><strong>High</strong><div class="graph"></div></div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="platform" class="section audience-section">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="sectionPlatformEyebrow">Platform access</p>
-          <h2 data-i18n="sectionPlatformTitle">Three sides. One intelligent system.</h2>
-          <p data-i18n="sectionPlatformText">Each side of QOVALX is designed with a clear purpose, while AI connects the ecosystem and improves the quality of communication, visibility, and decisions.</p>
-        </div>
-
-        <div class="tab-row" role="tablist" aria-label="Audience tabs">
-          <button class="tab-btn active" type="button" data-role="brokers" role="tab" aria-selected="true" data-i18n="tabBrokers">Brokers</button>
-          <button class="tab-btn" type="button" data-role="developers" role="tab" aria-selected="false" data-i18n="tabDevelopers">Developers</button>
-          <button class="tab-btn" type="button" data-role="investors" role="tab" aria-selected="false" data-i18n="tabInvestors">Investors</button>
-        </div>
-
-        <div class="audience-panels">
-          <article class="audience-panel active" data-panel="brokers">
-            <div class="panel-copy">
-              <h3 data-i18n="brokerTitle">Verified brokers get stronger visibility.</h3>
-              <p data-i18n="brokerText">Brokers can build a professional identity, access better opportunities, reduce random outreach, and connect with the right people faster.</p>
-              <div class="feature-list">
-                <div class="feature-item" data-i18n="brokerFeatureOne">Verified professional profile</div>
-                <div class="feature-item" data-i18n="brokerFeatureTwo">Quality lead discovery</div>
-                <div class="feature-item" data-i18n="brokerFeatureThree">Direct communication and smarter follow-up</div>
-              </div>
-            </div>
-            <div class="panel-visual metric-stack">
-              <div class="mini-card"><span class="mini-kicker" data-i18n="miniBrokerOneLabel">Profile strength</span><strong>92%</strong></div>
-              <div class="mini-card"><span class="mini-kicker" data-i18n="miniBrokerTwoLabel">Active matches</span><strong>+18</strong></div>
-              <div class="mini-card"><span class="mini-kicker" data-i18n="miniBrokerThreeLabel">Response quality</span><strong>High</strong></div>
-            </div>
-          </article>
-
-          <article class="audience-panel" data-panel="developers">
-            <div class="panel-copy">
-              <h3 data-i18n="developerTitle">Developers present projects with premium clarity.</h3>
-              <p data-i18n="developerText">Developers can showcase inventory, highlight launches, reach the right broker and investor segments, and receive stronger market visibility from day one.</p>
-              <div class="feature-list">
-                <div class="feature-item" data-i18n="developerFeatureOne">Premium project showcases</div>
-                <div class="feature-item" data-i18n="developerFeatureTwo">Targeted visibility for launches</div>
-                <div class="feature-item" data-i18n="developerFeatureThree">Private collaboration with the right market participants</div>
-              </div>
-            </div>
-            <div class="panel-visual building-card">
-              <div class="building-grid"></div>
-            </div>
-          </article>
-
-          <article class="audience-panel" data-panel="investors">
-            <div class="panel-copy">
-              <h3 data-i18n="investorTitle">Investors see sharper opportunities, faster.</h3>
-              <p data-i18n="investorText">Investors can explore verified opportunities, receive AI-supported insights, connect with serious developers and brokers, and move with stronger confidence.</p>
-              <div class="feature-list">
-                <div class="feature-item" data-i18n="investorFeatureOne">Verified deal flow</div>
-                <div class="feature-item" data-i18n="investorFeatureTwo">AI-supported market signals</div>
-                <div class="feature-item" data-i18n="investorFeatureThree">Higher quality strategic connections</div>
-              </div>
-            </div>
-            <div class="panel-visual opportunity-card">
-              <div class="ring-metric"></div>
-              <div class="opportunity-text">
-                <span data-i18n="opportunityLabel">Opportunity confidence</span>
-                <strong>88%</strong>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="about" class="section platform-grid-section">
-        <div class="section-heading compact-heading">
-          <p class="eyebrow" data-i18n="sectionWhyEyebrow">Why QOVALX</p>
-          <h2 data-i18n="sectionWhyTitle">Designed to remove friction from real estate collaboration.</h2>
-        </div>
-
-        <div class="platform-grid">
-          <article class="info-card">
-            <div class="icon-circle">✓</div>
-            <h3 data-i18n="cardOneTitle">Verified identities</h3>
-            <p data-i18n="cardOneText">A more trusted network for brokers, developers, and investors who want stronger professional quality.</p>
-          </article>
-          <article class="info-card">
-            <div class="icon-circle">AI</div>
-            <h3 data-i18n="cardTwoTitle">AI-supported intelligence</h3>
-            <p data-i18n="cardTwoText">Smarter recommendations, better opportunity visibility, and clearer follow-up across the ecosystem.</p>
-          </article>
-          <article class="info-card">
-            <div class="icon-circle">↗</div>
-            <h3 data-i18n="cardThreeTitle">Premium visibility</h3>
-            <p data-i18n="cardThreeText">Showcase serious people, serious projects, and serious opportunities in one premium environment.</p>
-          </article>
-          <article class="info-card">
-            <div class="icon-circle">◎</div>
-            <h3 data-i18n="cardFourTitle">Abu Dhabi launch energy</h3>
-            <p data-i18n="cardFourText">A regional launch base with global potential, combining PropTech demand with AI momentum.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="abudhabi" class="section abudhabi-section">
-        <div class="section-heading compact-heading">
-          <p class="eyebrow" data-i18n="sectionAbuEyebrow">Abu Dhabi</p>
-          <h2 data-i18n="sectionAbuTitle">A premium launch base with real identity.</h2>
-          <p data-i18n="sectionAbuText">QOVALX is positioned as an Abu Dhabi-born platform with a global outlook, combining premium real estate positioning with technology, trust, and intelligent growth.</p>
-        </div>
-
-        <div class="landmarks-grid">
-          <article class="landmark-card"><h3 data-i18n="lmCardOneTitle">Trusted prestige</h3><p data-i18n="lmCardOneText">Inspired by the elegance, discipline, and confidence associated with Abu Dhabi’s leading landmarks.</p></article>
-          <article class="landmark-card"><h3 data-i18n="lmCardTwoTitle">Global business signal</h3><p data-i18n="lmCardTwoText">The platform speaks to local, regional, and global market participants through a refined premium identity.</p></article>
-          <article class="landmark-card"><h3 data-i18n="lmCardThreeTitle">Luxury visual language</h3><p data-i18n="lmCardThreeText">Black, gold, precision lines, and structured UX create a polished experience built to impress investors.</p></article>
-        </div>
-      </section>
-
-      <section id="investors" class="section cta-section">
-        <div class="cta-card">
-          <div>
-            <p class="eyebrow" data-i18n="ctaEyebrow">Private rollout</p>
-            <h2 data-i18n="ctaTitle">Join the early QOVALX circle.</h2>
-            <p data-i18n="ctaText">Request access as a broker, developer, investor, or strategic partner. QOVALX is opening privately to selected participants first.</p>
+          <div class="dash-card score-card">
+            <small style="display:block;color:var(--muted2);font-weight:800;margin-bottom:8px" data-key="scoreTitle">Asset performance</small>
+            <div class="score-ring">72%</div>
           </div>
-          <div class="cta-actions">
-            <button class="btn btn-gold open-access" type="button" data-i18n="ctaPrimary">Request Early Access</button>
-            <a href="#contact" class="btn btn-dark" data-i18n="ctaSecondary">Go to access form</a>
+          <div class="dash-card brain-card">
+            <small style="display:block;color:var(--muted2);font-weight:800;margin-bottom:8px" data-key="brainTitle">AI insights</small>
+            <div class="brain"></div>
+            <div style="margin-top:10px;color:var(--muted);font-weight:700" data-key="brainText">High-potential district detected</div>
+          </div>
+          <div class="mini-city"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="hero-base"></div>
+          <div class="hero-caption"><span data-key="cap1">Connect</span><span data-key="cap2">Analyze</span><span data-key="cap3">Grow</span><span data-key="cap4">Secure</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="wrap section">
+      <div class="heading">
+        <p class="eyebrow" data-key="whyEyebrow">Why QOVALX</p>
+        <h2 data-key="whyTitle">A professional network, not another normal listing website.</h2>
+        <p data-key="whyText">QOVALX is positioned as a premium real estate ecosystem where quality, trust, branding, and future AI workflows come together.</p>
+      </div>
+      <div class="cards-grid">
+        <article class="info"><div class="icon">✓</div><h3 data-key="card1T">Verified network</h3><p data-key="card1P">Designed to raise trust and reduce low-quality market noise.</p></article>
+        <article class="info"><div class="icon">AI</div><h3 data-key="card2T">AI-powered matching</h3><p data-key="card2P">A future intelligence layer for better signals, smarter matching, and improved workflows.</p></article>
+        <article class="info"><div class="icon">★</div><h3 data-key="card3T">Premium visibility</h3><p data-key="card3P">A polished environment for serious professionals, projects, and opportunities.</p></article>
+        <article class="info"><div class="icon">AD</div><h3 data-key="card4T">Abu Dhabi origin</h3><p data-key="card4P">Built with Abu Dhabi identity and global PropTech ambition.</p></article>
+      </div>
+    </section>
+
+    <section id="platform" class="wrap section">
+      <div class="heading">
+        <p class="eyebrow" data-key="platformEyebrow">Platform</p>
+        <h2 data-key="platformTitle">Built for the people who move real estate.</h2>
+        <p data-key="platformText">A clean professional ecosystem for market visibility, private access, intelligent matching, and trusted real estate collaboration.</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" type="button" data-panel="brokers" data-key="tabBrokers">Brokers</button>
+        <button class="tab" type="button" data-panel="developers" data-key="tabDevelopers">Developers</button>
+        <button class="tab" type="button" data-panel="investors" data-key="tabInvestors">Investors</button>
+      </div>
+
+      <article class="panel active" id="panel-brokers">
+        <div>
+          <h3 data-key="brokerTitle">Verified brokers get stronger visibility.</h3>
+          <p data-key="brokerText">Brokers can build a professional identity, access better opportunities, reduce random outreach, and connect with the right people faster.</p>
+          <div class="features">
+            <div class="feature" data-key="brokerF1">Verified professional profile</div>
+            <div class="feature" data-key="brokerF2">Quality lead discovery</div>
+            <div class="feature" data-key="brokerF3">Direct communication and smarter follow-up</div>
           </div>
         </div>
-      </section>
+        <div class="panel-card">
+          <svg class="panel-image" viewBox="0 0 600 420" aria-hidden="true">
+            <defs><linearGradient id="gb1" x1="0" x2="1"><stop offset="0" stop-color="#fff0b3" stop-opacity=".05"/><stop offset="1" stop-color="#d7a340" stop-opacity=".35"/></linearGradient></defs>
+            <rect width="600" height="420" fill="transparent"/>
+            <circle cx="500" cy="90" r="110" fill="url(#gb1)"/>
+            <path d="M40 360 C180 230 330 210 560 310" stroke="#d7a340" stroke-opacity=".35" stroke-width="3" fill="none"/>
+          </svg>
+          <div class="panel-overlay">
+            <div class="metric"><span data-key="brokerM1">Profile strength</span><strong>92%</strong><div class="bar"><i></i></div></div>
+            <div class="metric"><span data-key="brokerM2">Active matches</span><strong>28</strong><div class="bar"><i style="width:66%"></i></div></div>
+            <div class="metric"><span data-key="brokerM3">Response quality</span><strong>High</strong><div class="bar"><i style="width:84%"></i></div></div>
+          </div>
+        </div>
+      </article>
 
-      <section id="contact" class="section form-section">
-        <div class="section-heading compact-heading">
-          <p class="eyebrow" data-i18n="formEyebrow">Access form</p>
-          <h2 data-i18n="formTitle">Request private access</h2>
-          <p data-i18n="formText">Complete the form below. When you submit, your email app will open with a ready message to the QOVALX team.</p>
+      <article class="panel" id="panel-developers">
+        <div>
+          <h3 data-key="developerTitle">Developers showcase projects with more control.</h3>
+          <p data-key="developerText">Developers can present launches, reach relevant brokers and investors, manage inquiries, and create stronger visibility for premium inventory.</p>
+          <div class="features">
+            <div class="feature" data-key="developerF1">Premium project presentation</div>
+            <div class="feature" data-key="developerF2">Targeted launch visibility</div>
+            <div class="feature" data-key="developerF3">Private collaboration with serious market players</div>
+          </div>
+        </div>
+        <div class="panel-card">
+          <svg class="panel-image" viewBox="0 0 600 420" aria-hidden="true">
+            <rect width="600" height="420" fill="transparent"/>
+            <circle cx="470" cy="100" r="120" fill="rgba(215,163,64,.18)"/>
+            <rect x="320" y="120" width="160" height="240" rx="10" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.08)"/>
+            <rect x="130" y="170" width="130" height="190" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.08)"/>
+            <rect x="280" y="210" width="34" height="150" fill="rgba(255,255,255,.06)"/>
+          </svg>
+          <div class="panel-overlay">
+            <div class="metric"><span data-key="developerM1">Project visibility</span><strong>94%</strong><div class="bar"><i style="width:82%"></i></div></div>
+            <div class="metric"><span data-key="developerM2">Qualified audience</span><strong>Targeted</strong><div class="bar"><i style="width:72%"></i></div></div>
+            <div class="metric"><span data-key="developerM3">Private inquiries</span><strong>41</strong><div class="bar"><i style="width:68%"></i></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="panel-investors">
+        <div>
+          <h3 data-key="investorTitle">Investors discover clearer opportunities faster.</h3>
+          <p data-key="investorText">Investors can explore verified opportunities, review AI-supported signals, and connect with serious brokers and developers in one trusted environment.</p>
+          <div class="features">
+            <div class="feature" data-key="investorF1">Verified deal flow</div>
+            <div class="feature" data-key="investorF2">AI-supported opportunity signals</div>
+            <div class="feature" data-key="investorF3">Higher quality strategic connections</div>
+          </div>
+        </div>
+        <div class="panel-card">
+          <svg class="panel-image" viewBox="0 0 600 420" aria-hidden="true">
+            <rect width="600" height="420" fill="transparent"/>
+            <circle cx="470" cy="105" r="120" fill="rgba(255,240,179,.11)"/>
+            <path d="M70 310 L145 235 L245 270 L360 160 L485 120" stroke="#d7a340" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="145" cy="235" r="7" fill="#fff0b3"/><circle cx="245" cy="270" r="7" fill="#fff0b3"/><circle cx="360" cy="160" r="7" fill="#fff0b3"/><circle cx="485" cy="120" r="7" fill="#fff0b3"/>
+          </svg>
+          <div class="panel-overlay">
+            <div class="metric"><span data-key="investorM1">Opportunity confidence</span><strong>89%</strong><div class="bar"><i style="width:80%"></i></div></div>
+            <div class="metric"><span data-key="investorM2">Market relevance</span><strong>Strong</strong><div class="bar"><i style="width:76%"></i></div></div>
+            <div class="metric"><span data-key="investorM3">Strategic access</span><strong>Private</strong><div class="bar"><i style="width:83%"></i></div></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="abudhabi" class="wrap section">
+      <div class="heading">
+        <p class="eyebrow" data-key="adEyebrow">Abu Dhabi</p>
+        <h2 data-key="adTitle">Abu Dhabi landmarks, built into the identity.</h2>
+        <p data-key="adText">QOVALX should feel born in Abu Dhabi from the first impression, with strong visual references to the city’s architecture, ambition, and premium positioning.</p>
+      </div>
+      <div class="landmarks">
+        <article class="landmark-card">
+          <div class="landmark-visual">
+            <svg viewBox="0 0 260 200" width="100%" height="100%" aria-hidden="true">
+              <defs><linearGradient id="lg1" x1="0" x2="1"><stop offset="0" stop-color="#fff0b3"/><stop offset="1" stop-color="#d7a340"/></linearGradient></defs>
+              <rect width="260" height="200" fill="transparent"/>
+              <g stroke="url(#lg1)" stroke-width="4" fill="none" stroke-linejoin="round">
+                <path d="M40 170 L40 106 L68 80 L94 104 L94 170"/>
+                <path d="M100 170 L100 88 L126 58 L153 88 L153 170"/>
+                <path d="M162 170 L162 98 L184 74 L205 98 L205 170"/>
+                <path d="M212 170 L212 114 L229 92 L244 114 L244 170"/>
+                <path d="M24 170 H246"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="landmark-name" data-key="lm1">Etihad Towers</h3>
+          <p class="landmark-note" data-key="lm1d">A symbol of premium skyline presence and modern ambition.</p>
+        </article>
+        <article class="landmark-card">
+          <div class="landmark-visual">
+            <svg viewBox="0 0 260 200" width="100%" height="100%" aria-hidden="true">
+              <defs><linearGradient id="lg2" x1="0" x2="1"><stop offset="0" stop-color="#fff0b3"/><stop offset="1" stop-color="#d7a340"/></linearGradient></defs>
+              <g stroke="url(#lg2)" stroke-width="4" fill="none" stroke-linejoin="round">
+                <circle cx="132" cy="102" r="56"/>
+                <path d="M76 102 H188"/>
+                <path d="M132 46 C150 66 158 84 158 102 C158 120 150 138 132 158"/>
+                <path d="M132 46 C114 66 106 84 106 102 C106 120 114 138 132 158"/>
+                <path d="M78 102 L186 154"/>
+                <path d="M78 102 L186 50"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="landmark-name" data-key="lm2">Aldar HQ</h3>
+          <p class="landmark-note" data-key="lm2d">A distinct architectural icon representing innovation and confidence.</p>
+        </article>
+        <article class="landmark-card">
+          <div class="landmark-visual">
+            <svg viewBox="0 0 260 200" width="100%" height="100%" aria-hidden="true">
+              <defs><linearGradient id="lg3" x1="0" x2="1"><stop offset="0" stop-color="#fff0b3"/><stop offset="1" stop-color="#d7a340"/></linearGradient></defs>
+              <g stroke="url(#lg3)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M34 170 H226"/>
+                <path d="M58 170 V120 H202 V170"/>
+                <path d="M86 120 V88 H174 V120"/>
+                <path d="M100 88 C100 60 120 60 130 42 C140 60 160 60 160 88"/>
+                <path d="M36 120 C56 112 64 90 64 58"/>
+                <path d="M224 120 C204 112 196 90 196 58"/>
+                <path d="M64 58 V30"/><path d="M196 58 V30"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="landmark-name" data-key="lm3">Grand Mosque</h3>
+          <p class="landmark-note" data-key="lm3d">An elegant reference to cultural depth, precision, and prestige.</p>
+        </article>
+        <article class="landmark-card">
+          <div class="landmark-visual">
+            <svg viewBox="0 0 260 200" width="100%" height="100%" aria-hidden="true">
+              <defs><linearGradient id="lg4" x1="0" x2="1"><stop offset="0" stop-color="#fff0b3"/><stop offset="1" stop-color="#d7a340"/></linearGradient></defs>
+              <g stroke="url(#lg4)" stroke-width="4" fill="none" stroke-linejoin="round">
+                <path d="M40 170 H220"/>
+                <path d="M66 170 V106 H194 V170"/>
+                <path d="M80 106 V80 H180 V106"/>
+                <path d="M98 80 C98 54 116 56 130 36 C144 56 162 54 162 80"/>
+                <path d="M54 170 V126 H66 V170"/>
+                <path d="M194 170 V126 H206 V170"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="landmark-name" data-key="lm4">Qasr Al Watan</h3>
+          <p class="landmark-note" data-key="lm4d">A visual cue for national pride, trust, and high-level positioning.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="investors" class="wrap section">
+      <div class="heading">
+        <p class="eyebrow" data-key="investEyebrow">Positioning</p>
+        <h2 data-key="investTitle">One premium destination for serious market players.</h2>
+        <p data-key="investText">QOVALX is shaped to become a premium point of connection between verified brokers, developers with inventory, and investors looking for stronger quality and speed.</p>
+      </div>
+    </section>
+
+    <section id="access" class="wrap section">
+      <div class="access">
+        <div class="access-card">
+          <p class="eyebrow" data-key="accessEyebrow">Private rollout</p>
+          <h2 data-key="accessTitle">Request access to the early QOVALX circle.</h2>
+          <p data-key="accessText">The platform is not open to the public yet. Early access is intended for selected brokers, developers, investors, and strategic partners.</p>
+          <div class="access-list">
+            <div data-key="accessL1">Professional early-access positioning</div>
+            <div data-key="accessL2">Structured request form with direct founder contact</div>
+            <div data-key="accessL3">Clear next step for launch-phase outreach</div>
+          </div>
+          <button class="btn btn-gold scroll-access" type="button" data-key="requestBtn2">Request Early Access</button>
         </div>
 
-        <form id="accessForm" class="access-form">
+        <form class="form" id="accessForm">
           <div class="form-grid">
-            <label>
-              <span data-i18n="fieldName">Full name</span>
-              <input type="text" name="name" data-i18n-placeholder="phName" placeholder="Your full name" required />
-            </label>
-            <label>
-              <span data-i18n="fieldEmail">Email</span>
-              <input type="email" name="email" data-i18n-placeholder="phEmail" placeholder="you@example.com" required />
-            </label>
-            <label>
-              <span data-i18n="fieldRole">I am a</span>
+            <label><span data-key="nameLabel">Full name</span><input name="name" required data-ph="phName" placeholder="Your full name" /></label>
+            <label><span data-key="emailLabel">Email</span><input name="email" type="email" required data-ph="phEmail" placeholder="you@example.com" /></label>
+          </div>
+          <div class="form-grid full">
+            <label><span data-key="roleLabel">I am a</span>
               <select name="role" required>
-                <option value="Broker" data-i18n="roleBroker">Broker</option>
-                <option value="Developer" data-i18n="roleDeveloper">Developer</option>
-                <option value="Investor" data-i18n="roleInvestor">Investor</option>
-                <option value="Strategic Partner" data-i18n="rolePartner">Strategic Partner</option>
+                <option value="Broker" data-key="roleBroker">Broker</option>
+                <option value="Developer" data-key="roleDeveloper">Developer</option>
+                <option value="Investor" data-key="roleInvestor">Investor</option>
+                <option value="Partner" data-key="rolePartner">Strategic Partner</option>
               </select>
             </label>
-            <label>
-              <span data-i18n="fieldCountry">Location</span>
-              <input type="text" name="location" data-i18n-placeholder="phLocation" placeholder="Abu Dhabi, UAE" />
-            </label>
+            <label><span data-key="locationLabel">Location</span><input name="location" type="text" data-ph="phLocation" placeholder="Abu Dhabi, UAE" /></label>
           </div>
-          <label class="full-width">
-            <span data-i18n="fieldMessage">Message</span>
-            <textarea name="message" rows="5" data-i18n-placeholder="phMessage" placeholder="Tell us why you want early access."></textarea>
-          </label>
+          <label class="full"><span data-key="messageLabel">Message</span><textarea name="message" rows="5" data-ph="phMessage" placeholder="Tell us why you are interested in QOVALX"></textarea></label>
           <div class="form-actions">
-            <button class="btn btn-gold" type="submit" data-i18n="sendRequestBtn">Send request</button>
-            <button class="btn btn-dark" id="copyEmailBtn" type="button" data-i18n="copyEmailBtn">Copy founder email</button>
+            <button class="btn btn-gold" type="submit" data-key="sendBtn">Send request</button>
+            <button class="btn btn-dark" type="button" id="copyBtn" data-key="copyBtn">Copy founder email</button>
           </div>
-          <p id="formNote" class="form-note" data-i18n="formNote">If your email app does not open, copy the founder email and contact us directly at founder@qovalx.com.</p>
-          <p id="formFeedback" class="form-feedback" aria-live="polite"></p>
+          <p class="note" data-key="formNote">If your email app does not open, copy the founder email and contact us directly at founder@qovalx.com.</p>
+          <p class="feedback" id="feedback"></p>
         </form>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-brand">QOVALX</div>
-      <p data-i18n="footerText">AI-powered real estate ecosystem built with premium Abu Dhabi energy.</p>
-    </footer>
-  </div>
-
-  <div id="accessModal" class="modal" aria-hidden="true">
-    <div class="modal-overlay" data-close-modal></div>
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
-      <p class="eyebrow" data-i18n="modalEyebrow">Private Access</p>
-      <h2 id="modalTitle" data-i18n="modalTitle">Request access to QOVALX</h2>
-      <p class="modal-text" data-i18n="modalText">Select your role and send a request. The system will open your email app with a pre-filled message to the QOVALX team.</p>
-      <div class="modal-actions">
-        <button class="btn btn-gold modal-role" data-role-mail="Broker" type="button" data-i18n="modalBroker">I am a Broker</button>
-        <button class="btn btn-dark modal-role" data-role-mail="Developer" type="button" data-i18n="modalDeveloper">I am a Developer</button>
-        <button class="btn btn-dark modal-role" data-role-mail="Investor" type="button" data-i18n="modalInvestor">I am an Investor</button>
-        <button class="btn btn-dark modal-role" data-role-mail="Strategic Partner" type="button" data-i18n="modalPartner">I am a Strategic Partner</button>
       </div>
-      <button class="btn btn-outline modal-form-btn" id="openFullForm" type="button" data-i18n="modalOpenForm">Open full access form</button>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <script src="script.js?v=8"></script>
+  <footer>
+    <div class="wrap">
+      <strong>QOVALX</strong>
+      <span data-key="footer">AI-powered real estate ecosystem built with premium Abu Dhabi energy.</span>
+    </div>
+  </footer>
+
+  <script>
+    const dict = {
+      en:{
+        navAbout:"About",navPlatform:"Platform",navAD:"Abu Dhabi",navInvestors:"Investors",navAccess:"Access",privateAccess:"Private Access",
+        heroEyebrow:"Built in Abu Dhabi • AI-powered • Premium real estate network",
+        heroTitle:"One ecosystem. Three professional sides.",
+        heroText:"QOVALX gives brokers, developers, and investors one premium ecosystem to connect, discover serious opportunities, and move faster with AI-supported intelligence.",
+        requestBtn:"Request Early Access",exploreBtn:"Explore Platform",stat1:"Matching and intelligence layer",stat2:"Brokers, developers, investors",stat3:"Abu Dhabi launch identity",
+        badge:"Abu Dhabi Edition",dash1:"Opportunity signals",dash2:"Network quality",scoreTitle:"Asset performance",brainTitle:"AI insights",brainText:"High-potential district detected",cap1:"Connect",cap2:"Analyze",cap3:"Grow",cap4:"Secure",
+        whyEyebrow:"Why QOVALX",whyTitle:"A professional network, not another normal listing website.",whyText:"QOVALX is positioned as a premium real estate ecosystem where quality, trust, branding, and future AI workflows come together.",
+        card1T:"Verified network",card1P:"Designed to raise trust and reduce low-quality market noise.",card2T:"AI-powered matching",card2P:"A future intelligence layer for better signals, smarter matching, and improved workflows.",card3T:"Premium visibility",card3P:"A polished environment for serious professionals, projects, and opportunities.",card4T:"Abu Dhabi origin",card4P:"Built with Abu Dhabi identity and global PropTech ambition.",
+        platformEyebrow:"Platform",platformTitle:"Built for the people who move real estate.",platformText:"A clean professional ecosystem for market visibility, private access, intelligent matching, and trusted real estate collaboration.",
+        tabBrokers:"Brokers",tabDevelopers:"Developers",tabInvestors:"Investors",
+        brokerTitle:"Verified brokers get stronger visibility.",brokerText:"Brokers can build a professional identity, access better opportunities, reduce random outreach, and connect with the right people faster.",brokerF1:"Verified professional profile",brokerF2:"Quality lead discovery",brokerF3:"Direct communication and smarter follow-up",brokerM1:"Profile strength",brokerM2:"Active matches",brokerM3:"Response quality",
+        developerTitle:"Developers showcase projects with more control.",developerText:"Developers can present launches, reach relevant brokers and investors, manage inquiries, and create stronger visibility for premium inventory.",developerF1:"Premium project presentation",developerF2:"Targeted launch visibility",developerF3:"Private collaboration with serious market players",developerM1:"Project visibility",developerM2:"Qualified audience",developerM3:"Private inquiries",
+        investorTitle:"Investors discover clearer opportunities faster.",investorText:"Investors can explore verified opportunities, review AI-supported signals, and connect with serious brokers and developers in one trusted environment.",investorF1:"Verified deal flow",investorF2:"AI-supported opportunity signals",investorF3:"Higher quality strategic connections",investorM1:"Opportunity confidence",investorM2:"Market relevance",investorM3:"Strategic access",
+        adEyebrow:"Abu Dhabi",adTitle:"Abu Dhabi landmarks, built into the identity.",adText:"QOVALX should feel born in Abu Dhabi from the first impression, with strong visual references to the city’s architecture, ambition, and premium positioning.",
+        lm1:"Etihad Towers",lm1d:"A symbol of premium skyline presence and modern ambition.",lm2:"Aldar HQ",lm2d:"A distinct architectural icon representing innovation and confidence.",lm3:"Grand Mosque",lm3d:"An elegant reference to cultural depth, precision, and prestige.",lm4:"Qasr Al Watan",lm4d:"A visual cue for national pride, trust, and high-level positioning.",
+        investEyebrow:"Positioning",investTitle:"One premium destination for serious market players.",investText:"QOVALX is shaped to become a premium point of connection between verified brokers, developers with inventory, and investors looking for stronger quality and speed.",
+        accessEyebrow:"Private rollout",accessTitle:"Request access to the early QOVALX circle.",accessText:"The platform is not open to the public yet. Early access is intended for selected brokers, developers, investors, and strategic partners.",accessL1:"Professional early-access positioning",accessL2:"Structured request form with direct founder contact",accessL3:"Clear next step for launch-phase outreach",requestBtn2:"Request Early Access",
+        nameLabel:"Full name",emailLabel:"Email",roleLabel:"I am a",locationLabel:"Location",messageLabel:"Message",roleBroker:"Broker",roleDeveloper:"Developer",roleInvestor:"Investor",rolePartner:"Strategic Partner",
+        phName:"Your full name",phEmail:"you@example.com",phLocation:"Abu Dhabi, UAE",phMessage:"Tell us why you are interested in QOVALX",
+        sendBtn:"Send request",copyBtn:"Copy founder email",formNote:"If your email app does not open, copy the founder email and contact us directly at founder@qovalx.com.",footer:"AI-powered real estate ecosystem built with premium Abu Dhabi energy.",
+        copied:"Founder email copied.",ready:"Your request is ready. If your email app did not open, contact founder@qovalx.com directly."
+      },
+      ar:{
+        navAbout:"عن كوفالكس",navPlatform:"المنصة",navAD:"أبوظبي",navInvestors:"المستثمرون",navAccess:"الوصول",privateAccess:"دخول خاص",
+        heroEyebrow:"تأسست في أبوظبي • مدعومة بالذكاء الاصطناعي • شبكة عقارية متميزة",
+        heroTitle:"منظومة واحدة. ثلاث جهات مهنية.",
+        heroText:"كوفالكس تجمع الوسطاء والمطورين والمستثمرين في منظومة عقارية ذكية واحدة للتواصل، واكتشاف الفرص الجادة، والتحرك بسرعة أعلى عبر ذكاء داعم.",
+        requestBtn:"طلب وصول مبكر",exploreBtn:"استكشف المنصة",stat1:"طبقة المطابقة والذكاء",stat2:"وسطاء، مطورون، مستثمرون",stat3:"هوية الانطلاق من أبوظبي",
+        badge:"نسخة أبوظبي",dash1:"إشارات الفرص",dash2:"جودة الشبكة",scoreTitle:"أداء الأصول",brainTitle:"رؤى الذكاء الاصطناعي",brainText:"تم اكتشاف منطقة ذات إمكانات عالية",cap1:"تواصل",cap2:"تحليل",cap3:"نمو",cap4:"أمان",
+        whyEyebrow:"لماذا كوفالكس",whyTitle:"شبكة مهنية، وليست موقعاً عادياً لعرض العقارات.",whyText:"تتموضع كوفالكس كمنظومة عقارية راقية حيث تجتمع الجودة والثقة والهوية والذكاء الاصطناعي المستقبلي في مكان واحد.",
+        card1T:"شبكة موثوقة",card1P:"مصممة لرفع الثقة وتقليل الضوضاء منخفضة الجودة في السوق.",card2T:"مطابقة مدعومة بالذكاء الاصطناعي",card2P:"طبقة ذكاء مستقبلية لإشارات أفضل، ومطابقة أذكى، وسير عمل أقوى.",card3T:"ظهور متميز",card3P:"بيئة راقية للمهنيين والمشاريع والفرص الجادة.",card4T:"أصل أبوظبي",card4P:"مبنية بهوية أبوظبي وطموح عالمي في تقنية العقار.",
+        platformEyebrow:"المنصة",platformTitle:"مصممة للأشخاص الذين يحركون سوق العقار.",platformText:"منظومة مهنية واضحة للظهور في السوق، والوصول الخاص، والمطابقة الذكية، والتعاون العقاري الموثوق.",
+        tabBrokers:"الوسطاء",tabDevelopers:"المطورون",tabInvestors:"المستثمرون",
+        brokerTitle:"الوسطاء المعتمدون يحصلون على ظهور أقوى.",brokerText:"يمكن للوسطاء بناء هوية مهنية، والوصول إلى فرص أفضل، وتقليل التواصل العشوائي، والوصول إلى الأشخاص المناسبين بسرعة أعلى.",brokerF1:"ملف مهني معتمد",brokerF2:"اكتشاف عملاء وفرص بجودة أعلى",brokerF3:"تواصل مباشر ومتابعة أذكى",brokerM1:"قوة الملف",brokerM2:"مطابقات نشطة",brokerM3:"جودة الاستجابة",
+        developerTitle:"المطورون يعرضون مشاريعهم بوضوح وتحكم أكبر.",developerText:"يمكن للمطورين عرض الإطلاقات، والوصول إلى الوسطاء والمستثمرين المناسبين، وإدارة الاستفسارات، وصناعة ظهور أقوى للمخزون المميز.",developerF1:"عرض فاخر للمشاريع",developerF2:"ظهور موجه للإطلاقات",developerF3:"تعاون خاص مع جهات جادة في السوق",developerM1:"ظهور المشروع",developerM2:"الجمهور المناسب",developerM3:"استفسارات خاصة",
+        investorTitle:"المستثمرون يكتشفون فرصاً أوضح بسرعة أعلى.",investorText:"يمكن للمستثمرين استكشاف فرص موثوقة، ومراجعة إشارات مدعومة بالذكاء الاصطناعي، والتواصل مع وسطاء ومطورين جادين ضمن بيئة موثوقة.",investorF1:"تدفق فرص موثوقة",investorF2:"إشارات فرص مدعومة بالذكاء الاصطناعي",investorF3:"روابط استراتيجية بجودة أعلى",investorM1:"ثقة الفرصة",investorM2:"صلة السوق",investorM3:"وصول استراتيجي",
+        adEyebrow:"أبوظبي",adTitle:"معالم أبوظبي مدمجة داخل الهوية.",adText:"يجب أن تعطي كوفالكس انطباعاً من أول نظرة بأنها وُلدت في أبوظبي، مع إشارات بصرية قوية إلى عمارة المدينة وطموحها وموقعها الراقي.",
+        lm1:"أبراج الاتحاد",lm1d:"رمز لحضور عمراني فاخر وطموح حديث.",lm2:"مقر الدار",lm2d:"أيقونة معمارية تعكس الابتكار والثقة.",lm3:"جامع الشيخ زايد",lm3d:"إشارة أنيقة إلى العمق الثقافي والدقة والهيبة.",lm4:"قصر الوطن",lm4d:"إيحاء بصري بالفخر الوطني والثقة والتموضع العالي.",
+        investEyebrow:"التموضع",investTitle:"وجهة راقية واحدة للجهات الجادة في السوق.",investText:"تم تصميم كوفالكس لتصبح نقطة اتصال راقية بين الوسطاء المعتمدين والمطورين أصحاب المشاريع والمستثمرين الباحثين عن جودة أعلى وسرعة أكبر.",
+        accessEyebrow:"إطلاق خاص",accessTitle:"اطلب الانضمام إلى دائرة كوفالكس المبكرة.",accessText:"المنصة غير مفتوحة للعامة حالياً. الوصول المبكر مخصص للوسطاء والمطورين والمستثمرين والشركاء الاستراتيجيين المختارين.",accessL1:"تموضع احترافي للوصول المبكر",accessL2:"نموذج طلب منظم مع تواصل مباشر مع المؤسس",accessL3:"خطوة واضحة لمرحلة ما قبل الإطلاق",requestBtn2:"طلب وصول مبكر",
+        nameLabel:"الاسم الكامل",emailLabel:"البريد الإلكتروني",roleLabel:"أنا",locationLabel:"الموقع",messageLabel:"الرسالة",roleBroker:"وسيط",roleDeveloper:"مطور",roleInvestor:"مستثمر",rolePartner:"شريك استراتيجي",
+        phName:"اسمك الكامل",phEmail:"you@example.com",phLocation:"أبوظبي، الإمارات",phMessage:"اخبرنا لماذا أنت مهتم بكوفالكس",
+        sendBtn:"إرسال الطلب",copyBtn:"نسخ بريد المؤسس",formNote:"إذا لم يفتح تطبيق البريد، انسخ بريد المؤسس وتواصل مباشرة عبر founder@qovalx.com.",footer:"منظومة عقارية مدعومة بالذكاء الاصطناعي بروح أبوظبي الراقية.",
+        copied:"تم نسخ بريد المؤسس.",ready:"تم تجهيز طلبك. إذا لم يفتح البريد، تواصل مباشرة عبر founder@qovalx.com."
+      }
+    };
+
+    const founder = 'founder@qovalx.com';
+    let lang = localStorage.getItem('qovalx-lang') || 'en';
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+
+    function applyLang(){
+      document.body.classList.toggle('ar', lang === 'ar');
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      $('#langBtn').textContent = lang === 'ar' ? 'EN' : 'AR';
+      $$('[data-key]').forEach(el => { const k = el.dataset.key; if(dict[lang][k]) el.textContent = dict[lang][k]; });
+      $$('[data-ph]').forEach(el => { const k = el.dataset.ph; if(dict[lang][k]) el.placeholder = dict[lang][k]; });
+      localStorage.setItem('qovalx-lang', lang);
+    }
+
+    function scrollToAccess(){ document.getElementById('access').scrollIntoView({behavior:'smooth', block:'start'}); }
+
+    $('#langBtn').addEventListener('click', () => { lang = lang === 'en' ? 'ar' : 'en'; applyLang(); });
+    $$('.scroll-access').forEach(btn => btn.addEventListener('click', scrollToAccess));
+
+    $$('.tab').forEach(btn => btn.addEventListener('click', () => {
+      $$('.tab').forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      $$('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+    }));
+
+    function mailtoLink(){
+      const f = $('#accessForm');
+      const roleText = f.role.options[f.role.selectedIndex].text;
+      const subject = lang === 'ar' ? `طلب وصول مبكر - ${roleText} - QOVALX` : `QOVALX Early Access Request - ${roleText}`;
+      const body = lang === 'ar'
+        ? `مرحباً فريق كوفالكس،\n\nأرغب في طلب الوصول المبكر.\n\nالاسم: ${f.name.value.trim()}\nالبريد الإلكتروني: ${f.email.value.trim()}\nالصفة: ${roleText}\nالموقع: ${f.location.value.trim()}\nالرسالة: ${f.message.value.trim()}\n\nشكراً لكم.`
+        : `Hello QOVALX Team,\n\nI would like to request early access.\n\nName: ${f.name.value.trim()}\nEmail: ${f.email.value.trim()}\nRole: ${roleText}\nLocation: ${f.location.value.trim()}\nMessage: ${f.message.value.trim()}\n\nThank you.`;
+      return `mailto:${founder}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    $('#accessForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const f = $('#accessForm');
+      if(!f.checkValidity()){ f.reportValidity(); return; }
+      window.location.href = mailtoLink();
+      $('#feedback').textContent = dict[lang].ready;
+    });
+
+    $('#copyBtn').addEventListener('click', async () => {
+      try{ await navigator.clipboard.writeText(founder); }catch(e){}
+      $('#feedback').textContent = dict[lang].copied;
+    });
+
+    applyLang();
+  </script>
 </body>
 </html>
