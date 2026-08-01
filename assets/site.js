@@ -56,4 +56,3 @@
    });
  }
 })();
-has context menu
