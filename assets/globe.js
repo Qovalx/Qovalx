@@ -30,7 +30,7 @@
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-  camera.position.z = 7.2;
+  camera.position.z = 8.4;
 
   var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !small });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, small ? 1.5 : 2));
@@ -42,17 +42,17 @@
   var globe = new THREE.Group();
   scene.add(globe);
 
-  var R = 2.5;
+  var R = 2.35;
 
   // كرة داكنة تحجب النقاط الخلفية فتبدو مجسّمة
   var core = new THREE.Mesh(
     new THREE.SphereGeometry(R * 0.985, 48, 48),
-    new THREE.MeshBasicMaterial({ color: SURFACE, transparent: true, opacity: 0.94 })
+    new THREE.MeshBasicMaterial({ color: 0x03152F, transparent: true, opacity: 0.98 })
   );
   globe.add(core);
 
   // نقاط اليابسة موزّعة بتباعد متساوٍ عبر حلزون فيبوناتشي
-  var N = small ? 5500 : 13000;
+  var N = small ? 9000 : 24000;
   var pos = [], col = [], sz = [];
   var gold = new THREE.Color(GOLD), goldHi = new THREE.Color(GOLD_HI);
   var phi = Math.PI * (3 - Math.sqrt(5));
@@ -64,7 +64,7 @@
     var x = Math.cos(th) * rad, z = Math.sin(th) * rad;
 
     var lat = Math.asin(y) * 180 / Math.PI;
-    var lon = Math.atan2(z, x) * 180 / Math.PI;
+    var lon = Math.atan2(x, z) * 180 / Math.PI;
     if (!isLand(lon, lat)) continue;
 
     pos.push(x * R, y * R, z * R);
@@ -73,7 +73,7 @@
     var c = bright ? goldHi : gold;
     var f = bright ? 1 : 0.42 + Math.random() * 0.3;
     col.push(c.r * f, c.g * f, c.b * f);
-    sz.push(bright ? 3.4 : 1.9);
+    sz.push(bright ? 1.6 : 1.0);
   }
 
   var g = new THREE.BufferGeometry();
@@ -83,14 +83,13 @@
 
   var dots = new THREE.Points(g, new THREE.ShaderMaterial({
     transparent: true, depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    uniforms: { uScale: { value: small ? 130 : 180 } },
+    uniforms: { uScale: { value: small ? 48 : 62 } },
     vertexShader:
       'attribute float aSize; varying vec3 vC;' +
       'uniform float uScale;' +
       'void main(){ vC = color;' +
       'vec4 mv = modelViewMatrix * vec4(position,1.0);' +
-      'gl_PointSize = aSize * uScale / -mv.z;' +
+      'gl_PointSize = min(aSize * uScale / -mv.z, 3.5);' +
       'gl_Position = projectionMatrix * mv; }',
     fragmentShader:
       'varying vec3 vC;' +
@@ -124,7 +123,7 @@
         'gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
       fragmentShader:
         'uniform vec3 uColor; varying float vI;' +
-        'void main(){ gl_FragColor = vec4(uColor, clamp(vI,0.0,1.0) * 0.55); }'
+        'void main(){ gl_FragColor = vec4(uColor, clamp(vI,0.0,1.0) * 0.30); }'
     })
   );
   scene.add(halo);
