@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QOVALX</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://qovalx.com/en/">
+<script>
+(function(){
+  var codes=['ar','en','ru','zh-Hans','fr','es','hi'];
+  var saved=null; try{saved=localStorage.getItem('qovalx-lang');}catch(e){}
+  var pick=saved&&codes.indexOf(saved)!==-1?saved:null;
+  if(!pick){
+    var langs=navigator.languages||[navigator.language||'en'];
+    for(var i=0;i<langs.length&&!pick;i++){
+      var l=langs[i];
+      if(codes.indexOf(l)!==-1){pick=l;continue}
+      var base=l.split('-')[0];
+      if(base==='zh')pick='zh-Hans';
+      else if(codes.indexOf(base)!==-1)pick=base;
+    }
+  }
+  location.replace('/'+(pick||'en')+'/');
+})();
+</script>
+<meta http-equiv="refresh" content="0;url=/en/">
+</head>
+<body><p><a href="/en/">Continue to QOVALX</a></p></body>
+</html>
