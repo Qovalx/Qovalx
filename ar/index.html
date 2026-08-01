@@ -21,6 +21,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://qovalx.com/ar/">
   <link rel="icon" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -86,8 +87,10 @@
             <a class="btn btn-s" href="/ar/#howitworks">كيف تعمل</a>
           </div>
         </div>
-        <div class="emblem-wrap">
-          <img class="emblem" src="/assets/emblem.png" alt="الشعار العالمي الرسمي لـ QOVALX" width="1024" height="1024">
+        <div class="globe-wrap">
+          <div id="globe"></div>
+          <div class="globe-fallback" role="img" aria-label="الشعار العالمي الرسمي لـ QOVALX"></div>
+          <div class="globe-mark"><img src="/assets/mark.png" alt="" width="1024" height="1024"></div>
         </div>
       </div>
     </section>
@@ -233,6 +236,8 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="/assets/globe.js" defer></script>
   <script src="/assets/site.js" defer></script>
 </body>
 </html>
