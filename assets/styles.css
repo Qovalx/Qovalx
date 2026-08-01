@@ -84,11 +84,20 @@ h1{font-weight:300;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.1;color:var(
   margin-bottom:1.5rem;letter-spacing:-.01em}
 .lede{font-size:clamp(1.02rem,2vw,1.18rem);max-width:52ch;opacity:.88;margin-bottom:2.25rem}
 .actions{display:flex;gap:1rem;flex-wrap:wrap}
-.emblem{width:100%;max-width:520px;margin-inline:auto;display:block;
-  filter:drop-shadow(0 24px 70px rgba(0,0,0,.55))}
-.emblem-wrap{position:relative}
-.emblem-wrap::before{content:'';position:absolute;inset:-12%;border-radius:50%;
-  background:radial-gradient(circle,rgba(215,163,71,.1),transparent 62%);pointer-events:none}
+/* الكرة الدوّارة: طبقة ثابتة للرمز فوق مشهد ثلاثي الأبعاد */
+.globe-wrap{position:relative;width:100%;max-width:520px;margin-inline:auto;aspect-ratio:1}
+.globe-wrap::before{content:'';position:absolute;inset:-12%;border-radius:50%;
+  background:radial-gradient(circle,rgba(215,163,71,.10),transparent 62%);pointer-events:none}
+#globe{position:absolute;inset:0}
+#globe canvas{width:100%!important;height:100%!important;display:block}
+/* بديل ثابت يظهر قبل تحميل المشهد ومع الأجهزة غير المدعومة */
+.globe-fallback{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#12356b,#071C3F 58%,#02132e 100%);
+  box-shadow:0 0 90px rgba(46,95,168,.28) inset;transition:opacity .6s ease}
+#globe.is-live + .globe-fallback{opacity:0}
+.globe-mark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:30%;pointer-events:none;z-index:3;filter:drop-shadow(0 6px 22px rgba(0,0,0,.55))}
+.globe-mark img{width:100%;height:auto;display:block}
 
 /* Sections */
 section{padding-block:5.5rem}
