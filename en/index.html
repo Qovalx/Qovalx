@@ -176,7 +176,12 @@
       <div class="wrap">
         <h2>Rooted in Abu Dhabi</h2>
         <p class="sec-lede">Born in Abu Dhabi. Built for global real estate.</p>
-        <div class="ad-media"><img src="/assets/abudhabi.jpg" alt="Rooted in Abu Dhabi" loading="lazy" width="1680" height="720"></div>
+        <div class="ad-media">
+          <img src="/assets/abudhabi.jpg"
+               srcset="/assets/abudhabi-800.jpg 800w, /assets/abudhabi-1280.jpg 1280w, /assets/abudhabi.jpg 1920w"
+               sizes="(max-width: 900px) 100vw, 1200px"
+               alt="Rooted in Abu Dhabi" loading="lazy" decoding="async" width="1920" height="822">
+        </div>
       </div>
     </section>
 
