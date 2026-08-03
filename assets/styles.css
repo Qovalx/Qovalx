@@ -1,166 +1,163 @@
-/* ==========================================================================
-   QOVALX — approved identity
-   FD-028 palette · FD-031 logo system · FD-032 emblem · IBM Plex typography
-   ملف واحد مكتفٍ بذاته. لا يعتمد على أي ملف تنسيق آخر.
-   ========================================================================== */
+/* QOVALX — approved identity. FD-028 palette, FD-032 emblem, IBM Plex typography. */
 
-/* 1. الخطوط — تُحمّل محليًا إن وُجدت، وإلا يعمل الموقع بخطوط النظام */
-@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Light.woff2')format('woff2');font-weight:300;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Regular.woff2')format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Medium.woff2')format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-SemiBold.woff2')format('woff2');font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans Arabic';src:url('fonts/IBMPlexSansArabic-Regular.woff2')format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans Arabic';src:url('fonts/IBMPlexSansArabic-SemiBold.woff2')format('woff2');font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans SC';src:url('fonts/IBMPlexSansSC-Regular.woff2')format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'IBM Plex Sans Devanagari';src:url('fonts/IBMPlexSansDevanagari-Regular.woff2')format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Light.woff2')format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Regular.woff2')format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Medium.woff2')format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-SemiBold.woff2')format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url('fonts/IBMPlexSansArabic-Regular.woff2')format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'IBM Plex Sans Arabic';src:url('fonts/IBMPlexSansArabic-SemiBold.woff2')format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'IBM Plex Sans SC';src:url('fonts/IBMPlexSansSC-Regular.woff2')format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'IBM Plex Sans Devanagari';src:url('fonts/IBMPlexSansDevanagari-Regular.woff2')format('woff2');font-weight:400;font-display:swap}
 
-/* 2. الرموز اللونية والخطية */
 :root{
-  --navy:#011230;
-  --gold:#D7A347;
-  --ivory:#F1E3D8;
-  --white:#FFF9F2;
-  --surface:#071C3F;
-  --elevated:#132D54;
-  --gold-hi:#F5CD7B;
-  --gold-shadow:#A37027;
-  --text:var(--ivory);
-  --text-strong:var(--white);
-  --text-on-light:var(--navy);
-  --emphasis:var(--gold);
-  --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --max:1200px;
-  --scale:1;
+  --navy:#011230; --gold:#D7A347; --ivory:#F1E3D8; --white:#FFF9F2;
+  --surface:#071C3F; --elevated:#132D54; --gold-hi:#F5CD7B; --gold-shadow:#A37027;
+  --text:var(--ivory); --text-strong:var(--white); --text-on-light:var(--navy); --emphasis:var(--gold);
+  --font:'IBM Plex Sans',system-ui,sans-serif;
+  --max:1200px; --scale:1;
 }
 html[lang="ar"]{--font:'IBM Plex Sans Arabic','IBM Plex Sans',system-ui,sans-serif;--scale:.95}
 html[lang="zh-Hans"]{--font:'IBM Plex Sans SC','IBM Plex Sans',system-ui,sans-serif;--scale:.95}
 html[lang="hi"]{--font:'IBM Plex Sans Devanagari','IBM Plex Sans',system-ui,sans-serif;--scale:.95}
-html[lang="ar"] *,html[lang="hi"] *{letter-spacing:normal !important}
+html[lang="ar"] *,html[lang="hi"] *{letter-spacing:normal!important}
 
-/* 3. الأساس */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:#011230}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-}
-body{
-  background:var(--navy);
-  color:var(--text);
-  font-family:var(--font);
-  font-weight:400;
-  font-size:calc(1rem * var(--scale));
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
-}
-img{max-width:100%;height:auto;display:block}
-ul{list-style:none}
-.skip{position:absolute;inset-inline-start:-9999px;top:0;z-index:100;background:var(--gold);color:var(--navy);padding:.75rem 1.25rem;text-decoration:none}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{background:var(--navy);color:var(--text);font-family:var(--font);font-weight:400;
+  font-size:calc(1rem*var(--scale));line-height:1.65;-webkit-font-smoothing:antialiased}
+
+.skip{position:absolute;inset-inline-start:-9999px;top:0;background:var(--gold);color:var(--navy);
+  padding:.75rem 1.25rem;z-index:100;text-decoration:none}
 .skip:focus{inset-inline-start:0}
-.wrap{max-width:var(--max);margin-inline:auto;padding-inline:1.5rem}
 
-/* 4. الهيدر والتنقّل */
-header{position:sticky;top:0;z-index:50;background:rgba(1,18,48,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(215,163,71,.2)}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:1.5rem}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(1,18,48,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(215,163,71,.2)}
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem}
 .logo{font-weight:600;letter-spacing:.22em;font-size:1.05rem;color:var(--text-strong);text-decoration:none}
 .hdr-r{display:flex;align-items:center;gap:.75rem}
 nav.desk{display:none;gap:1.75rem}
 nav.desk a{color:var(--text);text-decoration:none;font-size:.92rem;font-weight:500;opacity:.85}
 nav.desk a:hover,nav.desk a:focus{opacity:1;color:var(--gold-hi)}
-select.lang{background:transparent;color:var(--text);border:1px solid rgba(215,163,71,.45);border-radius:4px;padding:.5rem .75rem;font-family:inherit;font-size:.9rem;cursor:pointer}
+select.lang{background:transparent;color:var(--text);border:1px solid rgba(215,163,71,.45);
+  border-radius:4px;padding:.5rem .75rem;font-family:inherit;font-size:.9rem;cursor:pointer}
 select.lang option{background:var(--surface);color:var(--text)}
-.burger{display:grid;place-items:center;width:44px;height:44px;background:transparent;border:1px solid rgba(215,163,71,.45);border-radius:4px;cursor:pointer}
+.burger{display:grid;place-items:center;width:44px;height:44px;background:transparent;
+  border:1px solid rgba(215,163,71,.45);border-radius:4px;cursor:pointer}
 .burger span{display:block;width:18px;height:2px;background:var(--gold);margin:2px 0}
-@media(min-width:960px){
-  nav.desk{display:flex}
-  .burger{display:none}
-}
+@media(min-width:960px){nav.desk{display:flex}.burger{display:none}}
 
-/* 5. القائمة الجانبية */
-.overlay{position:fixed;inset:0;z-index:60;display:none;background:rgba(1,18,48,.88);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+/* Drawer */
+.overlay{position:fixed;inset:0;background:rgba(1,18,48,.88);backdrop-filter:blur(4px);z-index:60;display:none}
 .overlay[data-open]{display:block}
-.drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;z-index:70;width:min(88vw,360px);background:var(--surface);border-inline-start:1px solid rgba(215,163,71,.3);padding:1.5rem;overflow-y:auto;display:none;flex-direction:column}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(88vw,360px);background:var(--surface);
+  border-inline-start:1px solid rgba(215,163,71,.3);z-index:70;padding:1.5rem;overflow-y:auto;
+  display:none;flex-direction:column}
 .drawer[data-open]{display:flex}
-.drawer a{color:var(--text);text-decoration:none;padding:.85rem 0;font-size:1.05rem;font-weight:500;border-bottom:1px solid rgba(215,163,71,.15)}
+.drawer a{color:var(--text);text-decoration:none;padding:.85rem 0;font-size:1.05rem;font-weight:500;
+  border-bottom:1px solid rgba(215,163,71,.15)}
 .drawer a:hover,.drawer a:focus{color:var(--gold-hi)}
-.close{align-self:flex-end;margin-bottom:1rem;padding:.5rem .9rem;background:none;border:1px solid rgba(215,163,71,.45);color:var(--gold);border-radius:4px;cursor:pointer;font-family:inherit}
+.close{align-self:flex-end;background:none;border:1px solid rgba(215,163,71,.45);color:var(--gold);
+  border-radius:4px;padding:.5rem .9rem;cursor:pointer;margin-bottom:1rem;font-family:inherit}
 html[dir="rtl"] .close{align-self:flex-start}
 html[dir="rtl"] .drawer{border-inline-start:none;border-inline-end:1px solid rgba(215,163,71,.3)}
 
-/* 6. الأزرار */
-.btn{display:inline-block;padding:.9rem 1.75rem;border-radius:4px;text-decoration:none;font-weight:500;font-size:.98rem;transition:background .2s,border-color .2s,color .2s}
+/* Buttons */
+.btn{display:inline-block;padding:.9rem 1.75rem;border-radius:4px;text-decoration:none;
+  font-weight:500;font-size:.98rem;transition:opacity .2s}
 .btn-p{background:var(--gold);color:var(--text-on-light)}
 .btn-p:hover{background:var(--gold-hi)}
 .btn-s{border:1px solid rgba(215,163,71,.6);color:var(--text)}
 .btn-s:hover{border-color:var(--gold);color:var(--gold-hi)}
 
-/* 7. الهيرو */
-.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding-block:5rem 3rem}
+/* Hero */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;
+  padding-block:5rem 3rem}
 .hero-grid{display:grid;gap:3rem;align-items:center}
-@media(min-width:960px){
-  .hero-grid{grid-template-columns:1fr 1fr;gap:4rem}
-}
+@media(min-width:960px){.hero-grid{grid-template-columns:1fr 1fr;gap:4rem}}
 .eyebrow{color:var(--emphasis);font-size:.82rem;letter-spacing:.18em;font-weight:500;margin-bottom:1.25rem}
-h1{font-weight:300;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.1;color:var(--text-strong);margin-bottom:1.5rem;letter-spacing:-.01em}
+h1{font-weight:300;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.1;color:var(--text-strong);
+  margin-bottom:1.5rem;letter-spacing:-.01em}
 .lede{font-size:clamp(1.02rem,2vw,1.18rem);max-width:52ch;opacity:.88;margin-bottom:2.25rem}
 .actions{display:flex;gap:1rem;flex-wrap:wrap}
-
-/* 8. الكرة الدوّارة
-   القياسات هنا تُبقي المشهد داخل حدوده مهما حدث للسكربت */
-.globe-wrap{position:relative;width:100%;max-width:520px;margin-inline:auto;aspect-ratio:1/1;isolation:isolate}
-.globe-wrap::before{content:'';position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(circle,rgba(215,163,71,.10),transparent 62%);pointer-events:none;z-index:0}
-#globe{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:50%}
-#globe canvas{width:100% !important;height:100% !important;display:block}
-.globe-fallback{position:absolute;inset:0;z-index:2;border-radius:50%;background:radial-gradient(circle at 38% 32%,#12356b,#071C3F 58%,#02132e 100%);box-shadow:inset 0 0 90px rgba(46,95,168,.28);transition:opacity .6s ease}
+/* الكرة الدوّارة: طبقة ثابتة للرمز فوق مشهد ثلاثي الأبعاد */
+.globe-wrap{position:relative;width:100%;max-width:520px;margin-inline:auto;aspect-ratio:1}
+.globe-wrap::before{content:'';position:absolute;inset:-12%;border-radius:50%;
+  background:radial-gradient(circle,rgba(215,163,71,.10),transparent 62%);pointer-events:none}
+#globe{position:absolute;inset:0}
+#globe canvas{width:100%!important;height:100%!important;display:block}
+/* بديل ثابت يظهر قبل تحميل المشهد ومع الأجهزة غير المدعومة */
+.globe-fallback{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#12356b,#071C3F 58%,#02132e 100%);
+  box-shadow:0 0 90px rgba(46,95,168,.28) inset;transition:opacity .6s ease}
 #globe.is-live + .globe-fallback{opacity:0}
-/* الرمز السداسي: طبقة ثابتة فوق المشهد، لا تدور معه */
-.globe-mark{position:absolute;top:50%;left:50%;z-index:3;transform:translate(-50%,-50%);width:30%;max-width:30%;pointer-events:none;filter:drop-shadow(0 6px 22px rgba(0,0,0,.55))}
-.globe-mark img{width:100%;max-width:100%;height:auto;display:block}
+.globe-mark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:30%;pointer-events:none;z-index:3;filter:drop-shadow(0 6px 22px rgba(0,0,0,.55))}
+.globe-mark img{width:100%;height:auto;display:block}
 
-/* 9. الأقسام */
+/* Sections */
 section{padding-block:5.5rem}
-h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);margin-bottom:1rem;line-height:1.2}
+h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
+  margin-bottom:1rem;line-height:1.2}
 .sec-lede{max-width:60ch;opacity:.85;margin-bottom:3rem}
-.match{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;padding:clamp(1.75rem,4vw,3rem)}
+
+/* Find Matching */
+.match{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;
+  padding:clamp(1.75rem,4vw,3rem)}
 .match-hd{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .match-hd h2{margin:0}
-.badge{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:.35rem 1rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;white-space:nowrap}
-.field{width:100%;background:var(--white);color:#6b6b6b;border:none;border-radius:4px;padding:1rem 1.25rem;margin-block:1.5rem 1rem;font-family:inherit;font-size:1rem}
+.badge{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:.35rem 1rem;
+  font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.field{width:100%;background:var(--white);color:#6b6b6b;border:none;border-radius:4px;
+  padding:1rem 1.25rem;margin-block:1.5rem 1rem;font-family:inherit;font-size:1rem}
 .status{color:var(--text);opacity:.55;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* Audience cards */
 .cards{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
-.card{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.card{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;
+  overflow:hidden;display:flex;flex-direction:column}
 .card-img{aspect-ratio:16/10;background:var(--elevated);overflow:hidden}
 .card-img img{width:100%;height:100%;object-fit:cover;display:block}
 .card-body{padding:1.6rem;display:flex;flex-direction:column;gap:.85rem;flex:1}
 .idx{color:var(--emphasis);font-size:.8rem;letter-spacing:.1em;font-weight:500}
 .card h3{color:var(--text-strong);font-weight:600;font-size:1.35rem}
 .card p{opacity:.85;flex:1}
-.card a{color:var(--emphasis);text-decoration:underline;text-underline-offset:4px;font-weight:500;align-self:flex-start}
+.card a{color:var(--emphasis);text-decoration:underline;text-underline-offset:4px;
+  font-weight:500;align-self:flex-start}
 .card a:hover{color:var(--gold-hi)}
+
+/* Ecosystem */
 .eco{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .eco div{border-inline-start:2px solid var(--gold);padding-inline-start:1.25rem}
 .eco h3{color:var(--text-strong);font-weight:600;font-size:1.1rem;margin-bottom:.5rem}
 .eco p{opacity:.82;font-size:.96rem}
+
+/* Abu Dhabi */
 .ad{background:var(--surface);border-block:1px solid rgba(215,163,71,.2)}
-.ad-media{aspect-ratio:21/9;background:var(--elevated);border-radius:10px;overflow:hidden;margin-top:2.5rem}
+.ad-media{aspect-ratio:1920/822;background:var(--elevated);border-radius:10px;overflow:hidden;margin-top:2.5rem}
 .ad-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Closing */
 .close-cta{text-align:center}
 .close-cta .actions{justify-content:center}
 
-/* 10. الفوتر */
-footer{background:var(--surface);border-top:1px solid rgba(215,163,71,.2);padding-block:4rem 2.5rem}
+/* Footer */
+footer{border-top:1px solid rgba(215,163,71,.2);padding-block:4rem 2.5rem;background:var(--surface)}
 .f-grid{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:3rem}
 .f-brand p{opacity:.8;margin-top:.6rem;font-size:.95rem}
 .f-brand .slogan{color:var(--text-strong);opacity:1}
-.f-grid h4{color:var(--emphasis);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:1rem}
-.f-grid ul{display:flex;flex-direction:column;gap:.6rem}
+.f-grid h4{color:var(--emphasis);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;margin-bottom:1rem}
+.f-grid ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
 .f-grid a{color:var(--text);text-decoration:none;opacity:.82;font-size:.95rem}
 .f-grid a:hover{opacity:1;color:var(--gold-hi)}
 .f-social{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
 .f-legal{border-top:1px solid rgba(215,163,71,.15);padding-top:2rem;font-size:.85rem;opacity:.62}
 .f-legal p{margin-bottom:.5rem}
 
-/* 11. إمكانية الوصول */
-a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{
+  outline:2px solid var(--gold-hi);outline-offset:3px}
