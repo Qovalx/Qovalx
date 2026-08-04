@@ -118,16 +118,16 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 
 /* Audience cards */
 .cards{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
-.card{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;
-  overflow:hidden;display:flex;flex-direction:column}
-.card-img{aspect-ratio:16/10;background:var(--elevated);overflow:hidden}
-.card-img img{width:100%;height:100%;object-fit:cover;display:block}
-.card-body{padding:1.6rem;display:flex;flex-direction:column;gap:.85rem;flex:1}
-.idx{color:var(--emphasis);font-size:.8rem;letter-spacing:.1em;font-weight:500}
-.card h3{color:var(--text-strong);font-weight:600;font-size:1.35rem}
-.card p{opacity:.85;flex:1}
-.card a{color:var(--emphasis);text-decoration:underline;text-underline-offset:4px;
-  font-weight:500;align-self:flex-start}
+.card{background:rgba(255,255,255,.025);border:1px solid rgba(215,163,71,.45);border-radius:4px;
+  padding:2.25rem 1.5rem;display:flex;flex-direction:column;gap:.85rem;
+  transition:border-color .2s,transform .2s}
+.card:hover,.card:focus-within{border-color:#D7A347;transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.card:hover,.card:focus-within{transform:none}}
+.idx{color:#D7A347;font-size:.75rem;letter-spacing:.22em;font-weight:500}
+.card h3{color:#FFFFFF;font-weight:600;font-size:1.5rem}
+.card p{color:#C6CEDC;line-height:1.65;flex:1}
+.card a{color:#D7A347;font-weight:500;align-self:flex-start;text-decoration:underline;
+  text-decoration-color:#D7A347;text-decoration-thickness:1px;text-underline-offset:4px}
 .card a:hover{color:var(--gold-hi)}
 
 /* Ecosystem */
@@ -138,13 +138,13 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 
 /* Abu Dhabi */
 .ad{background:var(--surface);border-block:1px solid rgba(215,163,71,.2)}
-.ad-media{aspect-ratio:1920/822;background:var(--elevated);border-radius:10px;overflow:hidden;margin-top:2.5rem}
-.ad-media img{width:100%;height:100%;object-fit:cover;display:block}
+.ad-media{margin-top:2.5rem}
+.ad-media img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center 60%;
+  background:var(--elevated);border:1px solid rgba(215,163,71,.35);border-radius:4px;display:block}
 .founder{margin-top:1.5rem;font-size:.95rem;display:flex;align-items:baseline;
   gap:.6rem;flex-wrap:wrap}
-.founder span{color:var(--emphasis);font-size:.76rem;letter-spacing:.14em;
-  text-transform:uppercase;font-weight:500}
-.founder strong{color:var(--text-strong);font-weight:500;letter-spacing:.02em}
+.founder .founder-label{color:#9FB0C8;font-weight:400}
+.founder .founder-name{color:#F1E3D8;font-weight:600}
 
 /* Closing */
 .close-cta{text-align:center}
