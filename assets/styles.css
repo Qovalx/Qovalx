@@ -121,14 +121,19 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 /* Audience cards */
 .cards{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
 .card{background:rgba(255,255,255,.025);border:1px solid rgba(215,163,71,.45);border-radius:4px;
-  padding:2.25rem 1.5rem;display:flex;flex-direction:column;gap:.85rem;
-  transition:border-color .2s,transform .2s}
+  padding:2.5rem 2rem;min-height:18rem;display:flex;flex-direction:column;gap:1rem;
+  overflow:hidden;transition:border-color .2s,transform .2s}
 .card:hover,.card:focus-within{border-color:#D7A347;transform:translateY(-2px)}
 @media(prefers-reduced-motion:reduce){.card:hover,.card:focus-within{transform:none}}
-.idx{color:#D7A347;font-size:.75rem;letter-spacing:.22em;font-weight:500}
-.card h3{color:#FFFFFF;font-weight:600;font-size:1.5rem}
-.card p{color:#C6CEDC;line-height:1.65;flex:1}
-.card a{color:#D7A347;font-weight:500;align-self:flex-start;text-decoration:underline;
+/* Image slot. Empty until an <img alt=""> is dropped in, so it collapses and
+   a missing file can never print text inside the card. */
+.card-media{aspect-ratio:16/10;overflow:hidden;margin:-2.5rem -2rem 1.5rem;
+  border-bottom:1px solid rgba(215,163,71,.45)}
+.card-media img{width:100%;height:100%;object-fit:cover;display:block}
+.card-media:empty{display:none}
+.card h3{color:#FFFFFF;font-weight:600;font-size:1.5rem;margin-bottom:0}
+.card p{color:#C6CEDC;line-height:1.65}
+.card a{color:#D7A347;font-weight:500;align-self:flex-start;margin-top:auto;text-decoration:underline;
   text-decoration-color:#D7A347;text-decoration-thickness:1px;text-underline-offset:4px}
 .card a:hover{color:var(--gold-hi)}
 
