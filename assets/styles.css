@@ -33,6 +33,7 @@ body{background:var(--navy);color:var(--text);font-family:var(--font);font-weigh
 .skip:focus{inset-inline-start:0}
 
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:1.5rem}
+.nowrap{white-space:nowrap}
 
 /* Header */
 header{position:sticky;top:0;z-index:50;background:rgba(1,18,48,.92);backdrop-filter:blur(12px);
@@ -79,7 +80,8 @@ html[dir="rtl"] .drawer{border-inline-start:none;border-inline-end:1px solid rgb
   padding-block:5rem 3rem}
 .hero-grid{display:grid;gap:3rem;align-items:center}
 @media(min-width:960px){.hero-grid{grid-template-columns:1fr 1fr;gap:4rem}}
-.eyebrow{color:var(--emphasis);font-size:.82rem;letter-spacing:.18em;font-weight:500;margin-bottom:1.25rem}
+.eyebrow{color:var(--emphasis);font-size:.82rem;letter-spacing:.18em;font-weight:500;
+  margin-bottom:1.25rem;text-wrap:balance}
 h1{font-weight:300;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.1;color:var(--text-strong);
   margin-bottom:1.5rem;letter-spacing:-.01em}
 .lede{font-size:clamp(1.02rem,2vw,1.18rem);max-width:52ch;opacity:.88;margin-bottom:2.25rem}
