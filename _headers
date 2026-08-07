@@ -9,3 +9,24 @@
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+
+# The pages are served at directory URLs, which /*.html does not match — the
+# request path is /en/, not /en/index.html. Without these the locale pages
+# carry no Cache-Control at all and browsers cache them heuristically, which
+# leaves stale markup pointing at assets that may since have been replaced.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/ar/
+  Cache-Control: public, max-age=0, must-revalidate
+/en/
+  Cache-Control: public, max-age=0, must-revalidate
+/ru/
+  Cache-Control: public, max-age=0, must-revalidate
+/zh-Hans/
+  Cache-Control: public, max-age=0, must-revalidate
+/fr/
+  Cache-Control: public, max-age=0, must-revalidate
+/es/
+  Cache-Control: public, max-age=0, must-revalidate
+/hi/
+  Cache-Control: public, max-age=0, must-revalidate
