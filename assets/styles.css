@@ -1,3 +1,6 @@
+/* Linked as styles.css?v=<token>. /assets/* is cached immutable for a year,
+   so an edit here is invisible to returning visitors until that token changes.
+   Bump it in all seven index.html files whenever this file changes. */
 /* QOVALX — approved identity. FD-028 palette, FD-032 emblem, IBM Plex typography. */
 
 @font-face{font-family:'IBM Plex Sans';src:url('fonts/IBMPlexSans-Light.woff2')format('woff2');font-weight:300;font-display:swap}
