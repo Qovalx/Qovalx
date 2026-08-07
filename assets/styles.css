@@ -157,7 +157,12 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 /* Abu Dhabi */
 .ad{background:var(--surface);border-block:1px solid rgba(215,163,71,.2)}
 .ad-media{margin-top:2.5rem}
-.ad-media img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center 60%;
+/* Hero image. Deliberately outside the .card-media treatment — it keeps its own
+   golden-hour tone, with no normalisation filter and no navy tint. The source is
+   16:9 in a 16:9 box, so nothing is cropped and object-position does not bite;
+   the upward bias is the safe direction if that ever diverges, since the subject
+   — heritage structure and skyline — sits in the upper half. */
+.ad-media img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center 40%;
   background:var(--elevated);border:1px solid rgba(215,163,71,.35);border-radius:4px;display:block}
 .founder{margin-top:1.5rem;font-size:.95rem;display:flex;align-items:baseline;
   gap:.6rem;flex-wrap:wrap}
