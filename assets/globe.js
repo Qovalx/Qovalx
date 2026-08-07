@@ -101,13 +101,6 @@
   }));
   globe.add(dots);
 
-  // خطوط طول وعرض خافتة
-  var grid = new THREE.LineSegments(
-    new THREE.EdgesGeometry(new THREE.SphereGeometry(R * 1.002, 22, 14), 1),
-    new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.055 })
-  );
-  globe.add(grid);
-
   // وهج الغلاف الجوي
   var halo = new THREE.Mesh(
     new THREE.SphereGeometry(R * 1.16, 40, 40),
