@@ -56,3 +56,50 @@
    });
  }
 })();
+
+/* Launch countdown. Its own scope, so it cannot be skipped by the block above.
+   The target is a fixed instant with an explicit offset, so the remaining time
+   is identical for every visitor whatever timezone their device is set to.
+   The block ships hidden and is only revealed once a real value is in it, so
+   there is no flash of zeros, and if this never runs nothing appears at all. */
+(function () {
+ 'use strict';
+ var cd = document.querySelector('[data-countdown]');
+ if (!cd) return;
+ var target = Date.parse(cd.getAttribute('data-target'));
+ if (!target) return;
+
+ var units = {};
+ ['days', 'hours', 'minutes', 'seconds'].forEach(function (u) {
+   units[u] = cd.querySelector('[data-cd="' + u + '"]');
+ });
+ if (!units.days || !units.hours || !units.minutes || !units.seconds) return;
+ var head = cd.querySelector('.cd-hd');
+ var list = cd.querySelector('.cd-units');
+ var done = cd.querySelector('.cd-done');
+ var timer;
+
+ function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+ function render() {
+   var left = target - Date.now();
+   if (left <= 0) {
+     /* Past the target: a written line rather than zeros or negatives. */
+     if (head) head.hidden = true;
+     if (list) list.hidden = true;
+     if (done) done.hidden = false;
+     cd.hidden = false;
+     if (timer) { clearInterval(timer); timer = null; }
+     return;
+   }
+   var s = Math.floor(left / 1000);
+   units.days.textContent = pad(Math.floor(s / 86400));
+   units.hours.textContent = pad(Math.floor(s / 3600) % 24);
+   units.minutes.textContent = pad(Math.floor(s / 60) % 60);
+   units.seconds.textContent = pad(s % 60);
+   cd.hidden = false;
+ }
+
+ render();
+ timer = setInterval(render, 1000);
+})();
