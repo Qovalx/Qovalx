@@ -130,15 +130,16 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
    a missing file can never print text inside the card. */
 .card-media{aspect-ratio:16/9;overflow:hidden;position:relative;isolation:isolate;
   margin:-2.5rem -2rem .5rem;border-bottom:1px solid rgba(215,163,71,.45)}
-/* Shared colour normalisation, so sources shot under different light read as one
-   set. saturate() is what actually closes the gap between a warm and a cool
-   frame; the contrast/brightness pair puts back the punch it costs. */
+/* Shared finish over the four card images. It can only move every card by the
+   same amount, so it does not carry the differences between them — black point,
+   brightness and white balance are normalised per image in the assets instead.
+   That is what lets saturate() sit this high without the set falling apart. */
 .card-media img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;
-  filter:saturate(.72) contrast(1.06) brightness(1.03)}
+  filter:saturate(.88) contrast(1.06) brightness(1.03)}
 /* Navy tint. Blended on colour, not painted flat, so it moves hue toward the
    brand palette while leaving luminance — and therefore detail — untouched.
    Without mix-blend-mode support this degrades to a plain navy veil. */
-.card-media::after{content:'';position:absolute;inset:0;background:rgba(1,18,48,.22);
+.card-media::after{content:'';position:absolute;inset:0;background:rgba(1,18,48,.18);
   mix-blend-mode:color;pointer-events:none}
 .card-media:empty{display:none}
 .card h3{color:#FFFFFF;font-weight:600;font-size:1.5rem;margin-bottom:0}
