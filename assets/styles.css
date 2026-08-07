@@ -131,8 +131,21 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .sec-lede{max-width:60ch;opacity:.85;margin-bottom:3rem}
 
 /* Find Matching */
+/* Padding is a single variable so the media slot below can cancel it exactly at
+   every width, and overflow clips the bleed to the corner radius. */
 .match{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;
-  padding:clamp(1.75rem,4vw,3rem)}
+  --match-pad:clamp(1.75rem,4vw,3rem);padding:var(--match-pad);overflow:hidden}
+/* Same slot as the audience cards — it inherits their colour normalisation — but
+   this card runs the full width and is short, so the strip widens in steps as
+   the card does, keeping its height in one band rather than becoming a half-page
+   photograph. On a phone the taller box scales the frame up and trims the sides
+   instead, which is what keeps the man, the phone and the glass legible. */
+.match .card-media{aspect-ratio:4/3;border-bottom:1px solid rgba(215,163,71,.3);
+  margin:calc(-1 * var(--match-pad)) calc(-1 * var(--match-pad)) 1.5rem}
+.match .card-media img{object-position:48% 56%}
+@media(min-width:480px){.match .card-media{aspect-ratio:16/9}}
+@media(min-width:600px){.match .card-media{aspect-ratio:21/9}}
+@media(min-width:900px){.match .card-media{aspect-ratio:3/1}}
 .match-hd{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .match-hd h2{margin:0}
 .badge{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:.35rem 1rem;
