@@ -205,6 +205,44 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .founder .founder-label{color:#9FB0C8;font-weight:400}
 .founder .founder-name{color:#F1E3D8;font-weight:600}
 
+/* Pricing page. Built from the existing tokens: surface navy panels, hairline
+   gold borders, gold reserved for figures and rules. No heading or paragraph is
+   set entirely in gold — the amounts are gold spans inside mixed lines. */
+.page-head{padding-bottom:0}
+.page-head h1{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:1.75rem}
+.notice{border-inline-start:2px solid var(--gold);padding-inline-start:1.25rem;
+  color:var(--text-strong);max-width:62ch;margin-bottom:1.25rem}
+.prelaunch{color:#9FB0C8;font-size:.9rem;max-width:62ch}
+.price-grid{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-auto-rows:1fr}
+.price-card{background:var(--surface);border:1px solid rgba(215,163,71,.45);border-radius:4px;
+  padding:2rem;display:flex;flex-direction:column;gap:.65rem}
+.price-card h3{color:var(--text-strong);font-weight:600;font-size:1.35rem;margin-bottom:.4rem}
+.price-line{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.price-amt{color:var(--emphasis);font-size:1.75rem;font-weight:300;line-height:1.15;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.price-per{color:#9FB0C8;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.price-keep{color:var(--text);font-size:.95rem;margin-top:auto;padding-top:.75rem}
+.price-free{color:var(--text-strong);font-size:1.35rem;font-weight:300}
+.price-note{color:var(--text);opacity:.85;max-width:70ch;margin-top:1.5rem}
+/* The discount is the column that matters, so the table is sized to fit a
+   390px screen with cells wrapping rather than pushing that column behind a
+   horizontal scroll. The overflow stays as a safety net for larger text. */
+.table-wrap{overflow-x:auto}
+.tiers{width:100%;border-collapse:collapse;min-width:18rem}
+.tiers th,.tiers td{text-align:start;padding:.9rem .6rem;vertical-align:top;
+  border-bottom:1px solid rgba(215,163,71,.2)}
+@media(min-width:600px){.tiers th,.tiers td{padding:.9rem 1rem}}
+.tiers th{color:var(--emphasis);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500}
+.tiers td{color:var(--text);font-size:.98rem}
+.tiers .tier-name{color:var(--text-strong);font-weight:500}
+.tiers tbody tr:last-child td{border-bottom:none}
+.panel{background:var(--surface);border:1px solid rgba(215,163,71,.45);border-radius:10px;
+  padding:clamp(1.75rem,4vw,3rem)}
+.panel h2{font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:.75rem}
+.panel p{color:var(--text);max-width:70ch}
+
 /* Closing */
 .close-cta{text-align:center}
 .close-cta .actions{justify-content:center}
