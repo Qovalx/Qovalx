@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.qovalx.com/ar/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.qovalx.com/en/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://www.qovalx.com/ru/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://www.qovalx.com/zh-Hans/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://www.qovalx.com/fr/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://www.qovalx.com/es/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://www.qovalx.com/hi/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/"/>
@@ -83,5 +83,89 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/ar/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/en/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/ru/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/zh-Hans/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/fr/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/es/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
+  </url>
+  <url>
+    <loc>https://www.qovalx.com/hi/pricing/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.qovalx.com/ar/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.qovalx.com/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.qovalx.com/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.qovalx.com/zh-Hans/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.qovalx.com/fr/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.qovalx.com/es/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.qovalx.com/hi/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.qovalx.com/en/pricing/"/>
   </url>
 </urlset>
