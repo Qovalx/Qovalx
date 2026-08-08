@@ -210,6 +210,26 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
    set entirely in gold — the amounts are gold spans inside mixed lines. */
 .page-head{padding-bottom:0}
 .page-head h1{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:1.75rem}
+/* Audience pages. The global reset zeroes margins, so prose spacing is set
+   here rather than inherited. Body sections sit at a readable measure. */
+.doc section{padding-block:3rem}
+.doc section:first-child{padding-top:2.5rem}
+.doc h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:1rem}
+.doc section p{max-width:70ch;color:var(--text)}
+.doc section p + p{margin-top:1rem}
+.doc .lede-p{font-size:1.08rem;color:var(--text-strong)}
+.doc .panel p + p{margin-top:1rem}
+.doc .btn{margin-top:.5rem}
+/* Page hero. Same treatment as the audience card images so the set still
+   reads as one family; widens in steps so it never becomes a half-page photo. */
+.page-hero{aspect-ratio:16/9;overflow:hidden;position:relative;isolation:isolate;
+  border:1px solid rgba(215,163,71,.35);border-radius:4px;margin-bottom:2rem}
+.page-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;
+  filter:saturate(.88) contrast(1.06) brightness(1.03)}
+.page-hero::after{content:'';position:absolute;inset:0;background:rgba(1,18,48,.18);
+  mix-blend-mode:color;pointer-events:none}
+@media(min-width:600px){.page-hero{aspect-ratio:21/9}}
+@media(min-width:900px){.page-hero{aspect-ratio:3/1}}
 .notice{border-inline-start:2px solid var(--gold);padding-inline-start:1.25rem;
   color:var(--text-strong);max-width:62ch;margin-bottom:1.25rem}
 .prelaunch{color:#9FB0C8;font-size:.9rem;max-width:62ch}
