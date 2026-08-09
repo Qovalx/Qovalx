@@ -62,9 +62,18 @@ select.lang option{background:var(--surface);color:var(--text)}
   border-inline-start:1px solid rgba(215,163,71,.3);z-index:70;padding:1.5rem;overflow-y:auto;
   display:none;flex-direction:column}
 .drawer[data-open]{display:flex}
-.drawer a{color:var(--text);text-decoration:none;padding:.85rem 0;font-size:1.05rem;font-weight:500;
+/* Each link is its own row. An <a> is inline by default, so without this the
+   nine links ran together as one wrapped paragraph: the vertical padding did
+   not advance the line, the rows overlapped, and taps landed on whichever box
+   happened to be on top. Scoped to nav so it cannot reach the .btn below,
+   whose padding it would otherwise override. */
+.drawer nav{display:flex;flex-direction:column}
+.drawer nav a{display:block;color:var(--text);text-decoration:none;padding:.85rem 0;
+  min-height:44px;font-size:1.05rem;font-weight:500;
   border-bottom:1px solid rgba(215,163,71,.15)}
-.drawer a:hover,.drawer a:focus{color:var(--gold-hi)}
+.drawer nav a:hover,.drawer nav a:focus{color:var(--gold-hi)}
+.drawer-actions{margin-top:1.75rem}
+.drawer-actions .btn{display:block;text-align:center}
 .close{align-self:flex-end;background:none;border:1px solid rgba(215,163,71,.45);color:var(--gold);
   border-radius:4px;padding:.5rem .9rem;cursor:pointer;margin-bottom:1rem;font-family:inherit}
 html[dir="rtl"] .close{align-self:flex-start}
