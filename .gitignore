@@ -1,0 +1,7 @@
+# Local state written by `wrangler pages dev`. Build artefacts and dev caches,
+# never deployed. functions/ is deliberately NOT ignored: Cloudflare Pages
+# discovers Functions there at the repository root.
+.wrangler/
+node_modules/
+.env
+.env.*
