@@ -204,18 +204,31 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .eco p{opacity:.82;font-size:.96rem}
 
 /* Abu Dhabi */
-.ad{background:var(--surface);border-block:1px solid rgba(215,163,71,.2)}
-.ad-media{margin-top:2.5rem}
+/* One surface, not two. The section used to be a faint full-bleed band with the
+   heading, lede and founder line loose on it and only the image wearing a
+   border, so the image read as a card floating on the page. The card is now the
+   .wrap, taking its chrome from the audience cards, which are the reference. */
+.ad{background:none;border-block:0}
+.ad .wrap{background:rgba(255,255,255,.025);border:1px solid rgba(215,163,71,.45);border-radius:4px;
+  padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;overflow:hidden}
+/* Bleeds to the card edges with a hairline on both sides, since here the image
+   sits between two blocks of text rather than at the top. */
+.ad-media{margin-inline:-2rem;border-block:1px solid rgba(215,163,71,.45)}
+/* The column gap sets the rhythm, so the children carry no margins of their own. */
+.ad .sec-lede{margin-bottom:0}
 /* Hero image. Deliberately outside the .card-media treatment — it keeps its own
    golden-hour tone, with no normalisation filter and no navy tint. The source is
    16:9 in a 16:9 box, so nothing is cropped and object-position does not bite;
    the upward bias is the safe direction if that ever diverges, since the subject
    — heritage structure and skyline — sits in the upper half. */
+/* No border, radius or placeholder fill of its own any more — the card supplies
+   the surface. The image is otherwise untouched: still no normalisation filter
+   and no navy tint, so it keeps its golden-hour tone. */
 .ad-media img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center 40%;
-  background:var(--elevated);border:1px solid rgba(215,163,71,.35);border-radius:4px;display:block}
-.founder{margin-top:1.5rem;font-size:.95rem;display:flex;align-items:baseline;
+  display:block}
+.founder{margin-top:0;font-size:.95rem;display:flex;align-items:baseline;
   gap:.6rem;flex-wrap:wrap}
-.founder .founder-label{color:#9FB0C8;font-weight:400}
+.founder .founder-label{color:rgba(241,227,216,.62);font-weight:400}
 .founder .founder-name{color:#F1E3D8;font-weight:600}
 
 /* Pricing page. Built from the existing tokens: surface navy panels, hairline
