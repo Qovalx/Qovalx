@@ -23,7 +23,7 @@
   var messages = [];
   var sending = false;
   var open = false;
-  var root, panel, stream, input, sendButton, launcher, status;
+  var root, panel, stream, input, sendButton, launcher, launcherLabel, greeting, status;
 
   function matchLocale(value) {
     var lower = String(value || "").trim().toLowerCase();
@@ -67,8 +67,8 @@
     var css = [
       ".qx-khaled{position:fixed;inset-inline-end:24px;inset-block-end:24px;z-index:9000;font-family:inherit;color:#011230}",
       ".qx-khaled *{box-sizing:border-box}",
-      ".qx-launcher{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid #D7A347;border-radius:2px;background:#011230;color:#FFF9F2;font:inherit;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}",
-      ".qx-launcher:hover{background:#02194a}",
+      ".qx-launcher{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid #D7A347;border-radius:2px;background:#011230;color:#FFF9F2;font:inherit;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s ease,color .2s ease}",
+      ".qx-launcher:hover{background:#F1E3D8;color:#011230}",
       ".qx-dot{width:7px;height:7px;background:#D7A347;border-radius:50%}",
       ".qx-panel{position:absolute;inset-block-end:60px;inset-inline-end:0;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 140px));display:flex;flex-direction:column;background:#FFF9F2;border:1px solid rgba(1,18,48,.12);border-top:2px solid #D7A347;border-radius:2px;box-shadow:0 24px 60px rgba(1,18,48,.22);overflow:hidden}",
       ".qx-head{padding:20px 22px 16px;background:#011230;color:#FFF9F2}",
@@ -81,7 +81,7 @@
       ".qx-user{align-self:flex-end;background:#011230;color:#FFF9F2}",
       ".qx-bot{align-self:flex-start;background:#F1E3D8;border-inline-start:2px solid #D7A347}",
       ".qx-note{align-self:flex-start;max-width:88%;margin:0;font-size:12px;line-height:1.5;padding-inline-start:2px}",
-      ".qx-error{color:#8c2f2f}",
+      ".qx-error{border-inline-start:2px solid #D7A347;padding-inline-start:10px}",
       ".qx-quiet{opacity:.6}",
       ".qx-composer{display:flex;gap:10px;padding:14px;border-top:1px solid rgba(1,18,48,.1);background:#F1E3D8}",
       ".qx-composer textarea{flex:1;resize:none;padding:10px 12px;font:inherit;font-size:14px;line-height:1.5;color:#011230;background:#FFF9F2;border:1px solid rgba(1,18,48,.18);border-radius:2px}",
@@ -107,8 +107,13 @@
     launcher.type = "button";
     launcher.className = "qx-launcher";
     launcher.setAttribute("aria-expanded", "false");
-    launcher.innerHTML = '<span class="qx-dot" aria-hidden="true"></span><span class="qx-launcher-label"></span>';
-    launcher.querySelector(".qx-launcher-label").textContent = t("launcher_open");
+
+    var dot = document.createElement("span");
+    dot.className = "qx-dot";
+    dot.setAttribute("aria-hidden", "true");
+    launcherLabel = el("span", "qx-launcher-label", t("launcher_open"));
+    launcher.appendChild(dot);
+    launcher.appendChild(launcherLabel);
     launcher.addEventListener("click", toggle);
 
     root.appendChild(launcher);
@@ -130,7 +135,8 @@
     stream.className = "qx-stream";
     stream.setAttribute("role", "log");
     stream.setAttribute("aria-live", "polite");
-    stream.appendChild(el("p", "qx-greeting", t("greeting")));
+    greeting = el("p", "qx-greeting", t("greeting"));
+    stream.appendChild(greeting);
 
     var composer = document.createElement("div");
     composer.className = "qx-composer";
@@ -166,7 +172,7 @@
   function toggle() {
     open = !open;
     launcher.setAttribute("aria-expanded", String(open));
-    launcher.querySelector(".qx-launcher-label").textContent = t(open ? "launcher_close" : "launcher_open");
+    launcherLabel.textContent = t(open ? "launcher_close" : "launcher_open");
     if (open) {
       if (!panel) buildPanel();
       panel.style.display = "flex";
@@ -198,6 +204,7 @@
     var text = input.value.trim();
     if (!text || sending) return;
 
+    if (greeting) { greeting.remove(); greeting = null; } // the greeting stands in for an empty stream only
     append("qx-user", text);
     messages.push({ role: "user", content: text });
     input.value = "";
