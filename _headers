@@ -14,19 +14,27 @@
 # request path is /en/, not /en/index.html. Without these the locale pages
 # carry no Cache-Control at all and browsers cache them heuristically, which
 # leaves stale markup pointing at assets that may since have been replaced.
+#
+# The splat covers the locale root and every sub-page under it — /en/,
+# /en/pricing/, /ar/professionals/ — which an exact /en/ rule does not reach.
+# Do not add the exact rules back alongside these: when two rules match one
+# request Cloudflare concatenates their values rather than picking one, so the
+# pair emits "max-age=0, must-revalidate, max-age=0, must-revalidate". The
+# splat matches an empty remainder on its own. Locale directories hold nothing
+# but index.html, so these can only ever match a page, never an asset.
 /
   Cache-Control: public, max-age=0, must-revalidate
-/ar/
+/ar/*
   Cache-Control: public, max-age=0, must-revalidate
-/en/
+/en/*
   Cache-Control: public, max-age=0, must-revalidate
-/ru/
+/ru/*
   Cache-Control: public, max-age=0, must-revalidate
-/zh-Hans/
+/zh-Hans/*
   Cache-Control: public, max-age=0, must-revalidate
-/fr/
+/fr/*
   Cache-Control: public, max-age=0, must-revalidate
-/es/
+/es/*
   Cache-Control: public, max-age=0, must-revalidate
-/hi/
+/hi/*
   Cache-Control: public, max-age=0, must-revalidate
