@@ -1,0 +1,16 @@
+{
+  "eyebrow": "Asistente de QOVALX",
+  "title": "Khaled",
+  "disclosure": "Khaled es un asistente de inteligencia artificial. Responde preguntas sobre QOVALX y traslada las solicitudes importantes al equipo.",
+  "greeting": "Pregunte por las categorías de participantes, las suscripciones o el funcionamiento de QOVALX. Si su solicitud requiere al equipo de soporte, deje su nombre y correo electrónico y recibirá respuesta desde support@qovalx.com en un plazo de 24 horas.",
+  "placeholder": "Escriba su pregunta",
+  "send": "Enviar",
+  "typing": "Khaled está escribiendo",
+  "escalated": "Su solicitud ha llegado a QOVALX. Recibirá respuesta desde support@qovalx.com en un plazo de 24 horas.",
+  "footer": "Las respuestas se generan con inteligencia artificial. Consultas escritas: support@qovalx.com",
+  "launcher_open": "Preguntar a Khaled",
+  "launcher_close": "Cerrar",
+  "error_rate": "Demasiados mensajes en poco tiempo. Espere un momento y continúe.",
+  "error_unavailable": "Khaled no está disponible ahora. Escriba a support@qovalx.com y el equipo le responderá.",
+  "error_network": "El mensaje no se envió. Compruebe su conexión e inténtelo de nuevo."
+}

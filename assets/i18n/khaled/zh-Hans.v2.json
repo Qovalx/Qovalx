@@ -1,0 +1,16 @@
+{
+  "eyebrow": "QOVALX 助理",
+  "title": "哈立德",
+  "disclosure": "哈立德是人工智能助理，负责解答关于 QOVALX 的问题，并将重要事项转交团队。",
+  "greeting": "您可以询问参与者类别、订阅方案，或 QOVALX 的运作方式。如果您的请求需要支持团队处理，请留下姓名与电子邮箱，24 小时内会收到来自 support@qovalx.com 的回复。",
+  "placeholder": "请输入您的问题",
+  "send": "发送",
+  "typing": "哈立德正在回复",
+  "escalated": "您的请求已送达 QOVALX，24 小时内会收到来自 support@qovalx.com 的回复。",
+  "footer": "回复由人工智能生成。书面咨询：support@qovalx.com",
+  "launcher_open": "询问哈立德",
+  "launcher_close": "关闭",
+  "error_rate": "短时间内发送的消息过多，请稍候再继续。",
+  "error_unavailable": "助理暂时无法使用。请写信至 support@qovalx.com，团队会回复您。",
+  "error_network": "消息未能发送。请检查网络连接后重试。"
+}

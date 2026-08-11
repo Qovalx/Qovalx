@@ -4,7 +4,7 @@
  * Runtime: Cloudflare Pages Functions, same project that serves www.qovalx.com
  *
  * Khaled answers ordinary enquiries instantly in all seven site languages.
- * Anything that needs the Founder is emailed to support@qovalx.com, and only then
+ * Anything that needs the support team is emailed to support@qovalx.com, and only then
  * is the visitor told that a reply will arrive from that address within 24 hours.
  *
  * The API key stays in Cloudflare and never reaches the browser.
@@ -63,11 +63,11 @@ Answer ordinary enquiries yourself. Call the escalate_to_founder tool only when 
 - An agency, Infinity or enterprise subscription enquiry.
 - A partnership, investment, media, press or government enquiry.
 - A complaint, dispute, legal question, or a data protection or privacy request.
-- A request to speak to a person or to the Founder.
+- A request to speak to a person or to the support team.
 - A question about pricing, contracts, licensing or timelines that the approved facts above do not answer.
 - Anything commercially significant or time sensitive.
 Before calling the tool, ask in a single message for the visitor's full name, email address and a one-line summary of their request. Do not ask for these one at a time. The email address is required. If the visitor will not give an email address, tell them to write to support@qovalx.com and do not call the tool.
-After the tool returns successfully, confirm that the request has reached QOVALX and that a reply will arrive from support@qovalx.com within 24 hours. State the 24 hour commitment only after a successful escalation, never before.`;
+After the tool returns successfully, confirm that the request has reached the QOVALX support team and that a reply will arrive from support@qovalx.com within 24 hours. State the 24 hour commitment only after a successful escalation, never before.`;
 
 const ESCALATION_TOOL = {
   name: "escalate_to_founder",
