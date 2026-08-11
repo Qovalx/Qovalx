@@ -4,8 +4,27 @@
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
-/assets/*
+# Fingerprinted assets: a change ships under a new filename, so they are held
+# for a year. Scoped by extension rather than written as a bare /assets/* so
+# that the i18n rule below is not fighting it — when two rules match one
+# request Cloudflare joins their values rather than picking one, and a bare
+# /assets/* leaves the JSON with "immutable, max-age=31536000" in front of the
+# shorter directive, which is the value that wins. Add a line here when a new
+# asset type appears; anything unlisted simply falls back to no Cache-Control.
+/assets/*.jpg
   Cache-Control: public, max-age=31536000, immutable
+/assets/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Locale strings are content, not fingerprinted assets, so they are editable in
+# place: five minutes, then revalidate. No rule above matches .json, so this is
+# the only rule that applies here.
+/assets/i18n/*
+  Cache-Control: public, max-age=300, must-revalidate
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
