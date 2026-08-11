@@ -81,7 +81,10 @@
       ".qx-user{align-self:flex-end;background:#011230;color:#FFF9F2}",
       ".qx-bot{align-self:flex-start;background:#F1E3D8;border-inline-start:2px solid #D7A347}",
       ".qx-note{align-self:flex-start;max-width:88%;margin:0;font-size:12px;line-height:1.5;padding-inline-start:2px}",
-      ".qx-error{border-inline-start:2px solid #D7A347;padding-inline-start:10px}",
+      // #8C2F2F is a deliberate exception to the brand palette: a system state
+      // colour, not a brand colour. An error has to read as an error at a
+      // glance. Leave it in place; do not fold it back into the palette.
+      ".qx-error{color:#8C2F2F}",
       ".qx-quiet{opacity:.6}",
       ".qx-composer{display:flex;gap:10px;padding:14px;border-top:1px solid rgba(1,18,48,.1);background:#F1E3D8}",
       ".qx-composer textarea{flex:1;resize:none;padding:10px 12px;font:inherit;font-size:14px;line-height:1.5;color:#011230;background:#FFF9F2;border:1px solid rgba(1,18,48,.18);border-radius:2px}",
