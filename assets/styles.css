@@ -140,27 +140,31 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .sec-lede{max-width:60ch;opacity:.85;margin-bottom:3rem}
 
 /* Find Matching */
-/* Padding is a single variable so the media slot below can cancel it exactly at
-   every width, and overflow clips the bleed to the corner radius. */
-.match{background:var(--surface);border:1px solid rgba(215,163,71,.3);border-radius:10px;
-  --match-pad:clamp(1.75rem,4vw,3rem);padding:var(--match-pad);overflow:hidden}
-/* Same slot as the audience cards — it inherits their colour normalisation — but
-   this card runs the full width and is short, so the strip widens in steps as
-   the card does, keeping its height in one band rather than becoming a half-page
-   photograph. On a phone the taller box scales the frame up and trims the sides
-   instead, which is what keeps the man, the phone and the glass legible. */
-.match .card-media{aspect-ratio:4/3;border-bottom:1px solid rgba(215,163,71,.3);
-  margin:calc(-1 * var(--match-pad)) calc(-1 * var(--match-pad)) 1.5rem}
+/* Deliberately identical chrome to .card below: same fill, border, radius,
+   padding, column gap and media slot. The audience cards are the reference, so
+   if that block changes, change this with it. Everything here is written out
+   rather than shared with .card because this card carries different content —
+   a heading row, a badge, a field and a status line, not a heading, a
+   paragraph and a link. */
+.match{background:rgba(255,255,255,.025);border:1px solid rgba(215,163,71,.45);border-radius:4px;
+  padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;overflow:hidden}
+.match .card-media{aspect-ratio:16/9;border-bottom:1px solid rgba(215,163,71,.45);
+  margin:-2.5rem -2rem .5rem}
 .match .card-media img{object-position:48% 56%}
-@media(min-width:480px){.match .card-media{aspect-ratio:16/9}}
-@media(min-width:600px){.match .card-media{aspect-ratio:21/9}}
-@media(min-width:900px){.match .card-media{aspect-ratio:3/1}}
-.match-hd{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+/* The column gap sets the rhythm, so the children carry no margins of their own. */
+.match-hd{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0}
 .match-hd h2{margin:0}
 .badge{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:.35rem 1rem;
   font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;white-space:nowrap}
-.field{width:100%;background:var(--white);color:#6b6b6b;border:none;border-radius:4px;
-  padding:1rem 1.25rem;margin-block:1.5rem 1rem;font-family:inherit;font-size:1rem}
+/* An empty navy field behind a thin gold rule, not a light panel. The disabled
+   overrides are load bearing: browsers grey out a disabled input's text and
+   placeholder, and -webkit-text-fill-color is the only thing that holds ivory
+   in WebKit. Without them the placeholder falls back to an unapproved grey. */
+.field{width:100%;background:var(--navy);color:var(--ivory);border:1px solid rgba(215,163,71,.45);
+  border-radius:4px;padding:1rem 1.25rem;margin-block:0;font-family:inherit;font-size:1rem}
+.field::placeholder{color:var(--ivory);opacity:.65}
+.field:disabled{background:var(--navy);color:var(--ivory);opacity:1;-webkit-text-fill-color:var(--ivory)}
+.field:disabled::placeholder{color:var(--ivory);opacity:.65;-webkit-text-fill-color:var(--ivory)}
 .status{color:var(--text);opacity:.55;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
 
 /* Audience cards */
