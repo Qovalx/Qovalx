@@ -157,17 +157,50 @@ export async function onRequestPost(context) {
 
     return json({ reply, escalated });
   } catch (error) {
+    // The full upstream body goes to the Cloudflare log and stops there. The
+    // response carries the status and a short type only, so the failure can be
+    // told apart from a browser without exposing what the upstream said.
     console.error("khaled_error", error);
-    return json({ error: "unavailable" }, 503);
+    return json({ error: "unavailable", upstream: publicDetail(error) }, 503);
+  }
+}
+
+/**
+ * Carries the upstream status and a machine-readable type alongside the full
+ * body. Only the first two are ever returned to the caller; `detail` exists to
+ * be logged.
+ */
+class UpstreamError extends Error {
+  constructor(status, type, detail) {
+    super(`anthropic_${status === null ? "config" : status}: ${detail}`);
+    this.name = "UpstreamError";
+    this.status = status;
+    this.type = type;
+    this.detail = detail;
   }
 }
 
 async function callClaude(env, messages) {
+  // Fail fast and by name. An unbound variable serialises into the header as
+  // the string "undefined" and comes back as a plain 401, which is
+  // indistinguishable from a key that was set but rejected; a value carrying a
+  // newline makes the Headers constructor throw something unrelated. Both are
+  // configuration faults, not upstream ones, and they have different fixes.
+  const key = env.ANTHROPIC_API_KEY;
+  if (typeof key !== "string" || key.length === 0) {
+    throw new UpstreamError(null, "missing_api_key_binding",
+      "ANTHROPIC_API_KEY is not bound to this deployment. Set it on Production and redeploy.");
+  }
+  if (key !== key.trim()) {
+    throw new UpstreamError(null, "malformed_api_key_binding",
+      "ANTHROPIC_API_KEY has leading or trailing whitespace. Re-paste it without a newline.");
+  }
+
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "x-api-key": env.ANTHROPIC_API_KEY,
+      "x-api-key": key,
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
@@ -179,8 +212,32 @@ async function callClaude(env, messages) {
     }),
   });
 
-  if (!res.ok) throw new Error(`anthropic_${res.status}: ${await res.text()}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new UpstreamError(res.status, errorType(body), body);
+  }
   return res.json();
+}
+
+/**
+ * Pulls error.type out of an Anthropic error body. The result is whitelisted
+ * against a strict shape rather than trusted, so no free text from upstream can
+ * reach the response even if the body is not the documented one.
+ */
+function errorType(body) {
+  try {
+    const type = JSON.parse(body)?.error?.type;
+    if (typeof type === "string" && /^[a-z][a-z0-9_]{0,39}$/.test(type)) return type;
+  } catch {
+    // Not JSON. Fall through: the body is in the log either way.
+  }
+  return "unknown";
+}
+
+/** The only part of a failure that is allowed out of the function. */
+function publicDetail(error) {
+  if (error instanceof UpstreamError) return { status: error.status, type: error.type };
+  return { status: null, type: "internal_error" };
 }
 
 async function performEscalation(env, input, transcript, ip) {
