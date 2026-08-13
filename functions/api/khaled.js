@@ -104,21 +104,62 @@ const ESCALATION_TOOL = {
   },
 };
 
+/**
+ * The two canonical origins, and nothing else. A wildcard would let any site
+ * spend the API budget from a visitor's browser.
+ */
+const ALLOWED_ORIGINS = ["https://qovalx.com", "https://www.qovalx.com"];
+
+/** The Origin header when it is one we answer for, otherwise null. */
+function allowedOrigin(request) {
+  const origin = request.headers.get("Origin");
+  return ALLOWED_ORIGINS.includes(origin) ? origin : null;
+}
+
+/**
+ * Vary is set whether or not the origin matched. The response differs by Origin,
+ * so without it a cache could hand a permitted origin's headers to a refused one.
+ */
+function corsHeaders(origin) {
+  const headers = { vary: "Origin" };
+  if (origin) headers["access-control-allow-origin"] = origin;
+  return headers;
+}
+
+/**
+ * Preflight. The widget sends content-type: application/json, which is not a
+ * CORS-safelisted value, so a cross-origin POST is preceded by this. Without a
+ * handler the method is unimplemented and the browser sees a 405, which fails
+ * the preflight and the POST is never sent.
+ */
+export async function onRequestOptions(context) {
+  const origin = allowedOrigin(context.request);
+  return new Response(null, {
+    status: 204,
+    headers: {
+      ...corsHeaders(origin),
+      "access-control-allow-methods": "POST, OPTIONS",
+      "access-control-allow-headers": "content-type",
+    },
+  });
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
+  const origin = allowedOrigin(request);
 
   let body;
   try {
     body = await request.json();
   } catch {
-    return json({ error: "invalid_request" }, 400);
+    return json({ error: "invalid_request" }, 400, origin);
   }
 
   const messages = sanitiseMessages(body.messages);
-  if (!messages.length) return json({ error: "invalid_request" }, 400);
+  if (!messages.length) return json({ error: "invalid_request" }, 400, origin);
 
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  if (await isRateLimited(env, ip)) return json({ error: "rate_limited" }, 429);
+  if (await isRateLimited(env, ip)) return json({ error: "rate_limited" }, 429, origin);
 
   try {
     let response = await callClaude(env, messages);
@@ -155,14 +196,69 @@ export async function onRequestPost(context) {
       .join("\n")
       .trim();
 
-    return json({ reply, escalated });
+    return json({ reply, escalated }, 200, origin);
   } catch (error) {
-    // The full upstream body goes to the Cloudflare log and stops there. The
-    // response carries the status and a short type only, so the failure can be
-    // told apart from a browser without exposing what the upstream said.
+    // Only the Anthropic call can reach here: escalation is isolated below and
+    // cannot fail the request. The response names the stage and carries the
+    // real message, redacted and truncated; the log keeps the untouched error.
     console.error("khaled_error", error);
-    return json({ error: "unavailable", upstream: publicDetail(error) }, 503);
+    return json({
+      error: "unavailable",
+      stage: stageOf(error),
+      detail: safeDetail(env, error),
+      upstream: publicDetail(error),
+    }, 503, origin);
   }
+}
+
+const DETAIL_LIMIT = 300;
+
+/**
+ * Bindings whose values must never appear in a response. SUPABASE_URL is not a
+ * secret but it is an environment variable value, so it is redacted too.
+ */
+const REDACTED_BINDINGS = [
+  "ANTHROPIC_API_KEY",
+  "RESEND_API_KEY",
+  "SUPABASE_SERVICE_ROLE_KEY",
+  "SUPABASE_URL",
+  "ESCALATION_INBOX",
+];
+
+/** Key shapes, as a second line of defence for values not bound above. */
+const SECRET_SHAPES = /\b(?:sk-[A-Za-z0-9_-]{8,}|re_[A-Za-z0-9_-]{8,}|eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)/g;
+
+/**
+ * The error message, safe to return. Redaction runs before truncation on
+ * purpose: a secret cut in half by the character limit is still a leaked
+ * secret. Exact bound values go first, then anything key-shaped that was not
+ * bound here. Anthropic error bodies name the header but never echo the key,
+ * so what survives is the diagnosis and the request id.
+ */
+function safeDetail(env, error) {
+  let text = String((error && error.message) || error || "");
+
+  for (const name of REDACTED_BINDINGS) {
+    const value = env && env[name];
+    if (typeof value === "string" && value.length >= 8) {
+      text = text.split(value).join(`[redacted:${name}]`);
+    }
+  }
+  text = text.replace(SECRET_SHAPES, "[redacted]");
+
+  return text.length > DETAIL_LIMIT ? `${text.slice(0, DETAIL_LIMIT - 1)}…` : text;
+}
+
+/** Which step failed. Errors raised below carry their own stage; anything unlabelled is unknown. */
+function stageOf(error) {
+  return (error && typeof error.stage === "string" && error.stage) || "unknown";
+}
+
+/** Labels an error with the step that raised it, without discarding the original. */
+function atStage(stage, error) {
+  const wrapped = error instanceof Error ? error : new Error(String(error));
+  wrapped.stage = stage;
+  return wrapped;
 }
 
 /**
@@ -174,6 +270,7 @@ class UpstreamError extends Error {
   constructor(status, type, detail) {
     super(`anthropic_${status === null ? "config" : status}: ${detail}`);
     this.name = "UpstreamError";
+    this.stage = "anthropic";
     this.status = status;
     this.type = type;
     this.detail = detail;
@@ -216,7 +313,19 @@ async function callClaude(env, messages) {
     const body = await res.text();
     throw new UpstreamError(res.status, errorType(body), body);
   }
-  return res.json();
+
+  // A 200 that is not JSON, or is JSON of the wrong shape, is a different fault
+  // from a rejected request and reads very differently in a report.
+  let parsed;
+  try {
+    parsed = await res.json();
+  } catch (error) {
+    throw atStage("parse", error);
+  }
+  if (!parsed || !Array.isArray(parsed.content)) {
+    throw atStage("parse", new Error("anthropic response had no content array"));
+  }
+  return parsed;
 }
 
 /**
@@ -253,8 +362,24 @@ async function performEscalation(env, input, transcript, ip) {
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(record.email)) return { ok: false };
 
-  const emailSent = await sendEmail(env, record, transcript);
-  await logEscalation(env, record, transcript, ip, emailSent); // logging never blocks the visitor
+  // Each call is isolated on its own. Neither can fail the visitor's request:
+  // the worst outcome is ok:false, which Khaled already handles by telling the
+  // visitor to write in directly. The guards inside sendEmail and logEscalation
+  // cover their fetches; these cover everything else those functions do, so the
+  // isolation holds even if an inner guard is later narrowed or removed.
+  let emailSent = false;
+  try {
+    emailSent = await sendEmail(env, record, transcript);
+  } catch (error) {
+    console.error("khaled_resend_error", atStage("resend", error));
+  }
+
+  try {
+    await logEscalation(env, record, transcript, ip, emailSent);
+  } catch (error) {
+    console.error("khaled_supabase_error", atStage("supabase", error));
+  }
+
   return { ok: emailSent };
 }
 
@@ -298,9 +423,11 @@ async function sendEmail(env, record, transcript) {
         html,
       }),
     });
+    // A rejected send was previously indistinguishable from a missing key.
+    if (!res.ok) console.error("khaled_resend_error", `resend_${res.status}: ${await res.text()}`);
     return res.ok;
   } catch (error) {
-    console.error("email_error", error);
+    console.error("khaled_resend_error", atStage("resend", error));
     return false;
   }
 }
@@ -308,7 +435,7 @@ async function sendEmail(env, record, transcript) {
 async function logEscalation(env, record, transcript, ip, emailSent) {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return;
   try {
-    await fetch(`${env.SUPABASE_URL}/rest/v1/concierge_escalations`, {
+    const res = await fetch(`${env.SUPABASE_URL}/rest/v1/concierge_escalations`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -318,17 +445,27 @@ async function logEscalation(env, record, transcript, ip, emailSent) {
       },
       body: JSON.stringify({ ...record, email_sent: emailSent, status: "open", source_ip: ip, transcript }),
     });
+    // A rejected insert used to be discarded silently, so a broken table or a
+    // stale key looked exactly like a working one.
+    if (!res.ok) console.error("khaled_supabase_error", `supabase_${res.status}: ${await res.text()}`);
   } catch (error) {
-    console.error("supabase_error", error);
+    console.error("khaled_supabase_error", atStage("supabase", error));
   }
 }
 
 async function isRateLimited(env, ip) {
   if (!env.QOVALX_KV) return false; // KV binding is optional
-  const key = `khaled:${ip}:${Math.floor(Date.now() / 60000)}`;
-  const count = Number((await env.QOVALX_KV.get(key)) || 0);
-  if (count >= 12) return true;
-  await env.QOVALX_KV.put(key, String(count + 1), { expirationTtl: 120 });
+  // The limiter is a safeguard, not a dependency. It runs before the main try
+  // block, so an unhandled throw here would surface as a bare 500 with no
+  // diagnosis; a KV outage lets requests through rather than taking Khaled down.
+  try {
+    const key = `khaled:${ip}:${Math.floor(Date.now() / 60000)}`;
+    const count = Number((await env.QOVALX_KV.get(key)) || 0);
+    if (count >= 12) return true;
+    await env.QOVALX_KV.put(key, String(count + 1), { expirationTtl: 120 });
+  } catch (error) {
+    console.error("khaled_ratelimit_error", error);
+  }
   return false;
 }
 
@@ -347,9 +484,13 @@ function escapeHtml(value) {
   })[c]);
 }
 
-function json(data, status = 200) {
+function json(data, status = 200, origin = null) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "no-store",
+      ...corsHeaders(origin),
+    },
   });
 }
