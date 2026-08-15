@@ -308,10 +308,17 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .close-cta .actions{justify-content:center}
 
 /* Footer */
-/* Continuous with the page: no fill of its own and no rule above it, so the
-   footer reads as the end of the document rather than a detached block. The
-   spacing and the link groups are unchanged. */
+/* Continuous with the page: no fill of its own, so the footer reads as the end
+   of the document rather than a detached block. The spacing and the link groups
+   are unchanged. A single gold hairline closes the page content above it.
+   The rule hangs off footer's own .wrap, so it spans the content box the footer
+   text starts from rather than the viewport, and it needs no logical properties
+   to mirror: a block filling that box is already correct under dir="rtl".
+   footer's 4rem padding sits above it and the 4rem margin below matches, so the
+   rule is centred in the footer's own opening gap. */
 footer{padding-block:4rem 2.5rem}
+footer > .wrap::before{content:"";display:block;height:1px;
+  background:rgba(215,163,71,.22);margin-block-end:4rem}
 .f-grid{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:3rem}
 .f-brand p{opacity:.8;margin-top:.6rem;font-size:.95rem}
 .f-brand .slogan{color:var(--text-strong);opacity:1}
