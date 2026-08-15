@@ -143,7 +143,7 @@ async function plan_from_transcript(env, transcript) {
    },
    body: JSON.stringify({
      model: "claude-sonnet-5",
-     max_tokens: 2000,
+     max_tokens: 8000,
      system: SYSTEM_PROMPT,
      messages: [
        {
@@ -167,7 +167,12 @@ async function plan_from_transcript(env, transcript) {
    .join("")
    .replace(/```json|```/g, "")
    .trim();
- const parsed = JSON.parse(raw);
+ let parsed;
+ try {
+   parsed = JSON.parse(raw);
+ } catch {
+   throw new Error("رد كلود غير مكتمل. جرّب طلباً أقصر.");
+ }
  if (!parsed.ar || !parsed.en) throw new Error("رد كلود ناقص");
  return parsed;
 }
