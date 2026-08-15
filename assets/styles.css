@@ -156,6 +156,12 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .match-hd h2{margin:0}
 .badge{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:.35rem 1rem;
   font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+/* A heading with a status marker beside it. Flex, so the marker follows the
+   heading in reading order and mirrors under dir="rtl" with no direction rule
+   of its own; it wraps beneath on a narrow card rather than squeezing the text.
+   .card h3 already carries margin-bottom:0, so only h2 needs resetting. */
+.hd-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hd-row h2{margin-bottom:0}
 /* An empty navy field behind a thin gold rule, not a light panel. The disabled
    overrides are load bearing: browsers grey out a disabled input's text and
    placeholder, and -webkit-text-fill-color is the only thing that holds ivory
