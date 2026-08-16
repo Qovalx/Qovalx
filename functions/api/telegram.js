@@ -14,7 +14,7 @@ export async function onRequestPost(context) {
  if (!msg) return new Response("ok");
  const chatId = msg.chat.id;
  if (String(chatId) !== String(env.FOUNDER_CHAT_ID)) {
-   context.waitUntil(sendMessage(env, chatId, "Your chat id is: " + chatId));
+   context.waitUntil(sendMessage(env, chatId, "This bot is private."));
    return new Response("ok");
  }
  context.waitUntil(handle(env, msg, chatId));
