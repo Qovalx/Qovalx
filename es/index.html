@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="512x512">
   <link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=20260816b">
+  <link rel="stylesheet" href="/assets/styles.css?v=20260817a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,10 +52,12 @@
       <a class="logo" href="/es/"><bdi dir="ltr">QOVALX</bdi></a>
       <div class="hdr-r">
         <nav class="desk" aria-label="Menú">
-          <a href="/es/professionals/">Profesionales</a>
+          <a href="/es/professionals">Profesionales</a>
           <a href="/es/agencies/">Agencias</a>
           <a href="/es/developers/">Promotoras</a>
           <a href="/es/investors-buyers/">Inversores y compradores</a>
+          <a href="/es/professionals">Directorio</a>
+          <a href="/en/join">Únete</a>
           <a href="/es/pricing/">Precios</a>
           <a href="/es/#howitworks">Cómo funciona</a>
         </nav>
@@ -79,10 +81,12 @@
   <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menú">
     <button class="close">Cerrar</button>
     <nav aria-label="Menú">
-        <a href="/es/professionals/">Profesionales</a>
+        <a href="/es/professionals">Profesionales</a>
         <a href="/es/agencies/">Agencias</a>
         <a href="/es/developers/">Promotoras</a>
         <a href="/es/investors-buyers/">Inversores y compradores</a>
+        <a href="/es/professionals">Directorio</a>
+        <a href="/en/join">Únete</a>
         <a href="/es/pricing/">Precios</a>
         <a href="/es/#howitworks">Cómo funciona</a>
     </nav>
@@ -109,8 +113,8 @@
           <h1>La red profesional del sector inmobiliario</h1>
           <p class="lede"><bdi dir="ltr">QOVALX</bdi> conecta a profesionales inmobiliarios verificados, agencias, promotoras y compradores dentro de un único ecosistema profesional.</p>
           <div class="actions">
-            <a class="btn btn-p" href="/es/register/">Registrarse</a>
-            <a class="btn btn-s" href="/es/#howitworks">Cómo funciona</a>
+            <a class="btn btn-p" href="/es/professionals">Explorar el directorio</a>
+            <a class="btn btn-s" href="/en/join">Únete</a>
           </div>
         </div>
         <div class="globe-wrap">
@@ -143,9 +147,9 @@
             <div class="card-media">
               <img src="/assets/audience-professionals.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <div class="hd-row"><h3>Profesionales</h3> <span class="badge">Próximamente</span></div>
+            <h3>Profesionales</h3>
             <p>Brókeres y consultores independientes que trabajan las oportunidades directamente.</p>
-            <a href="/es/professionals/">Más información</a>
+            <a href="/es/professionals">Más información</a>
           </article>
           <article class="card">
             <div class="card-media">
@@ -153,24 +157,31 @@
             </div>
             <div class="hd-row"><h3>Agencias</h3> <span class="badge">Próximamente</span></div>
             <p>Agencias que gestionan equipos, plazas y pipelines compartidos.</p>
-            <a href="/es/agencies/">Más información</a>
+            <span class="card-cta-off" aria-disabled="true">Más información</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-developers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>Promotoras</h3>
+            <div class="hd-row"><h3>Promotoras</h3> <span class="badge">Próximamente</span></div>
             <p>Promotoras que presentan proyectos a redes cualificadas.</p>
-            <a href="/es/developers/">Más información</a>
+            <span class="card-cta-off" aria-disabled="true">Más información</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-investors-buyers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>Inversores y compradores</h3>
+            <div class="hd-row"><h3>Inversores y compradores</h3> <span class="badge">Próximamente</span></div>
             <p>Particulares e instituciones que buscan representación cualificada.</p>
-            <a href="/es/investors-buyers/">Más información</a>
+            <span class="card-cta-off" aria-disabled="true">Más información</span>
           </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="latest-professionals">
+      <h2 data-qx-latest-title>Últimos profesionales</h2>
+      <div id="qx-latest" data-load-error="No se pudo cargar el directorio. Actualiza la página y escribe a support@qovalx.com si sigue ocurriendo.">
+        <noscript><p class="qx-dir-note">No se pudo cargar el directorio. Actualiza la página y escribe a support@qovalx.com si sigue ocurriendo.</p></noscript>
       </div>
     </section>
 
@@ -231,7 +242,7 @@
         <div>
           <h4>Empresa</h4>
           <ul>
-            <li><a href="/es/professionals/">Profesionales</a></li>
+            <li><a href="/es/professionals">Profesionales</a></li>
             <li><a href="/es/agencies/">Agencias</a></li>
             <li><a href="/es/developers/">Promotoras</a></li>
             <li><a href="/es/investors-buyers/">Inversores y compradores</a></li>
@@ -270,6 +281,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="/assets/globe.js?v=20260807b" defer></script>
   <script src="/assets/site.js?v=20260807b" defer></script>
+  <script defer src="/assets/js/professionals-directory.v2.js"></script>
   <script defer src="/assets/js/khaled-widget.v11.js"></script>
 </body>
 </html>

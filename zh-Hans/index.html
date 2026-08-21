@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="512x512">
   <link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=20260816b">
+  <link rel="stylesheet" href="/assets/styles.css?v=20260817a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,10 +52,12 @@
       <a class="logo" href="/zh-Hans/"><bdi dir="ltr">QOVALX</bdi></a>
       <div class="hdr-r">
         <nav class="desk" aria-label="菜单">
-          <a href="/zh-Hans/professionals/">专业人士</a>
+          <a href="/zh-Hans/professionals">专业人士</a>
           <a href="/zh-Hans/agencies/">代理机构</a>
           <a href="/zh-Hans/developers/">开发商</a>
           <a href="/zh-Hans/investors-buyers/">投资者与买家</a>
+          <a href="/zh-Hans/professionals">目录</a>
+          <a href="/en/join">加入我们</a>
           <a href="/zh-Hans/pricing/">价格</a>
           <a href="/zh-Hans/#howitworks">运作方式</a>
         </nav>
@@ -79,10 +81,12 @@
   <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="菜单">
     <button class="close">关闭</button>
     <nav aria-label="菜单">
-        <a href="/zh-Hans/professionals/">专业人士</a>
+        <a href="/zh-Hans/professionals">专业人士</a>
         <a href="/zh-Hans/agencies/">代理机构</a>
         <a href="/zh-Hans/developers/">开发商</a>
         <a href="/zh-Hans/investors-buyers/">投资者与买家</a>
+        <a href="/zh-Hans/professionals">目录</a>
+        <a href="/en/join">加入我们</a>
         <a href="/zh-Hans/pricing/">价格</a>
         <a href="/zh-Hans/#howitworks">运作方式</a>
     </nav>
@@ -109,8 +113,8 @@
           <h1>房地产专业人脉网络</h1>
           <p class="lede"><bdi dir="ltr">QOVALX</bdi> 将经过验证的房地产专业人士、代理机构、开发商与买家汇聚于同一个专业生态系统。</p>
           <div class="actions">
-            <a class="btn btn-p" href="/zh-Hans/register/">注册</a>
-            <a class="btn btn-s" href="/zh-Hans/#howitworks">运作方式</a>
+            <a class="btn btn-p" href="/zh-Hans/professionals">浏览目录</a>
+            <a class="btn btn-s" href="/en/join">加入我们</a>
           </div>
         </div>
         <div class="globe-wrap">
@@ -143,9 +147,9 @@
             <div class="card-media">
               <img src="/assets/audience-professionals.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <div class="hd-row"><h3>专业人士</h3> <span class="badge">即将推出</span></div>
+            <h3>专业人士</h3>
             <p>独立经纪人与顾问，直接对接机会。</p>
-            <a href="/zh-Hans/professionals/">了解更多</a>
+            <a href="/zh-Hans/professionals">了解更多</a>
           </article>
           <article class="card">
             <div class="card-media">
@@ -153,24 +157,31 @@
             </div>
             <div class="hd-row"><h3>代理机构</h3> <span class="badge">即将推出</span></div>
             <p>管理团队、席位与共享业务流程的经纪公司。</p>
-            <a href="/zh-Hans/agencies/">了解更多</a>
+            <span class="card-cta-off" aria-disabled="true">了解更多</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-developers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>开发商</h3>
+            <div class="hd-row"><h3>开发商</h3> <span class="badge">即将推出</span></div>
             <p>向专业网络展示项目的开发企业。</p>
-            <a href="/zh-Hans/developers/">了解更多</a>
+            <span class="card-cta-off" aria-disabled="true">了解更多</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-investors-buyers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>投资者与买家</h3>
+            <div class="hd-row"><h3>投资者与买家</h3> <span class="badge">即将推出</span></div>
             <p>寻求专业代理服务的个人与机构。</p>
-            <a href="/zh-Hans/investors-buyers/">了解更多</a>
+            <span class="card-cta-off" aria-disabled="true">了解更多</span>
           </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="latest-professionals">
+      <h2 data-qx-latest-title>最新加入的专业人士</h2>
+      <div id="qx-latest" data-load-error="目录加载失败。请刷新页面；若持续出现，请发送邮件至 support@qovalx.com。">
+        <noscript><p class="qx-dir-note">目录加载失败。请刷新页面；若持续出现，请发送邮件至 support@qovalx.com。</p></noscript>
       </div>
     </section>
 
@@ -231,7 +242,7 @@
         <div>
           <h4>公司</h4>
           <ul>
-            <li><a href="/zh-Hans/professionals/">专业人士</a></li>
+            <li><a href="/zh-Hans/professionals">专业人士</a></li>
             <li><a href="/zh-Hans/agencies/">代理机构</a></li>
             <li><a href="/zh-Hans/developers/">开发商</a></li>
             <li><a href="/zh-Hans/investors-buyers/">投资者与买家</a></li>
@@ -270,6 +281,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="/assets/globe.js?v=20260807b" defer></script>
   <script src="/assets/site.js?v=20260807b" defer></script>
+  <script defer src="/assets/js/professionals-directory.v2.js"></script>
   <script defer src="/assets/js/khaled-widget.v11.js"></script>
 </body>
 </html>

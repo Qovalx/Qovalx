@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="512x512">
   <link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=20260816b">
+  <link rel="stylesheet" href="/assets/styles.css?v=20260817a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,10 +52,12 @@
       <a class="logo" href="/ru/"><bdi dir="ltr">QOVALX</bdi></a>
       <div class="hdr-r">
         <nav class="desk" aria-label="Меню">
-          <a href="/ru/professionals/">Специалисты</a>
+          <a href="/ru/professionals">Специалисты</a>
           <a href="/ru/agencies/">Агентства</a>
           <a href="/ru/developers/">Девелоперы</a>
           <a href="/ru/investors-buyers/">Инвесторы и покупатели</a>
+          <a href="/ru/professionals">Каталог</a>
+          <a href="/en/join">Присоединиться</a>
           <a href="/ru/pricing/">Тарифы</a>
           <a href="/ru/#howitworks">Как это работает</a>
         </nav>
@@ -79,10 +81,12 @@
   <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Меню">
     <button class="close">Закрыть</button>
     <nav aria-label="Меню">
-        <a href="/ru/professionals/">Специалисты</a>
+        <a href="/ru/professionals">Специалисты</a>
         <a href="/ru/agencies/">Агентства</a>
         <a href="/ru/developers/">Девелоперы</a>
         <a href="/ru/investors-buyers/">Инвесторы и покупатели</a>
+        <a href="/ru/professionals">Каталог</a>
+        <a href="/en/join">Присоединиться</a>
         <a href="/ru/pricing/">Тарифы</a>
         <a href="/ru/#howitworks">Как это работает</a>
     </nav>
@@ -109,8 +113,8 @@
           <h1>Профессиональная сеть для рынка недвижимости</h1>
           <p class="lede"><bdi dir="ltr">QOVALX</bdi> объединяет проверенных специалистов по недвижимости, агентства, девелоперов и покупателей в единой профессиональной экосистеме.</p>
           <div class="actions">
-            <a class="btn btn-p" href="/ru/register/">Регистрация</a>
-            <a class="btn btn-s" href="/ru/#howitworks">Как это работает</a>
+            <a class="btn btn-p" href="/ru/professionals">Открыть каталог</a>
+            <a class="btn btn-s" href="/en/join">Присоединиться</a>
           </div>
         </div>
         <div class="globe-wrap">
@@ -143,9 +147,9 @@
             <div class="card-media">
               <img src="/assets/audience-professionals.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <div class="hd-row"><h3>Специалисты</h3> <span class="badge">Скоро</span></div>
+            <h3>Специалисты</h3>
             <p>Независимые брокеры и консультанты, работающие с возможностями напрямую.</p>
-            <a href="/ru/professionals/">Подробнее</a>
+            <a href="/ru/professionals">Подробнее</a>
           </article>
           <article class="card">
             <div class="card-media">
@@ -153,24 +157,31 @@
             </div>
             <div class="hd-row"><h3>Агентства</h3> <span class="badge">Скоро</span></div>
             <p>Брокерские компании, управляющие командами, местами и общими воронками.</p>
-            <a href="/ru/agencies/">Подробнее</a>
+            <span class="card-cta-off" aria-disabled="true">Подробнее</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-developers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>Девелоперы</h3>
+            <div class="hd-row"><h3>Девелоперы</h3> <span class="badge">Скоро</span></div>
             <p>Девелоперские компании, представляющие проекты квалифицированным сетям.</p>
-            <a href="/ru/developers/">Подробнее</a>
+            <span class="card-cta-off" aria-disabled="true">Подробнее</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-investors-buyers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>Инвесторы и покупатели</h3>
+            <div class="hd-row"><h3>Инвесторы и покупатели</h3> <span class="badge">Скоро</span></div>
             <p>Частные лица и организации, ищущие квалифицированное представительство.</p>
-            <a href="/ru/investors-buyers/">Подробнее</a>
+            <span class="card-cta-off" aria-disabled="true">Подробнее</span>
           </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="latest-professionals">
+      <h2 data-qx-latest-title>Новые специалисты</h2>
+      <div id="qx-latest" data-load-error="Не удалось загрузить каталог. Обновите страницу, а если это повторяется, напишите на support@qovalx.com.">
+        <noscript><p class="qx-dir-note">Не удалось загрузить каталог. Обновите страницу, а если это повторяется, напишите на support@qovalx.com.</p></noscript>
       </div>
     </section>
 
@@ -231,7 +242,7 @@
         <div>
           <h4>Компания</h4>
           <ul>
-            <li><a href="/ru/professionals/">Специалисты</a></li>
+            <li><a href="/ru/professionals">Специалисты</a></li>
             <li><a href="/ru/agencies/">Агентства</a></li>
             <li><a href="/ru/developers/">Девелоперы</a></li>
             <li><a href="/ru/investors-buyers/">Инвесторы и покупатели</a></li>
@@ -270,6 +281,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="/assets/globe.js?v=20260807b" defer></script>
   <script src="/assets/site.js?v=20260807b" defer></script>
+  <script defer src="/assets/js/professionals-directory.v2.js"></script>
   <script defer src="/assets/js/khaled-widget.v11.js"></script>
 </body>
 </html>

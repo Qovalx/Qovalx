@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="512x512">
   <link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=20260816b">
+  <link rel="stylesheet" href="/assets/styles.css?v=20260817a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,10 +52,12 @@
       <a class="logo" href="/fr/"><bdi dir="ltr">QOVALX</bdi></a>
       <div class="hdr-r">
         <nav class="desk" aria-label="Menu">
-          <a href="/fr/professionals/">Professionnels</a>
+          <a href="/fr/professionals">Professionnels</a>
           <a href="/fr/agencies/">Agences</a>
           <a href="/fr/developers/">Promoteurs</a>
           <a href="/fr/investors-buyers/">Investisseurs et acheteurs</a>
+          <a href="/fr/professionals">Annuaire</a>
+          <a href="/en/join">Nous rejoindre</a>
           <a href="/fr/pricing/">Tarifs</a>
           <a href="/fr/#howitworks">Fonctionnement</a>
         </nav>
@@ -79,10 +81,12 @@
   <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
     <button class="close">Fermer</button>
     <nav aria-label="Menu">
-        <a href="/fr/professionals/">Professionnels</a>
+        <a href="/fr/professionals">Professionnels</a>
         <a href="/fr/agencies/">Agences</a>
         <a href="/fr/developers/">Promoteurs</a>
         <a href="/fr/investors-buyers/">Investisseurs et acheteurs</a>
+        <a href="/fr/professionals">Annuaire</a>
+        <a href="/en/join">Nous rejoindre</a>
         <a href="/fr/pricing/">Tarifs</a>
         <a href="/fr/#howitworks">Fonctionnement</a>
     </nav>
@@ -109,8 +113,8 @@
           <h1>Le réseau professionnel de l&#x27;immobilier</h1>
           <p class="lede"><bdi dir="ltr">QOVALX</bdi> réunit professionnels de l&#x27;immobilier vérifiés, agences, promoteurs et acheteurs au sein d&#x27;un même écosystème professionnel.</p>
           <div class="actions">
-            <a class="btn btn-p" href="/fr/register/">S&#x27;inscrire</a>
-            <a class="btn btn-s" href="/fr/#howitworks">Fonctionnement</a>
+            <a class="btn btn-p" href="/fr/professionals">Parcourir l’annuaire</a>
+            <a class="btn btn-s" href="/en/join">Nous rejoindre</a>
           </div>
         </div>
         <div class="globe-wrap">
@@ -143,9 +147,9 @@
             <div class="card-media">
               <img src="/assets/audience-professionals.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <div class="hd-row"><h3>Professionnels</h3> <span class="badge">Bientôt disponible</span></div>
+            <h3>Professionnels</h3>
             <p>Courtiers et consultants indépendants qui traitent directement les opportunités.</p>
-            <a href="/fr/professionals/">En savoir plus</a>
+            <a href="/fr/professionals">En savoir plus</a>
           </article>
           <article class="card">
             <div class="card-media">
@@ -153,24 +157,31 @@
             </div>
             <div class="hd-row"><h3>Agences</h3> <span class="badge">Bientôt disponible</span></div>
             <p>Agences gérant des équipes, des sièges et des pipelines partagés.</p>
-            <a href="/fr/agencies/">En savoir plus</a>
+            <span class="card-cta-off" aria-disabled="true">En savoir plus</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-developers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>Promoteurs</h3>
+            <div class="hd-row"><h3>Promoteurs</h3> <span class="badge">Bientôt disponible</span></div>
             <p>Sociétés de promotion présentant leurs projets à des réseaux qualifiés.</p>
-            <a href="/fr/developers/">En savoir plus</a>
+            <span class="card-cta-off" aria-disabled="true">En savoir plus</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-investors-buyers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>Investisseurs et acheteurs</h3>
+            <div class="hd-row"><h3>Investisseurs et acheteurs</h3> <span class="badge">Bientôt disponible</span></div>
             <p>Particuliers et institutions à la recherche d&#x27;une représentation qualifiée.</p>
-            <a href="/fr/investors-buyers/">En savoir plus</a>
+            <span class="card-cta-off" aria-disabled="true">En savoir plus</span>
           </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="latest-professionals">
+      <h2 data-qx-latest-title>Derniers professionnels</h2>
+      <div id="qx-latest" data-load-error="L’annuaire n’a pas pu être chargé. Actualisez la page, et écrivez à support@qovalx.com si cela persiste.">
+        <noscript><p class="qx-dir-note">L’annuaire n’a pas pu être chargé. Actualisez la page, et écrivez à support@qovalx.com si cela persiste.</p></noscript>
       </div>
     </section>
 
@@ -231,7 +242,7 @@
         <div>
           <h4>Société</h4>
           <ul>
-            <li><a href="/fr/professionals/">Professionnels</a></li>
+            <li><a href="/fr/professionals">Professionnels</a></li>
             <li><a href="/fr/agencies/">Agences</a></li>
             <li><a href="/fr/developers/">Promoteurs</a></li>
             <li><a href="/fr/investors-buyers/">Investisseurs et acheteurs</a></li>
@@ -270,6 +281,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="/assets/globe.js?v=20260807b" defer></script>
   <script src="/assets/site.js?v=20260807b" defer></script>
+  <script defer src="/assets/js/professionals-directory.v2.js"></script>
   <script defer src="/assets/js/khaled-widget.v11.js"></script>
 </body>
 </html>

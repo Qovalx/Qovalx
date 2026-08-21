@@ -44,7 +44,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(1,18,48,.92);backdrop-fi
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem}
 .logo{font-weight:600;letter-spacing:.22em;font-size:1.05rem;color:var(--text-strong);text-decoration:none}
 .hdr-r{display:flex;align-items:center;gap:.75rem}
-nav.desk{display:none;gap:1.75rem}
+/* Eight items now, and the longest labels are Russian and French. Measured
+   at the old 960px breakpoint the row needed more width than the header
+   had, at any gap, so it wrapped over the logo. The gap gives way first
+   and keeps its original value on wide screens; below the breakpoint the
+   burger and drawer take over, and the drawer already holds every link. */
+nav.desk{display:none;gap:clamp(.75rem,1.4vw,1.75rem)}
 nav.desk a{color:var(--text);text-decoration:none;font-size:.92rem;font-weight:500;opacity:.85}
 nav.desk a:hover,nav.desk a:focus{opacity:1;color:var(--gold-hi)}
 select.lang{background:transparent;color:var(--text);border:1px solid rgba(215,163,71,.45);
@@ -53,7 +58,7 @@ select.lang option{background:var(--surface);color:var(--text)}
 .burger{display:grid;place-items:center;width:44px;height:44px;background:transparent;
   border:1px solid rgba(215,163,71,.45);border-radius:4px;cursor:pointer}
 .burger span{display:block;width:18px;height:2px;background:var(--gold);margin:2px 0}
-@media(min-width:960px){nav.desk{display:flex}.burger{display:none}}
+@media(min-width:1100px){nav.desk{display:flex}.burger{display:none}}
 
 /* Drawer */
 .overlay{position:fixed;inset:0;background:rgba(1,18,48,.88);backdrop-filter:blur(4px);z-index:60;display:none}
@@ -322,6 +327,13 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .join-close{color:var(--text-strong);margin-top:2rem}
 .join-terms{max-width:44rem}
 .join-cta{margin-top:.5rem}
+
+/* A card whose route is not open yet: the call to action keeps its words and
+   its place in the card, but is no longer a link and no longer invites a click.
+   .card a sets align-self and margin-top:auto, so both are repeated here. */
+.card-cta-off{color:var(--text);opacity:.5;font-weight:500;align-self:flex-start;margin-top:auto;cursor:default}
+.qx-latest-list{margin-bottom:0}
+.qx-latest-more{margin-top:2rem}
 
 /* Professionals directory */
 /* Chrome comes from .card and .field, so a directory card is the same object as

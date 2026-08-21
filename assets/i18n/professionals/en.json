@@ -25,5 +25,7 @@
   "empty_directory": "The directory is not open yet. Verified professionals will appear here once the first listings are published.",
   "empty_filtered": "No professional matches these filters. Clear them to see the full directory.",
   "loading": "Loading the directory",
-  "load_error": "The directory could not be loaded. Refresh the page, or write to support@qovalx.com if it keeps happening."
+  "load_error": "The directory could not be loaded. Refresh the page, or write to support@qovalx.com if it keeps happening.",
+  "home_latest_title": "Latest professionals",
+  "home_latest_all": "View the full directory"
 }

@@ -24,7 +24,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="512x512">
   <link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/styles.css?v=20260816b">
+  <link rel="stylesheet" href="/assets/styles.css?v=20260817a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,10 +52,12 @@
       <a class="logo" href="/ar/"><bdi dir="ltr">QOVALX</bdi></a>
       <div class="hdr-r">
         <nav class="desk" aria-label="القائمة">
-          <a href="/ar/professionals/">المحترفون</a>
+          <a href="/ar/professionals">المحترفون</a>
           <a href="/ar/agencies/">الوكالات</a>
           <a href="/ar/developers/">المطورون العقاريون</a>
           <a href="/ar/investors-buyers/">المستثمرون والمشترون</a>
+          <a href="/ar/professionals">الدليل</a>
+          <a href="/ar/join">انضم إلينا</a>
           <a href="/ar/pricing/">الأسعار</a>
           <a href="/ar/#howitworks">كيف تعمل</a>
         </nav>
@@ -79,10 +81,12 @@
   <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="القائمة">
     <button class="close">إغلاق</button>
     <nav aria-label="القائمة">
-        <a href="/ar/professionals/">المحترفون</a>
+        <a href="/ar/professionals">المحترفون</a>
         <a href="/ar/agencies/">الوكالات</a>
         <a href="/ar/developers/">المطورون العقاريون</a>
         <a href="/ar/investors-buyers/">المستثمرون والمشترون</a>
+        <a href="/ar/professionals">الدليل</a>
+        <a href="/ar/join">انضم إلينا</a>
         <a href="/ar/pricing/">الأسعار</a>
         <a href="/ar/#howitworks">كيف تعمل</a>
     </nav>
@@ -109,8 +113,8 @@
           <h1>الشبكة المهنية للقطاع العقاري</h1>
           <p class="lede">تجمع <bdi dir="ltr">QOVALX</bdi> المحترفين العقاريين والوكالات والمطورين والمشترين في منظومة مهنية واحدة، بعد التحقّق من كل مشارك فيها.</p>
           <div class="actions">
-            <a class="btn btn-p" href="/ar/register/">التسجيل</a>
-            <a class="btn btn-s" href="/ar/#howitworks">كيف تعمل</a>
+            <a class="btn btn-p" href="/ar/professionals">تصفّح الدليل</a>
+            <a class="btn btn-s" href="/ar/join">انضم إلينا</a>
           </div>
         </div>
         <div class="globe-wrap">
@@ -143,9 +147,9 @@
             <div class="card-media">
               <img src="/assets/audience-professionals.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <div class="hd-row"><h3>المحترفون</h3> <span class="badge">قريبًا</span></div>
+            <h3>المحترفون</h3>
             <p>يعمل الوسطاء والمستشارون المستقلون على فرصهم مباشرة، ويحتفظون بكامل ما يكسبونه.</p>
-            <a href="/ar/professionals/">اعرف المزيد</a>
+            <a href="/ar/professionals">اعرف المزيد</a>
           </article>
           <article class="card">
             <div class="card-media">
@@ -153,24 +157,31 @@
             </div>
             <div class="hd-row"><h3>الوكالات</h3> <span class="badge">قريبًا</span></div>
             <p>تدير شركات الوساطة فرقها ومقاعدها وخطوط عملها المشتركة من مكان واحد.</p>
-            <a href="/ar/agencies/">اعرف المزيد</a>
+            <span class="card-cta-off" aria-disabled="true">اعرف المزيد</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-developers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>المطورون العقاريون</h3>
+            <div class="hd-row"><h3>المطورون العقاريون</h3> <span class="badge">قريبًا</span></div>
             <p>تعرض شركات التطوير مشاريعها على شبكة من المحترفين الموثّقين، وتصلها في المقابل قراءة منظّمة للطلب.</p>
-            <a href="/ar/developers/">اعرف المزيد</a>
+            <span class="card-cta-off" aria-disabled="true">اعرف المزيد</span>
           </article>
           <article class="card">
             <div class="card-media">
               <img src="/assets/audience-investors-buyers.jpg" alt="" loading="lazy" decoding="async" width="1600" height="900">
             </div>
-            <h3>المستثمرون والمشترون</h3>
+            <div class="hd-row"><h3>المستثمرون والمشترون</h3> <span class="badge">قريبًا</span></div>
             <p>يصل الأفراد والمؤسسات إلى تمثيل مهني موثّق، ويرون سبب ترشيح كل محترف لهم.</p>
-            <a href="/ar/investors-buyers/">اعرف المزيد</a>
+            <span class="card-cta-off" aria-disabled="true">اعرف المزيد</span>
           </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="latest-professionals">
+      <h2 data-qx-latest-title>أحدث المحترفين</h2>
+      <div id="qx-latest" data-load-error="تعذّر تحميل الدليل. حدّث الصفحة، وإن تكرر الأمر راسل support@qovalx.com.">
+        <noscript><p class="qx-dir-note">تعذّر تحميل الدليل. حدّث الصفحة، وإن تكرر الأمر راسل support@qovalx.com.</p></noscript>
       </div>
     </section>
 
@@ -231,7 +242,7 @@
         <div>
           <h4>الشركة</h4>
           <ul>
-            <li><a href="/ar/professionals/">المحترفون</a></li>
+            <li><a href="/ar/professionals">المحترفون</a></li>
             <li><a href="/ar/agencies/">الوكالات</a></li>
             <li><a href="/ar/developers/">المطورون العقاريون</a></li>
             <li><a href="/ar/investors-buyers/">المستثمرون والمشترون</a></li>
@@ -270,6 +281,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="/assets/globe.js?v=20260807b" defer></script>
   <script src="/assets/site.js?v=20260807b" defer></script>
+  <script defer src="/assets/js/professionals-directory.v2.js"></script>
   <script defer src="/assets/js/khaled-widget.v11.js"></script>
 </body>
 </html>
