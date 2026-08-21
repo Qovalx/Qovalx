@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.qovalx.com/data/professionals.schema.json",
+  "title": "QOVALX professionals directory",
+  "description": "Shape of every entry in professionals.json. That file is fetched by the browser and must stay strict JSON, which has no comment syntax, so the structure is documented here instead. Paired fields carry the same fact in each published language; never machine translate one from the other. No entry is rendered unless status is active.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["slug", "name_ar", "name_en", "status"],
+    "properties": {
+      "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "URL segment. Also the filename of the individual page at /<locale>/professionals/<slug>.html." },
+      "name_ar": { "type": "string" },
+      "name_en": { "type": "string" },
+      "title_ar": { "type": "string", "description": "Professional title, e.g. broker or consultant." },
+      "title_en": { "type": "string" },
+      "photo": { "type": "string", "description": "Absolute path to the portrait, e.g. /assets/professionals/<slug>.jpg. Omit or leave empty and the card renders without an image slot." },
+      "experience_years": { "type": "integer", "minimum": 0 },
+      "emirates_ar": { "type": "array", "items": { "type": "string" }, "description": "Emirates the person works in. Feeds the emirate filter." },
+      "emirates_en": { "type": "array", "items": { "type": "string" } },
+      "specialisations_ar": { "type": "array", "items": { "type": "string" }, "description": "Feeds the specialisation filter." },
+      "specialisations_en": { "type": "array", "items": { "type": "string" } },
+      "languages_ar": { "type": "array", "items": { "type": "string" } },
+      "languages_en": { "type": "array", "items": { "type": "string" } },
+      "bio_ar": { "type": "string" },
+      "bio_en": { "type": "string" },
+      "licence_authority": { "type": "string", "description": "Naming an authority here is a statement of fact about that person's licence. It is not a claim of partnership, endorsement or integration with that body." },
+      "verified": { "type": "boolean", "description": "True only after QOVALX has checked the authorisation. The badge renders from this field alone." },
+      "verified_on": { "type": "string", "format": "date", "description": "ISO date, YYYY-MM-DD." },
+      "founding_member": { "type": "boolean" },
+      "status": { "enum": ["active", "hidden"], "description": "Only active entries are rendered. hidden keeps the record without publishing it." },
+      "contact": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "whatsapp": { "type": "string", "description": "Digits in international form without a plus or spaces, e.g. 9715xxxxxxx. Used to build the wa.me link." },
+          "email": { "type": "string", "format": "email" }
+        }
+      }
+    }
+  }
+}

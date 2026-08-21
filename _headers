@@ -26,6 +26,12 @@
 /assets/i18n/*
   Cache-Control: public, max-age=300, must-revalidate
 
+# Directory records, edited by hand rather than shipped under a new filename,
+# so they revalidate on the same five minute cycle as the locale strings.
+# Nothing above matches /data/, so this is the only rule that applies here.
+/data/*
+  Cache-Control: public, max-age=300, must-revalidate
+
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 

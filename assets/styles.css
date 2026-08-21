@@ -313,6 +313,39 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .close-cta{text-align:center}
 .close-cta .actions{justify-content:center}
 
+/* Professionals directory */
+/* Chrome comes from .card and .field, so a directory card is the same object as
+   an audience card. Everything below is layout plus the tag list; gold appears
+   only on borders and rules, never on a heading or a paragraph. Logical
+   properties throughout, so the Arabic page needs no rules of its own. */
+.qx-dir-controls{display:grid;gap:1.25rem;align-items:end;margin-bottom:2rem;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.qx-dir-field{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.qx-dir-label{color:var(--text);opacity:.72;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+/* .btn and .btn-s were written for anchors, which are transparent by default.
+   This is the first <button> to wear them, and a native button carries the
+   browser's own buttonface fill, a light grey that is not in the palette and
+   would show straight through. The reset below is load bearing, not tidying. */
+.qx-dir-clear{align-self:end;white-space:nowrap;background:none;font:inherit;
+  font-size:.9rem;cursor:pointer;-webkit-appearance:none;appearance:none}
+.qx-dir-count{margin-bottom:1.5rem}
+.qx-dir-list{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.qx-dir-card{min-height:0;gap:.85rem}
+/* The portrait is taller than the 16/9 slot the audience cards use. */
+.qx-dir-media{aspect-ratio:4/3}
+.qx-dir-title{color:var(--text);opacity:.85;font-size:.98rem;margin:0}
+.qx-dir-meta{color:var(--text);opacity:.72;font-size:.9rem;margin:0}
+.qx-dir-badges{display:flex;gap:.5rem;flex-wrap:wrap}
+.qx-dir-facts{display:flex;flex-direction:column;gap:.4rem}
+.qx-dir-facts-h{color:var(--emphasis);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;margin:0}
+.qx-dir-tags{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0}
+.qx-dir-tags li{border:1px solid rgba(215,163,71,.35);border-radius:2px;padding:.25rem .6rem;
+  font-size:.85rem;color:var(--text)}
+.qx-dir-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:auto;padding-top:.5rem}
+.qx-dir-actions .btn{padding:.6rem 1.1rem;font-size:.85rem}
+.qx-dir-note{color:var(--text);opacity:.8;max-width:60ch;margin:0}
+
 /* Footer */
 /* Continuous with the page: no fill of its own, so the footer reads as the end
    of the document rather than a detached block. The spacing and the link groups
