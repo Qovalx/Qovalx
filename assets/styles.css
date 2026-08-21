@@ -313,6 +313,16 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .close-cta{text-align:center}
 .close-cta .actions{justify-content:center}
 
+/* Founding places */
+/* Prose, a terms table and one action. The table is the existing .tiers with a
+   single column, so each term sits on its own ruled row; nothing here restyles
+   .tiers itself. The closing line is the only emphasis on the page. */
+.join-prose p{max-width:66ch;margin-bottom:1.25rem}
+.join-prose p:last-child{margin-bottom:0}
+.join-close{color:var(--text-strong);margin-top:2rem}
+.join-terms{max-width:44rem}
+.join-cta{margin-top:.5rem}
+
 /* Professionals directory */
 /* Chrome comes from .card and .field, so a directory card is the same object as
    an audience card. Everything below is layout plus the tag list; gold appears
