@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#011230">
+  <meta name="robots" content="noindex"><!-- template-only -->
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="{{canonical}}">
+  {{#og_image}}<meta property="og:image" content="{{og_image}}">
+  <meta property="og:image:alt" content="{{name_en}}">{{/og_image}}
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="512x512">
+  <link rel="icon" type="image/png" href="/assets/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/styles.css?v={{css_version}}">
+  <script type="application/ld+json">
+{{{jsonld}}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header>
+    <div class="wrap hdr">
+      <a class="logo" href="/en/"><bdi dir="ltr">QOVALX</bdi></a>
+      <div class="hdr-r">
+        <a class="btn btn-s" href="/en/professionals">{{l_back_en}}</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="wrap page-head pf-head">
+      {{#photo}}<div class="pf-photo"><img src="{{photo}}" alt="" width="800" height="600" decoding="async"></div>{{/photo}}
+      <div class="pf-id">
+        <h1>{{name_en}}</h1>
+        <p class="pf-name-alt" lang="ar" dir="rtl">{{name_ar}}</p>
+        {{#title_en}}<p class="pf-title">{{title_en}}{{#title_ar}} <span class="pf-sep">·</span> <span lang="ar" dir="rtl">{{title_ar}}</span>{{/title_ar}}</p>{{/title_en}}
+        {{#badges}}<div class="qx-dir-badges">{{{badges}}}</div>{{/badges}}
+        {{#meta_line}}<p class="qx-dir-meta">{{meta_line}}</p>{{/meta_line}}
+      </div>
+    </section>
+
+    <section class="wrap pf-cols">
+      <div class="pf-col">
+        {{#bio_en}}<h2 class="pf-h">{{l_bio_en}}</h2>
+        <p class="pf-bio">{{bio_en}}</p>{{/bio_en}}
+        {{{facts_en}}}
+      </div>
+      <div class="pf-col" lang="ar" dir="rtl">
+        {{#bio_ar}}<h2 class="pf-h">{{l_bio_ar}}</h2>
+        <p class="pf-bio">{{bio_ar}}</p>{{/bio_ar}}
+        {{{facts_ar}}}
+      </div>
+    </section>
+
+    {{#has_contact}}<section class="wrap">
+      <div class="qx-dir-actions pf-actions">
+        {{#whatsapp}}<a class="btn btn-p" href="https://wa.me/{{whatsapp}}" rel="noopener" target="_blank">{{l_whatsapp_en}}</a>{{/whatsapp}}
+        {{#email}}<a class="btn btn-s" href="mailto:{{email}}">{{l_email_en}}</a>{{/email}}
+      </div>
+    </section>{{/has_contact}}
+
+    <section class="wrap">
+      <p><a class="btn btn-s" href="/en/professionals">{{l_back_en}}</a>
+      <a class="btn btn-s" href="/ar/professionals" lang="ar" dir="rtl">{{l_back_ar}}</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="f-legal">
+        <p><bdi dir="ltr">QOVALX</bdi> is under establishment. Trade name reserved.</p>
+        <p>2026 <bdi dir="ltr">QOVALX</bdi>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="/assets/js/khaled-widget.v11.js"></script>
+</body>
+</html>

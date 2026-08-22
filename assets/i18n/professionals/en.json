@@ -27,5 +27,7 @@
   "loading": "Loading the directory",
   "load_error": "The directory could not be loaded. Refresh the page, or write to support@qovalx.com if it keeps happening.",
   "home_latest_title": "Latest professionals",
-  "home_latest_all": "View the full directory"
+  "home_latest_all": "View the full directory",
+  "bio_heading": "About",
+  "back_to_directory": "Back to the directory"
 }

@@ -27,5 +27,7 @@
   "loading": "正在加载目录",
   "load_error": "目录加载失败。请刷新页面；若持续出现，请发送邮件至 support@qovalx.com。",
   "home_latest_title": "最新加入的专业人士",
-  "home_latest_all": "查看完整目录"
+  "home_latest_all": "查看完整目录",
+  "bio_heading": "简介",
+  "back_to_directory": "返回目录"
 }

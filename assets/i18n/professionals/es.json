@@ -27,5 +27,7 @@
   "loading": "Cargando el directorio",
   "load_error": "No se pudo cargar el directorio. Actualiza la página y escribe a support@qovalx.com si sigue ocurriendo.",
   "home_latest_title": "Últimos profesionales",
-  "home_latest_all": "Ver el directorio completo"
+  "home_latest_all": "Ver el directorio completo",
+  "bio_heading": "Perfil",
+  "back_to_directory": "Volver al directorio"
 }

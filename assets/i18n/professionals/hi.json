@@ -27,5 +27,7 @@
   "loading": "निर्देशिका लोड हो रही है",
   "load_error": "निर्देशिका लोड नहीं हो सकी। पृष्ठ ताज़ा करें, और बार-बार हो तो support@qovalx.com पर लिखें।",
   "home_latest_title": "नवीनतम पेशेवर",
-  "home_latest_all": "पूरी निर्देशिका देखें"
+  "home_latest_all": "पूरी निर्देशिका देखें",
+  "bio_heading": "परिचय",
+  "back_to_directory": "निर्देशिका पर वापस"
 }

@@ -318,6 +318,26 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .close-cta{text-align:center}
 .close-cta .actions{justify-content:center}
 
+/* Individual professional page */
+/* One bilingual page rather than one per locale: the record carries both
+   languages, so each column sets its own lang and dir and the page needs no
+   locale of its own. Chrome is the existing card, badge and tag styles. */
+.pf-head{display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start;padding-bottom:0}
+.pf-photo{flex:0 0 clamp(160px,22vw,240px);border:1px solid rgba(215,163,71,.45);
+  border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.pf-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-id{flex:1 1 18rem;min-width:0;display:flex;flex-direction:column;gap:.75rem}
+.pf-id h1{margin-bottom:0}
+.pf-name-alt{color:var(--text-strong);font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;margin:0}
+.pf-title{color:var(--text);opacity:.85;margin:0}
+.pf-sep{color:var(--emphasis);opacity:.7}
+.pf-cols{display:grid;gap:3rem;align-items:start}
+@media(min-width:900px){.pf-cols{grid-template-columns:1fr 1fr;gap:4rem}}
+.pf-col{display:flex;flex-direction:column;gap:1.5rem;min-width:0}
+.pf-h{font-size:1.35rem;margin-bottom:0}
+.pf-bio{color:var(--text);opacity:.88;margin:0;max-width:60ch}
+.pf-actions{margin:0}
+
 /* Founding places */
 /* Prose, a terms table and one action. The table is the existing .tiers with a
    single column, so each term sits on its own ruled row; nothing here restyles

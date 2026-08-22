@@ -27,5 +27,7 @@
   "loading": "جارٍ تحميل الدليل",
   "load_error": "تعذّر تحميل الدليل. حدّث الصفحة، وإن تكرر الأمر راسل support@qovalx.com.",
   "home_latest_title": "أحدث المحترفين",
-  "home_latest_all": "عرض الدليل كاملاً"
+  "home_latest_all": "عرض الدليل كاملاً",
+  "bio_heading": "نبذة",
+  "back_to_directory": "العودة إلى الدليل"
 }

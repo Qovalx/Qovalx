@@ -27,5 +27,7 @@
   "loading": "Chargement de l’annuaire",
   "load_error": "L’annuaire n’a pas pu être chargé. Actualisez la page, et écrivez à support@qovalx.com si cela persiste.",
   "home_latest_title": "Derniers professionnels",
-  "home_latest_all": "Voir tout l’annuaire"
+  "home_latest_all": "Voir tout l’annuaire",
+  "bio_heading": "Présentation",
+  "back_to_directory": "Retour à l’annuaire"
 }
