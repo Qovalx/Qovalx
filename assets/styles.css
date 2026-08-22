@@ -216,6 +216,11 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .card a{color:#D7A347;font-weight:500;align-self:flex-start;margin-top:auto;text-decoration:underline;
   text-decoration-color:#D7A347;text-decoration-thickness:1px;text-underline-offset:4px}
 .card a:hover{color:var(--gold-hi)}
+/* Two routes out of one card. .card a carries margin-top:auto to sit at the
+   bottom of the column; that job moves to the row, and the links inside it give
+   it up, or the second one would be pushed away from the first. */
+.card-links{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:auto;align-items:baseline}
+.card-links a{margin-top:0}
 
 /* Ecosystem */
 .eco{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
