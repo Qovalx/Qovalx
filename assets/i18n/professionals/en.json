@@ -138,5 +138,24 @@
         "إداري ومكاتب"
       ]
     }
+  ],
+  "role_label": "Professional role",
+  "role_all": "All roles",
+  "role_options": [
+    {
+      "label": "Real-estate broker",
+      "match": [
+        "broker",
+        "وسيط"
+      ]
+    },
+    {
+      "label": "Real-estate consultant",
+      "match": [
+        "consultant",
+        "مستشار",
+        "استشاري"
+      ]
+    }
   ]
 }

@@ -361,12 +361,29 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .qx-latest-more{margin-top:2rem}
 
 /* Professionals directory */
+/* The filters have to be reachable on a phone without scrolling. Between the
+   lede and the first field sat 163px: the lede's 3rem margin plus the 5.5rem
+   any section opens with. Both are cut here, on two classes that exist only on
+   this page, so no other page's rhythm moves. Only the top of the section is
+   touched; the space before the footer is unchanged. */
+.qx-dir-head{padding-block-start:2.5rem}
+.qx-dir-head .sec-lede{margin-bottom:1rem}
+.qx-dir-body{padding-block-start:2rem}
 /* Chrome comes from .card and .field, so a directory card is the same object as
    an audience card. Everything below is layout plus the tag list; gold appears
    only on borders and rules, never on a heading or a paragraph. Logical
    properties throughout, so the Arabic page needs no rules of its own. */
 .qx-dir-controls{display:grid;gap:1.25rem;align-items:end;margin-bottom:2rem;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* On a narrow screen the four controls and the clear button stacked into five
+   full width rows, which pushed the last of them below the fold on a shorter
+   phone. Two to a row halves that without touching any type size; the search
+   field keeps the full width, since a search box narrowed to half is worse than
+   a select narrowed to half. */
+@media(max-width:600px){
+  .qx-dir-controls{grid-template-columns:1fr 1fr}
+  .qx-dir-controls > .qx-dir-field:first-child{grid-column:1 / -1}
+}
 .qx-dir-field{display:flex;flex-direction:column;gap:.5rem;min-width:0}
 .qx-dir-label{color:var(--text);opacity:.72;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 /* .btn and .btn-s were written for anchors, which are transparent by default.

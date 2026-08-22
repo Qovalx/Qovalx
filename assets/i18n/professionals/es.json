@@ -138,5 +138,24 @@
         "إداري ومكاتب"
       ]
     }
+  ],
+  "role_label": "Perfil profesional",
+  "role_all": "Todos los perfiles",
+  "role_options": [
+    {
+      "label": "Agente inmobiliario",
+      "match": [
+        "broker",
+        "وسيط"
+      ]
+    },
+    {
+      "label": "Consultor inmobiliario",
+      "match": [
+        "consultant",
+        "مستشار",
+        "استشاري"
+      ]
+    }
   ]
 }

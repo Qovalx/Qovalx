@@ -138,5 +138,24 @@
         "إداري ومكاتب"
       ]
     }
+  ],
+  "role_label": "Rôle professionnel",
+  "role_all": "Tous les rôles",
+  "role_options": [
+    {
+      "label": "Courtier immobilier",
+      "match": [
+        "broker",
+        "وسيط"
+      ]
+    },
+    {
+      "label": "Consultant immobilier",
+      "match": [
+        "consultant",
+        "مستشار",
+        "استشاري"
+      ]
+    }
   ]
 }
