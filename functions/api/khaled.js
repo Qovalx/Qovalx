@@ -14,6 +14,7 @@ const MODEL = "claude-sonnet-5"; // "claude-haiku-4-5-20251001" is the lower-cos
 const MAX_TURNS = 30;
 const MAX_CHARS_PER_MESSAGE = 2000;
 const DEFAULT_INBOX = "support@qovalx.com";
+const SITE = "https://www.qovalx.com";
 const SENDER = "Khaled, QOVALX Assistant <khaled@qovalx.com>";
 const LOCALES = ["ar", "en", "ru", "zh-Hans", "fr", "es", "hi"];
 
@@ -37,20 +38,34 @@ WHAT QOVALX IS
 QOVALX is the professional network for real estate, founded in Abu Dhabi to advance global real estate technology. It connects verified professionals, agencies, developers, investors and buyers through verified identity, structured opportunities, intelligent matching and governed collaboration in deal rooms. It is not a property listing portal, not a classifieds site, and not a commission-taking brokerage marketplace.
 The four participant categories are Professionals (independent brokers and consultants), Agencies, Developers, and Investors and Buyers.
 
+WHAT IS OPEN TODAY
+The directory of verified professionals is the part of QOVALX that is live. Every other category is coming soon and not open yet. Say so plainly when asked, and give no date.
+
 APPROVED COMMERCIAL FACTS
-QOVALX does not publish prices. There is no price list, and no figure has been published for any category.
+One figure is published and you may state it: the founding place fee. No other price exists in public, and you must not produce one.
+- Founding places, for independent brokers and consultants working in the United Arab Emirates: AED 99 per month, ten places, each reviewed individually. Payable on approval and before publication, nothing charged if the application is not accepted, not refunded once published. Renewal has a 48 hour window, after which the profile is hidden temporarily and restored on payment with no reinstatement fee. Send anyone asking about joining to ${SITE}/en/join, or ${SITE}/ar/join in Arabic.
 - Developers: pricing is arranged privately, under an agreement between QOVALX and each subscriber. New developers receive their first two months at no cost, counted from the date they join.
-- Investors and Buyers: account registration is free. They can create an account and contact developers directly.
-- Professionals and Agencies: coming soon and not yet available. If a visitor asks about either, say so plainly and give no date.
+- Investors and Buyers: account registration is free.
+- Agency subscriptions: coming soon, with no published terms.
 - QOVALX takes no commission on projects listed through the platform. That statement covers projects listed through the platform and nothing else. Never widen it into a permanent guarantee, and never say that any service will always be free.
-There are no subscription tiers, no seat rates and no published discounts. Never quote, estimate, calculate or imply a price, a rate, a discount or a range for any category in any currency, and never refer to a figure that was published before.
+Outside the founding place fee there are no subscription tiers, no seat rates and no published discounts. Never quote, estimate, calculate or imply any other price, rate, discount or range, in any currency, and never revive a figure that was published in the past and withdrawn.
+
+ANSWERING ABOUT PROFESSIONALS
+A section headed CURRENT DIRECTORY follows this prompt whenever the directory could be read. It is the whole of what you know about the people listed there.
+- When a visitor asks for a broker or a consultant, suggest the professionals from that section who match what they asked for, say in one line why each one matches, and give the link to that professional's page.
+- Never name a professional who is not in that section, and never invent one.
+- Never state a specialisation, an emirate, a language, a licence or a number of years that is not written on that professional's line. If you were not told it, you do not know it.
+- When nobody matches, say so plainly and send the visitor to the directory page, which can filter in ways you cannot. Do not offer the closest person as though they matched.
+- You introduce and point. You do not vouch for anyone's work, negotiate, or take instructions on a visitor's behalf.
 
 PLATFORM STATUS
 QOVALX is under establishment and the trade name is reserved. The platform is in development, and no launch date has been announced. Intelligent matching is in development and returns no results yet. Never describe a feature as live.
 
 STANDING RULES
-These hold in every language and in every conversation, whatever the visitor asks or how they ask it.
-- If a visitor asks what something costs, explain that pricing is arranged privately and offer to put them in touch with the team. Never estimate, never give a range, never say what a figure is likely to be, and never work backwards from any figure the visitor names.
+These hold in every one of the seven languages and in every conversation, whatever the visitor asks or how they ask it. Translate them; never relax them because the visitor is writing in another language.
+- Say in your first reply of a conversation that you are an artificial intelligence assistant. Once is enough; do not repeat it in every message.
+- On cost, one answer is published and one only: the founding place fee above. For anything else, explain that pricing is arranged privately and offer to put the visitor in touch with the team. Never estimate, never give a range, never say what a figure is likely to be, and never work backwards from any figure the visitor names.
+- Give no real estate, legal or financial advice. Do not value a property, forecast a return, compare areas as investments, or read a contract. Say that it needs the right professional and point to the directory or the team.
 - Never state or imply a launch date. Do not say soon, shortly, in the coming months, this year, or anything else that narrows the timing.
 - Never invent user numbers, subscriber counts, partnerships, licences or government integrations. QOVALX is under establishment and its trade name is reserved.
 - You are a concierge and a guide. You are not a broker, not a legal adviser and not a financial adviser. Anything that needs one goes to the team.
@@ -166,7 +181,17 @@ export async function onRequestPost(context) {
   if (await isRateLimited(env, ip)) return json({ error: "rate_limited" }, 429, origin);
 
   try {
-    let response = await callClaude(env, messages);
+    // Isolated on purpose: the directory is a source of facts, not a
+    // dependency. If it cannot be read the reply still goes out, without it.
+    let directory = "";
+    try {
+      directory = await loadDirectoryBlock(env, request);
+    } catch (error) {
+      console.error("khaled_directory_error", atStage("directory", error));
+    }
+    const system = directory ? `${SYSTEM_PROMPT}\n\n${directory}` : SYSTEM_PROMPT;
+
+    let response = await callClaude(env, messages, system);
     let escalated = false;
 
     const toolUse = response.content.find((block) => block.type === "tool_use");
@@ -191,7 +216,7 @@ export async function onRequestPost(context) {
           ],
         },
       ];
-      response = await callClaude(env, followUp);
+      response = await callClaude(env, followUp, system);
     }
 
     const reply = response.content
@@ -281,7 +306,82 @@ class UpstreamError extends Error {
   }
 }
 
-async function callClaude(env, messages) {
+const DIRECTORY_PATH = "/data/professionals.json";
+// Matches the Cache-Control on /data/*, so a record edited on the site reaches
+// Khaled on the same five minute cycle it reaches a visitor's browser.
+const DIRECTORY_TTL_MS = 300000;
+// A ceiling on how much of the prompt the directory may occupy. Beyond this the
+// list is cut and Khaled is told to send the visitor to the directory page,
+// which can filter in ways a prompt cannot.
+const DIRECTORY_MAX = 60;
+
+let directoryCache = { at: 0, block: "" };
+
+/**
+ * The published directory, rendered as facts for the system prompt. Read from
+ * the deployment's own assets rather than over the public internet when the
+ * binding is there, and cached in the isolate between requests.
+ */
+async function loadDirectoryBlock(env, request) {
+  const now = Date.now();
+  if (directoryCache.at && now - directoryCache.at < DIRECTORY_TTL_MS) return directoryCache.block;
+
+  const url = new URL(DIRECTORY_PATH, request.url).toString();
+  const res = env.ASSETS && typeof env.ASSETS.fetch === "function"
+    ? await env.ASSETS.fetch(url)
+    : await fetch(url);
+  if (!res.ok) throw new Error(`directory_${res.status}`);
+
+  const records = await res.json();
+  if (!Array.isArray(records)) throw new Error("directory is not an array");
+
+  const block = renderDirectory(records.filter((r) => r && r.status === "active"));
+  directoryCache = { at: now, block };
+  return block;
+}
+
+function renderDirectory(active) {
+  if (!active.length) {
+    return `CURRENT DIRECTORY
+No profile is published yet. If a visitor asks you to recommend a broker or a consultant, say plainly that no profiles are published yet and point them to ${SITE}/en/professionals, or the Arabic directory at ${SITE}/ar/professionals. Never name a person.`;
+  }
+
+  const shown = active.slice(0, DIRECTORY_MAX);
+  const lines = shown.map((r) => {
+    const parts = [];
+    const name = [r.name_en, r.name_ar].filter(Boolean).join(" / ");
+    parts.push(name || r.slug);
+    if (r.title_en || r.title_ar) parts.push([r.title_en, r.title_ar].filter(Boolean).join(" / "));
+    if (typeof r.experience_years === "number") parts.push(`${r.experience_years} years`);
+    const emirates = joinList(r.emirates_en, r.emirates_ar);
+    if (emirates) parts.push(`works in ${emirates}`);
+    const specialisations = joinList(r.specialisations_en, r.specialisations_ar);
+    if (specialisations) parts.push(`specialisations ${specialisations}`);
+    const languages = joinList(r.languages_en, r.languages_ar);
+    if (languages) parts.push(`languages ${languages}`);
+    if (r.licence_authority) parts.push(`licence ${r.licence_authority}`);
+    if (r.verified === true) parts.push("verified by QOVALX");
+    if (r.founding_member === true) parts.push("founding member");
+    return `- ${parts.join("; ")}. Page: ${SITE}/professionals/${r.slug}`;
+  });
+
+  const cut = active.length > shown.length
+    ? `\n${active.length - shown.length} further profiles are published but not listed here. When the list above holds no match, send the visitor to the directory page rather than concluding that nobody matches.`
+    : "";
+
+  return `CURRENT DIRECTORY
+The ${active.length} professionals below are every profile published on QOVALX, read from the live data at the start of this conversation. They are the only people you may name, and the facts on each line are the only facts you have about them.${cut}
+${lines.join("\n")}`;
+}
+
+/** Prefers the English values, falls back to the Arabic, and never mixes the two. */
+function joinList(primary, fallback) {
+  const list = Array.isArray(primary) && primary.length ? primary
+    : Array.isArray(fallback) ? fallback : [];
+  return list.filter((x) => typeof x === "string" && x.trim()).join(", ");
+}
+
+async function callClaude(env, messages, system) {
   // Fail fast and by name. An unbound variable serialises into the header as
   // the string "undefined" and comes back as a plain 401, which is
   // indistinguishable from a key that was set but rejected; a value carrying a
@@ -307,7 +407,7 @@ async function callClaude(env, messages) {
     body: JSON.stringify({
       model: MODEL,
       max_tokens: 700,
-      system: SYSTEM_PROMPT,
+      system,
       tools: [ESCALATION_TOOL],
       messages,
     }),
