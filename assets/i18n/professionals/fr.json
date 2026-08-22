@@ -29,5 +29,114 @@
   "home_latest_title": "Derniers professionnels",
   "home_latest_all": "Voir tout l’annuaire",
   "bio_heading": "Présentation",
-  "back_to_directory": "Retour à l’annuaire"
+  "back_to_directory": "Retour à l’annuaire",
+  "emirate_options": [
+    {
+      "label": "Abou Dabi",
+      "match": [
+        "Abu Dhabi",
+        "أبوظبي"
+      ]
+    },
+    {
+      "label": "Dubaï",
+      "match": [
+        "Dubai",
+        "دبي"
+      ]
+    },
+    {
+      "label": "Charjah",
+      "match": [
+        "Sharjah",
+        "الشارقة"
+      ]
+    },
+    {
+      "label": "Ajman",
+      "match": [
+        "Ajman",
+        "عجمان"
+      ]
+    },
+    {
+      "label": "Oumm al Qaïwaïn",
+      "match": [
+        "Umm Al Quwain",
+        "أم القيوين"
+      ]
+    },
+    {
+      "label": "Ras el Khaïmah",
+      "match": [
+        "Ras Al Khaimah",
+        "رأس الخيمة"
+      ]
+    },
+    {
+      "label": "Foudjaïrah",
+      "match": [
+        "Fujairah",
+        "الفجيرة"
+      ]
+    }
+  ],
+  "specialisation_options": [
+    {
+      "label": "Résidentiel",
+      "match": [
+        "Residential",
+        "سكني"
+      ]
+    },
+    {
+      "label": "Commercial",
+      "match": [
+        "Commercial",
+        "تجاري"
+      ]
+    },
+    {
+      "label": "Sur plan",
+      "match": [
+        "Off-plan",
+        "على الخارطة"
+      ]
+    },
+    {
+      "label": "Investissement",
+      "match": [
+        "Investment",
+        "استثماري"
+      ]
+    },
+    {
+      "label": "Location",
+      "match": [
+        "Leasing",
+        "إيجارات"
+      ]
+    },
+    {
+      "label": "Terrain",
+      "match": [
+        "Land",
+        "أراضٍ"
+      ]
+    },
+    {
+      "label": "Luxe",
+      "match": [
+        "Luxury",
+        "فاخر"
+      ]
+    },
+    {
+      "label": "Bureaux",
+      "match": [
+        "Offices",
+        "إداري ومكاتب"
+      ]
+    }
+  ]
 }

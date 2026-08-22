@@ -29,5 +29,114 @@
   "home_latest_title": "أحدث المحترفين",
   "home_latest_all": "عرض الدليل كاملاً",
   "bio_heading": "نبذة",
-  "back_to_directory": "العودة إلى الدليل"
+  "back_to_directory": "العودة إلى الدليل",
+  "emirate_options": [
+    {
+      "label": "أبوظبي",
+      "match": [
+        "Abu Dhabi",
+        "أبوظبي"
+      ]
+    },
+    {
+      "label": "دبي",
+      "match": [
+        "Dubai",
+        "دبي"
+      ]
+    },
+    {
+      "label": "الشارقة",
+      "match": [
+        "Sharjah",
+        "الشارقة"
+      ]
+    },
+    {
+      "label": "عجمان",
+      "match": [
+        "Ajman",
+        "عجمان"
+      ]
+    },
+    {
+      "label": "أم القيوين",
+      "match": [
+        "Umm Al Quwain",
+        "أم القيوين"
+      ]
+    },
+    {
+      "label": "رأس الخيمة",
+      "match": [
+        "Ras Al Khaimah",
+        "رأس الخيمة"
+      ]
+    },
+    {
+      "label": "الفجيرة",
+      "match": [
+        "Fujairah",
+        "الفجيرة"
+      ]
+    }
+  ],
+  "specialisation_options": [
+    {
+      "label": "سكني",
+      "match": [
+        "Residential",
+        "سكني"
+      ]
+    },
+    {
+      "label": "تجاري",
+      "match": [
+        "Commercial",
+        "تجاري"
+      ]
+    },
+    {
+      "label": "على الخارطة",
+      "match": [
+        "Off-plan",
+        "على الخارطة"
+      ]
+    },
+    {
+      "label": "استثماري",
+      "match": [
+        "Investment",
+        "استثماري"
+      ]
+    },
+    {
+      "label": "إيجارات",
+      "match": [
+        "Leasing",
+        "إيجارات"
+      ]
+    },
+    {
+      "label": "أراضٍ",
+      "match": [
+        "Land",
+        "أراضٍ"
+      ]
+    },
+    {
+      "label": "فاخر",
+      "match": [
+        "Luxury",
+        "فاخر"
+      ]
+    },
+    {
+      "label": "إداري ومكاتب",
+      "match": [
+        "Offices",
+        "إداري ومكاتب"
+      ]
+    }
+  ]
 }

@@ -29,5 +29,114 @@
   "home_latest_title": "Новые специалисты",
   "home_latest_all": "Открыть весь каталог",
   "bio_heading": "О специалисте",
-  "back_to_directory": "Вернуться в каталог"
+  "back_to_directory": "Вернуться в каталог",
+  "emirate_options": [
+    {
+      "label": "Абу-Даби",
+      "match": [
+        "Abu Dhabi",
+        "أبوظبي"
+      ]
+    },
+    {
+      "label": "Дубай",
+      "match": [
+        "Dubai",
+        "دبي"
+      ]
+    },
+    {
+      "label": "Шарджа",
+      "match": [
+        "Sharjah",
+        "الشارقة"
+      ]
+    },
+    {
+      "label": "Аджман",
+      "match": [
+        "Ajman",
+        "عجمان"
+      ]
+    },
+    {
+      "label": "Умм-эль-Кайвайн",
+      "match": [
+        "Umm Al Quwain",
+        "أم القيوين"
+      ]
+    },
+    {
+      "label": "Рас-эль-Хайма",
+      "match": [
+        "Ras Al Khaimah",
+        "رأس الخيمة"
+      ]
+    },
+    {
+      "label": "Фуджейра",
+      "match": [
+        "Fujairah",
+        "الفجيرة"
+      ]
+    }
+  ],
+  "specialisation_options": [
+    {
+      "label": "Жилая",
+      "match": [
+        "Residential",
+        "سكني"
+      ]
+    },
+    {
+      "label": "Коммерческая",
+      "match": [
+        "Commercial",
+        "تجاري"
+      ]
+    },
+    {
+      "label": "На стадии строительства",
+      "match": [
+        "Off-plan",
+        "على الخارطة"
+      ]
+    },
+    {
+      "label": "Инвестиционная",
+      "match": [
+        "Investment",
+        "استثماري"
+      ]
+    },
+    {
+      "label": "Аренда",
+      "match": [
+        "Leasing",
+        "إيجارات"
+      ]
+    },
+    {
+      "label": "Земля",
+      "match": [
+        "Land",
+        "أراضٍ"
+      ]
+    },
+    {
+      "label": "Люкс",
+      "match": [
+        "Luxury",
+        "فاخر"
+      ]
+    },
+    {
+      "label": "Офисы",
+      "match": [
+        "Offices",
+        "إداري ومكاتب"
+      ]
+    }
+  ]
 }

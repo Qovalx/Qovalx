@@ -29,5 +29,114 @@
   "home_latest_title": "नवीनतम पेशेवर",
   "home_latest_all": "पूरी निर्देशिका देखें",
   "bio_heading": "परिचय",
-  "back_to_directory": "निर्देशिका पर वापस"
+  "back_to_directory": "निर्देशिका पर वापस",
+  "emirate_options": [
+    {
+      "label": "अबू धाबी",
+      "match": [
+        "Abu Dhabi",
+        "أبوظبي"
+      ]
+    },
+    {
+      "label": "दुबई",
+      "match": [
+        "Dubai",
+        "دبي"
+      ]
+    },
+    {
+      "label": "शारजाह",
+      "match": [
+        "Sharjah",
+        "الشارقة"
+      ]
+    },
+    {
+      "label": "अजमान",
+      "match": [
+        "Ajman",
+        "عجمان"
+      ]
+    },
+    {
+      "label": "उम्म अल कुवैन",
+      "match": [
+        "Umm Al Quwain",
+        "أم القيوين"
+      ]
+    },
+    {
+      "label": "रास अल खैमा",
+      "match": [
+        "Ras Al Khaimah",
+        "رأس الخيمة"
+      ]
+    },
+    {
+      "label": "फुजैरा",
+      "match": [
+        "Fujairah",
+        "الفجيرة"
+      ]
+    }
+  ],
+  "specialisation_options": [
+    {
+      "label": "आवासीय",
+      "match": [
+        "Residential",
+        "سكني"
+      ]
+    },
+    {
+      "label": "वाणिज्यिक",
+      "match": [
+        "Commercial",
+        "تجاري"
+      ]
+    },
+    {
+      "label": "ऑफ-प्लान",
+      "match": [
+        "Off-plan",
+        "على الخارطة"
+      ]
+    },
+    {
+      "label": "निवेश",
+      "match": [
+        "Investment",
+        "استثماري"
+      ]
+    },
+    {
+      "label": "किराया",
+      "match": [
+        "Leasing",
+        "إيجارات"
+      ]
+    },
+    {
+      "label": "भूमि",
+      "match": [
+        "Land",
+        "أراضٍ"
+      ]
+    },
+    {
+      "label": "लक्ज़री",
+      "match": [
+        "Luxury",
+        "فاخر"
+      ]
+    },
+    {
+      "label": "कार्यालय",
+      "match": [
+        "Offices",
+        "إداري ومكاتب"
+      ]
+    }
+  ]
 }

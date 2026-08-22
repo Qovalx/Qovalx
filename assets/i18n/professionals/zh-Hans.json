@@ -29,5 +29,114 @@
   "home_latest_title": "最新加入的专业人士",
   "home_latest_all": "查看完整目录",
   "bio_heading": "简介",
-  "back_to_directory": "返回目录"
+  "back_to_directory": "返回目录",
+  "emirate_options": [
+    {
+      "label": "阿布扎比",
+      "match": [
+        "Abu Dhabi",
+        "أبوظبي"
+      ]
+    },
+    {
+      "label": "迪拜",
+      "match": [
+        "Dubai",
+        "دبي"
+      ]
+    },
+    {
+      "label": "沙迦",
+      "match": [
+        "Sharjah",
+        "الشارقة"
+      ]
+    },
+    {
+      "label": "阿治曼",
+      "match": [
+        "Ajman",
+        "عجمان"
+      ]
+    },
+    {
+      "label": "乌姆盖万",
+      "match": [
+        "Umm Al Quwain",
+        "أم القيوين"
+      ]
+    },
+    {
+      "label": "哈伊马角",
+      "match": [
+        "Ras Al Khaimah",
+        "رأس الخيمة"
+      ]
+    },
+    {
+      "label": "富查伊拉",
+      "match": [
+        "Fujairah",
+        "الفجيرة"
+      ]
+    }
+  ],
+  "specialisation_options": [
+    {
+      "label": "住宅",
+      "match": [
+        "Residential",
+        "سكني"
+      ]
+    },
+    {
+      "label": "商业",
+      "match": [
+        "Commercial",
+        "تجاري"
+      ]
+    },
+    {
+      "label": "楼花",
+      "match": [
+        "Off-plan",
+        "على الخارطة"
+      ]
+    },
+    {
+      "label": "投资",
+      "match": [
+        "Investment",
+        "استثماري"
+      ]
+    },
+    {
+      "label": "租赁",
+      "match": [
+        "Leasing",
+        "إيجارات"
+      ]
+    },
+    {
+      "label": "土地",
+      "match": [
+        "Land",
+        "أراضٍ"
+      ]
+    },
+    {
+      "label": "豪华",
+      "match": [
+        "Luxury",
+        "فاخر"
+      ]
+    },
+    {
+      "label": "办公",
+      "match": [
+        "Offices",
+        "إداري ومكاتب"
+      ]
+    }
+  ]
 }
