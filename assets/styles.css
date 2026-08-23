@@ -320,7 +320,12 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 .panel p{color:var(--text);max-width:70ch}
 
 /* Closing */
-.close-cta{text-align:center}
+/* The closing call to action carried the full 5.5rem a section opens and ends
+   with, on top of the lede's own 3rem, for three short lines and a button row.
+   Trimmed so the heading, the sentence and the buttons read as one screen on a
+   phone. Only this section: .close-cta exists nowhere else. */
+.close-cta{text-align:center;padding-block:3.5rem}
+.close-cta .sec-lede{margin-bottom:2rem}
 .close-cta .actions{justify-content:center}
 
 /* Individual professional page */
