@@ -219,6 +219,13 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 /* Two routes out of one card. .card a carries margin-top:auto to sit at the
    bottom of the column; that job moves to the row, and the links inside it give
    it up, or the second one would be pushed away from the first. */
+/* The three coming soon cards lost their disabled link, and the professionals
+   card, which still carries two, went on setting the row height: the others
+   ended well above their own padding. The picture takes the slack instead, so
+   all four bottoms line up. The slot grows, the image still covers it, and no
+   image file, ratio or crop origin changed. Scoped to .cards so the Find
+   Matching block, which borrows .card-media, keeps its fixed ratio. */
+.cards .card-media{flex:1 1 auto;min-height:0}
 .card-links{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:auto;align-items:baseline}
 .card-links a{margin-top:0}
 
@@ -361,7 +368,6 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
 /* A card whose route is not open yet: the call to action keeps its words and
    its place in the card, but is no longer a link and no longer invites a click.
    .card a sets align-self and margin-top:auto, so both are repeated here. */
-.card-cta-off{color:var(--text);opacity:.5;font-weight:500;align-self:flex-start;margin-top:auto;cursor:default}
 .qx-latest-list{margin-bottom:0}
 .qx-latest-more{margin-top:2rem}
 
