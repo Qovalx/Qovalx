@@ -41,8 +41,22 @@ async function handle(env, msg, chatId) {
        await sendMessage(
          env,
          chatId,
-         "جاهز. أرسل فويس نوت أو نص يوصف المنشور المطلوب."
+         "جاهز. أرسل فويس نوت أو نص يوصف المنشور المطلوب.\n" +
+           "ولملف مهني للدليل: /profile ثم وصف المهني."
        );
+       return;
+     }
+     // ملف مهني بسبع لغات، جاهز للصق في data/professionals.json. مسار مستقل
+     // عن خطة المنشور: لا يمرّ على جدول المهام ولا يكتب في Supabase.
+     if (msg.text.startsWith("/profile")) {
+       const brief = msg.text.slice("/profile".length).trim();
+       if (!brief) {
+         await sendMessage(env, chatId, "اكتب /profile ثم وصف المهني في نفس الرسالة.");
+         return;
+       }
+       await sendMessage(env, chatId, "جاري تجهيز الملف بسبع لغات…");
+       const profile = await profile_from_transcript(env, brief);
+       await sendMessage(env, chatId, JSON.stringify(profile, null, 2));
        return;
      }
      transcript = msg.text;
@@ -133,6 +147,62 @@ QOVALX شبكة مهنية للقطاع العقاري، تأسست في أبو�
 أخرج JSON فقط بدون أي نص قبله أو بعده وبدون علامات كود، بهذا الشكل بالضبط:
 {"ar":"...","en":"..."}
 كل قيمة تحتوي على خطة منشور مكتوبة كنص عادي تشمل: الفكرة في سطر، نص المنشور، اقتراح المرئي، وسبعة إلى عشرة هاشتاقات. العربية والإنجليزية نسختان متكافئتان لا ترجمة حرفية.`;
+const PROFILE_PROMPT = `أنت تكتب ملفاً مهنياً لدليل محترفي QOVALX من وصف يرسله المؤسس.
+
+المطلوب JSON فقط، بلا أي نص قبله أو بعده، بهذه المفاتيح بالضبط:
+title_ar, title_en, title_ru, title_zh, title_fr, title_es, title_hi
+bio_ar, bio_en, bio_ru, bio_zh, bio_fr, bio_es, bio_hi
+
+الصفة: كلمتان أو ثلاث، مثل «وسيط عقاري» أو «مستشار عقاري».
+النبذة: جملتان أو ثلاث مترابطة، بلا قوائم نقطية وبلا عناوين فرعية.
+
+اللغات السبع نسخ متكافئة لا ترجمة حرفية: كل نسخة تقرأ كأنها كُتبت بلغتها،
+وتحمل الوقائع نفسها ولا تزيد عليها. الإنجليزية بالإملاء البريطاني.
+الصينية مبسّطة. اكتب QOVALX بالحروف اللاتينية في كل اللغات.
+
+ممنوع منعاً باتاً:
+- اختراع رقم لم يرد في الوصف: سنوات خبرة، عدد صفقات، قيم، نسب، تقييمات.
+- اختراع إنجاز أو جائزة أو شهادة أو ترخيص أو شراكة أو جهة عمل.
+- الوعد بنتيجة أو عائد، أو وصف الشخص بالأفضل أو الأول أو الرائد.
+- الإيموجي وعلامات التعجّب ولغة التسويق المبالغ فيها.
+
+إن نقص الوصف، اكتب ما ورد فيه فقط ولا تملأ الفراغ بالتخمين.`;
+async function profile_from_transcript(env, transcript) {
+ const res = await fetch("https://api.anthropic.com/v1/messages", {
+   method: "POST",
+   headers: {
+     "content-type": "application/json",
+     "x-api-key": env.ANTHROPIC_API_KEY,
+     "anthropic-version": "2023-06-01",
+   },
+   body: JSON.stringify({
+     model: "claude-sonnet-5",
+     max_tokens: 8000,
+     system: PROFILE_PROMPT,
+     messages: [{ role: "user", content: "وصف المهني:\n\n" + transcript }],
+   }),
+ });
+ if (!res.ok) {
+   throw new Error("Anthropic " + res.status + ": " + (await res.text()).slice(0, 300));
+ }
+ const data = await res.json();
+ const raw = (data.content || [])
+   .filter((b) => b.type === "text")
+   .map((b) => b.text)
+   .join("")
+   .replace(/```json|```/g, "")
+   .trim();
+ let parsed;
+ try {
+   parsed = JSON.parse(raw);
+ } catch {
+   throw new Error("رد كلود غير مكتمل. جرّب وصفاً أقصر.");
+ }
+ const missing = ["title_ar", "title_en", "bio_ar", "bio_en"].filter((k) => !parsed[k]);
+ if (missing.length) throw new Error("رد كلود ناقص: " + missing.join("، "));
+ return parsed;
+}
+
 async function plan_from_transcript(env, transcript) {
  const res = await fetch("https://api.anthropic.com/v1/messages", {
    method: "POST",

@@ -2,40 +2,286 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://www.qovalx.com/data/professionals.schema.json",
   "title": "QOVALX professionals directory",
-  "description": "Shape of every entry in professionals.json. That file is fetched by the browser and must stay strict JSON, which has no comment syntax, so the structure is documented here instead. Paired fields carry the same fact in each published language; never machine translate one from the other. No entry is rendered unless status is active.",
+  "description": "Shape of every entry in professionals.json. That file is fetched by the browser and must stay strict JSON, which has no comment syntax, so the structure is documented here instead. Every translatable field exists in seven languages, suffixed ar, en, ru, zh, fr, es, hi — note zh, not zh-Hans, which is the site's locale code for the same language. Arabic and English are required; the other five are optional and fall back to English silently, with no notice to the reader. Versions carry the same facts in each language and are never machine translated from one another. No entry is rendered unless status is active.",
   "type": "array",
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["slug", "name_ar", "name_en", "status"],
+    "required": [
+      "slug",
+      "status",
+      "name_ar",
+      "name_en",
+      "bio_ar",
+      "bio_en",
+      "title_ar",
+      "title_en",
+      "specialisations_ar",
+      "specialisations_en",
+      "emirates_ar",
+      "emirates_en",
+      "languages_ar",
+      "languages_en"
+    ],
     "properties": {
-      "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "URL segment. Also the filename of the individual page at /<locale>/professionals/<slug>.html." },
-      "name_ar": { "type": "string" },
-      "name_en": { "type": "string" },
-      "title_ar": { "type": "string", "description": "Professional title, e.g. broker or consultant." },
-      "title_en": { "type": "string" },
-      "photo": { "type": "string", "description": "Absolute path to the portrait, e.g. /assets/professionals/<slug>.jpg. Omit or leave empty and the card renders without an image slot." },
-      "experience_years": { "type": "integer", "minimum": 0 },
-      "emirates_ar": { "type": "array", "items": { "type": "string" }, "description": "Emirates the person works in. Feeds the emirate filter." },
-      "emirates_en": { "type": "array", "items": { "type": "string" } },
-      "specialisations_ar": { "type": "array", "items": { "type": "string" }, "description": "Feeds the specialisation filter." },
-      "specialisations_en": { "type": "array", "items": { "type": "string" } },
-      "languages_ar": { "type": "array", "items": { "type": "string" } },
-      "languages_en": { "type": "array", "items": { "type": "string" } },
-      "bio_ar": { "type": "string" },
-      "bio_en": { "type": "string" },
-      "licence_authority": { "type": "string", "description": "Naming an authority here is a statement of fact about that person's licence. It is not a claim of partnership, endorsement or integration with that body." },
-      "verified": { "type": "boolean", "description": "True only after QOVALX has checked the authorisation. The badge renders from this field alone." },
-      "verified_on": { "type": "string", "format": "date", "description": "ISO date, YYYY-MM-DD." },
-      "founding_member": { "type": "boolean" },
-      "status": { "enum": ["active", "hidden"], "description": "Only active entries are rendered. hidden keeps the record without publishing it." },
+      "slug": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "description": "URL segment. Also the filename of each language's page at /<locale>/professionals/<slug>.html."
+      },
+      "name_ar": {
+        "type": "string"
+      },
+      "name_en": {
+        "type": "string"
+      },
+      "photo": {
+        "type": "string",
+        "description": "Absolute path to the portrait, e.g. /assets/professionals/<slug>.jpg. Omit and the page renders without an image slot."
+      },
+      "experience_years": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "licence_authority": {
+        "type": "string",
+        "description": "Naming an authority states a fact about that person's licence. It is not a claim of partnership, endorsement or integration with that body."
+      },
+      "verified": {
+        "type": "boolean",
+        "description": "True only after QOVALX has checked the authorisation. The badge renders from this field alone."
+      },
+      "verified_on": {
+        "type": "string",
+        "format": "date",
+        "description": "ISO date, YYYY-MM-DD."
+      },
+      "founding_member": {
+        "type": "boolean"
+      },
+      "status": {
+        "enum": [
+          "active",
+          "hidden"
+        ],
+        "description": "Only active entries are rendered. hidden keeps the record without publishing it."
+      },
       "contact": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "whatsapp": { "type": "string", "description": "Digits in international form without a plus or spaces, e.g. 9715xxxxxxx. Used to build the wa.me link." },
-          "email": { "type": "string", "format": "email" }
+          "whatsapp": {
+            "type": "string",
+            "description": "Digits in international form without a plus or spaces, e.g. 9715xxxxxxx. Used to build the wa.me link."
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
         }
+      },
+      "bio_ar": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Required."
+      },
+      "bio_en": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Required."
+      },
+      "bio_ru": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Optional; falls back to English."
+      },
+      "bio_zh": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Optional; falls back to English."
+      },
+      "bio_fr": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Optional; falls back to English."
+      },
+      "bio_es": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Optional; falls back to English."
+      },
+      "bio_hi": {
+        "type": "string",
+        "description": "Biography, two or three connected sentences. Optional; falls back to English."
+      },
+      "title_ar": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Required."
+      },
+      "title_en": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Required."
+      },
+      "title_ru": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Optional; falls back to English."
+      },
+      "title_zh": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Optional; falls back to English."
+      },
+      "title_fr": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Optional; falls back to English."
+      },
+      "title_es": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Optional; falls back to English."
+      },
+      "title_hi": {
+        "type": "string",
+        "description": "Professional title, e.g. broker or consultant. Optional; falls back to English."
+      },
+      "specialisations_ar": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Required."
+      },
+      "specialisations_en": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Required."
+      },
+      "specialisations_ru": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Optional; falls back to English."
+      },
+      "specialisations_zh": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Optional; falls back to English."
+      },
+      "specialisations_fr": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Optional; falls back to English."
+      },
+      "specialisations_es": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Optional; falls back to English."
+      },
+      "specialisations_hi": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Feeds the specialisation filter. Optional; falls back to English."
+      },
+      "emirates_ar": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Required."
+      },
+      "emirates_en": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Required."
+      },
+      "emirates_ru": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Optional; falls back to English."
+      },
+      "emirates_zh": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Optional; falls back to English."
+      },
+      "emirates_fr": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Optional; falls back to English."
+      },
+      "emirates_es": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Optional; falls back to English."
+      },
+      "emirates_hi": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Emirates the person works in. Feeds the emirate filter. Optional; falls back to English."
+      },
+      "languages_ar": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Required."
+      },
+      "languages_en": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Required."
+      },
+      "languages_ru": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Optional; falls back to English."
+      },
+      "languages_zh": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Optional; falls back to English."
+      },
+      "languages_fr": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Optional; falls back to English."
+      },
+      "languages_es": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Optional; falls back to English."
+      },
+      "languages_hi": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages the person works in. Optional; falls back to English."
       }
     }
   }
