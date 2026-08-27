@@ -166,6 +166,13 @@ h2{font-weight:600;font-size:clamp(1.85rem,4vw,2.7rem);color:var(--text-strong);
    of its own; it wraps beneath on a narrow card rather than squeezing the text.
    .card h3 already carries margin-bottom:0, so only h2 needs resetting. */
 .hd-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+/* Inside an audience card the marker always sits under the heading rather than
+   beside it. The three cards share one markup; what differed was the heading
+   length, so Agencies and Developers kept the marker on the line while
+   Investors and Buyers wrapped it. Stacking makes the layout the same whatever
+   the heading says, in every language. flex-start reads as the right edge under
+   dir="rtl", so Arabic needs no rule of its own. */
+.cards .hd-row{flex-direction:column;align-items:flex-start;gap:.6rem}
 .hd-row h2{margin-bottom:0}
 /* An empty navy field behind a thin gold rule, not a light panel. The disabled
    overrides are load bearing: browsers grey out a disabled input's text and
