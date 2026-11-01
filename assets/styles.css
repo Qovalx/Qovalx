@@ -43,6 +43,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(1,18,48,.92);backdrop-fi
   border-bottom:1px solid rgba(215,163,71,.2)}
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem}
 .logo{font-weight:600;letter-spacing:.22em;font-size:1.05rem;color:var(--text-strong);text-decoration:none}
+/* The wordmark links home only while the Home nav item is hidden behind the burger. */
+.logo-static{display:none}
 .hdr-r{display:flex;align-items:center;gap:.75rem}
 /* Eight items now, and the longest labels are Russian and French. Measured
    at the old 960px breakpoint the row needed more width than the header
@@ -58,7 +60,8 @@ select.lang option{background:var(--surface);color:var(--text)}
 .burger{display:grid;place-items:center;width:44px;height:44px;background:transparent;
   border:1px solid rgba(215,163,71,.45);border-radius:4px;cursor:pointer}
 .burger span{display:block;width:18px;height:2px;background:var(--gold);margin:2px 0}
-@media(min-width:1100px){nav.desk{display:flex}.burger{display:none}}
+@media(min-width:1100px){nav.desk{display:flex}.burger{display:none}
+  .logo-link{display:none}.logo-static{display:inline}}
 
 /* Drawer */
 .overlay{position:fixed;inset:0;background:rgba(1,18,48,.88);backdrop-filter:blur(4px);z-index:60;display:none}
